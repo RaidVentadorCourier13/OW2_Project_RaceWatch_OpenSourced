@@ -76,6 +76,8 @@ Make sure not to cross the cap of 230 of edges.
 
 PART the car into parts and NAME them into their respective names:
 
+For ex. "SKYLINE_A", and on and on.
+
 A - Front Bumper
 
 B - Hood
