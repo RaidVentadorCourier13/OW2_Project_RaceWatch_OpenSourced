@@ -1,3 +1,7 @@
+# INTRODUCTION
+
+The future of street racing re-starts here.
+
 NOTE: Open-Sourced Build of the Project: Streetwatch workshop script was stripped from the following from the MASTER BUILD:
 
 1. "Race" and "Dynamite Trial" Modes - Only Free Drive is available.
@@ -151,7 +155,9 @@ Click on Terminal > New Terminal, and then for the Output select Workshop Code.
 ![image](https://user-images.githubusercontent.com/52705052/236928114-e1f8fa92-047f-4933-be22-8e81f90426cd.png)
 
 You can see in the Output, that this Import Script has Empty Arrays. That's because the OBJ. models of the car's parts inside the A_YOUR_CAR_TEMPLATE folder are empty.
-![image](https://github.com/GraczCourier/Project_Streetwatch_Open_Sourced/assets/52705052/086e329d-8b2a-4267-b493-8681e4bcd26a)
+![image](https://github.com/GraczCourier/Project_Streetwatch_Open_Sourced/assets/52705052/1c82f280-f262-4112-ba4c-0f547c3f4d65)
+![image](https://github.com/GraczCourier/Project_Streetwatch_Open_Sourced/assets/52705052/07eac5ac-bef8-44ea-86a8-2f9249438599)
+
 
 # Example on a completed car template
 
@@ -169,7 +175,9 @@ If you take a look at the Statistics of the car's model, you can see, that the c
 3. Open and take a look at the del. file (Parted Car Import Script (Skyline R34)) inside the Visual Studio Code.
 
 Notice that the Output of this Import Script is different.
-![image](https://github.com/GraczCourier/Project_Streetwatch_Open_Sourced/assets/52705052/d3ebba5e-7400-488a-89fc-32b51340fbae)
+![image](https://github.com/GraczCourier/Project_Streetwatch_Open_Sourced/assets/52705052/67873392-9a1c-419f-9635-9d76ee3f9e85)
+![image](https://github.com/GraczCourier/Project_Streetwatch_Open_Sourced/assets/52705052/96706c19-c655-4aa7-aa97-e24510b2930f)
+
 
 4: Go back to Blender and Export the first part of the car model.
 
@@ -187,7 +195,10 @@ Notice that the Output of this Import Script is different.
 9: Go back to Visual Studio Code and check the output.
 
 Notice, that the output has changed in Visual Studio Code for the Import Script inside the A_YOUR_CAR_TEMPLATE.
-![image](https://user-images.githubusercontent.com/52705052/236937633-98ce23a3-52df-468f-ae11-656037f1a434.png)
+![image](https://github.com/GraczCourier/Project_Streetwatch_Open_Sourced/assets/52705052/91b31b1b-15c7-49b0-8045-17700e8d8e04)
+![image](https://github.com/GraczCourier/Project_Streetwatch_Open_Sourced/assets/52705052/5b705d4a-0779-4fc9-becb-50bd01fc6df8)
+
+
 
 10: Go back to Blender and export the rest of the respective car parts.
 
