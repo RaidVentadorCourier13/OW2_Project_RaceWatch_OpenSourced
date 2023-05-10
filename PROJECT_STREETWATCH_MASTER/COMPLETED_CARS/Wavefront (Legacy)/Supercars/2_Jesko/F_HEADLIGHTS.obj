@@ -1,0 +1,10 @@
+# Blender v3.4.1 OBJ File: 'Jesko_OverwatchPort.blend'
+# www.blender.org
+mtllib F_HEADLIGHTS.mtl
+o JESKO_F_Plane.008
+v 1.157042 0.957566 2.157413
+v 1.030331 0.714280 2.617593
+v -1.157042 0.957566 2.157413
+v -1.030331 0.714280 2.617593
+l 1 2
+l 3 4

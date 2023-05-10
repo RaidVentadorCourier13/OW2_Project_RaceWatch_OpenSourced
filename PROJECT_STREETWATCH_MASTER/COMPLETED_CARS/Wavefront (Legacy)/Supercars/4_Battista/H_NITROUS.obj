@@ -1,0 +1,10 @@
+# Blender v3.4.1 OBJ File: 'PininfarinaBattista_OverwatchPort.blend'
+# www.blender.org
+mtllib H_NITROUS.mtl
+o Battista_H_Plane.001
+v 1.066909 0.410260 -2.843889
+v 0.706974 0.407204 -3.070890
+v -1.066911 0.410260 -2.843889
+v -0.706976 0.407204 -3.070889
+l 2 1
+l 4 3

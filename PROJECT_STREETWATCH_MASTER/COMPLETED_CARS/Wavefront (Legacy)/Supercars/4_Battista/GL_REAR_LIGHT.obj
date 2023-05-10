@@ -1,0 +1,11 @@
+# Blender v3.5.0 OBJ File: 'PininfarinaBattista_OverwatchPort.blend'
+# www.blender.org
+mtllib GL_REAR_LIGHT.mtl
+o Battista_GL_Plane.009
+v 0.182218 1.163287 -3.160246
+v 1.138763 1.153414 -2.776057
+v 0.530087 1.163287 -3.121554
+v 1.263068 1.142422 -2.503445
+l 2 3
+l 3 1
+l 2 4

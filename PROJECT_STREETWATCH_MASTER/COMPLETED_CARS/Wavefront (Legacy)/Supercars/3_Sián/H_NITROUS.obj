@@ -1,0 +1,10 @@
+# Blender v3.4.1 OBJ File: 'SiánFKP37_OverwatchPort.blend'
+# www.blender.org
+mtllib H_NITROUS.mtl
+o SIÁN_H_Plane.009
+v 0.487074 0.641339 -3.140932
+v 0.487074 0.641339 -3.241497
+v -0.485812 0.641339 -3.140932
+v -0.485812 0.641339 -3.241497
+l 1 2
+l 3 4

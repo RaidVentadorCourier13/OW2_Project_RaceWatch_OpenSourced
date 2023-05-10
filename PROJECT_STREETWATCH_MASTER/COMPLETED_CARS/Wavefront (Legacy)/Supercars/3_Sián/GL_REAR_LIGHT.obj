@@ -1,0 +1,10 @@
+# Blender v3.5.0 OBJ File: 'SiánFKP37_OverwatchPort.blend'
+# www.blender.org
+mtllib GL_REAR_LIGHT.mtl
+o SIÁN_GL_Plane.012
+v 0.564756 0.979948 -3.051484
+v 1.048002 0.979948 -2.791933
+v 0.236121 1.010118 -3.237824
+v 0.000631 1.010118 -3.237824
+l 1 2
+l 3 4

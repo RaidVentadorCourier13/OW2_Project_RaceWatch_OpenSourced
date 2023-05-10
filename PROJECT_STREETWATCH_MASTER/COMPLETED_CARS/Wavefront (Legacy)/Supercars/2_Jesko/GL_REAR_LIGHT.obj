@@ -1,0 +1,7 @@
+# Blender v3.5.0 OBJ File: 'Jesko_OverwatchPort.blend'
+# www.blender.org
+mtllib GL_REAR_LIGHT.mtl
+o JESKO_GL_Plane.010
+v 0.859414 0.999028 -2.950839
+v 1.290329 1.018244 -2.518381
+l 2 1

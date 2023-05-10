@@ -1,0 +1,7 @@
+# Blender v3.5.0 OBJ File: 'McLarenSenna_OverwatchPort.blend'
+# www.blender.org
+mtllib GL_REAR_LIGHT.mtl
+o SENNA_GL_Plane.009
+v 1.051498 0.832011 -2.936973
+v 0.462785 0.832011 -3.114910
+l 1 2
