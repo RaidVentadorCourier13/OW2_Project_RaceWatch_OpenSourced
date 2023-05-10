@@ -1,0 +1,10 @@
+# Blender v3.4.1 OBJ File: 'Porsche918_OverwatchPort.blend'
+# www.blender.org
+mtllib H_NITROUS.mtl
+o 918_H_Plane.010
+v 0.448896 1.411154 -1.432386
+v 0.448895 1.348871 -1.521056
+v -0.448896 1.411154 -1.432386
+v -0.448895 1.348871 -1.521056
+l 2 1
+l 4 3

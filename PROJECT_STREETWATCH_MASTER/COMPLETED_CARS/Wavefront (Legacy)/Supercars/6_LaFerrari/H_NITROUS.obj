@@ -1,0 +1,10 @@
+# Blender v3.4.1 OBJ File: 'LaFerrari_OverwatchPort.blend'
+# www.blender.org
+mtllib H_NITROUS.mtl
+o LAFERRARI_H_Plane.009
+v -1.031032 0.399692 -2.980353
+v 0.872312 0.399692 -3.060365
+v -0.872312 0.399692 -3.060365
+v 1.031032 0.399692 -2.980353
+l 1 3
+l 4 2

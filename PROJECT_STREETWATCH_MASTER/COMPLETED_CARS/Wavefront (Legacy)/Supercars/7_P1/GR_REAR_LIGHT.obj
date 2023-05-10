@@ -1,0 +1,11 @@
+# Blender v3.5.0 OBJ File: 'McLarenP1_OverwatchPort.blend'
+# www.blender.org
+mtllib GR_REAR_LIGHT.mtl
+o P1_GR_Plane.011
+v -1.146250 0.957413 -2.535882
+v -0.883257 1.032567 -2.778600
+v -0.573463 0.916849 -2.946043
+v -0.915044 0.701501 -2.886541
+l 4 1
+l 2 3
+l 1 2

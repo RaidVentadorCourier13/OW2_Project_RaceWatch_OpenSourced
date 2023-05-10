@@ -1,0 +1,7 @@
+# Blender v3.4.1 OBJ File: 'McLarenP1_OverwatchPort.blend'
+# www.blender.org
+mtllib H_NITROUS.mtl
+o P1_H_Plane.012
+v 0.170582 0.791202 -2.937952
+v -0.170582 0.791202 -2.937952
+l 1 2

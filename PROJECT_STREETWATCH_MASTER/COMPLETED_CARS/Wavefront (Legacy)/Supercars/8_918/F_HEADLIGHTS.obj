@@ -1,0 +1,10 @@
+# Blender v3.4.1 OBJ File: 'Porsche918_OverwatchPort.blend'
+# www.blender.org
+mtllib F_HEADLIGHTS.mtl
+o 918_F_Plane.012
+v 1.027037 0.954129 2.469617
+v -0.968168 0.723754 2.711339
+v -1.027037 0.954129 2.469617
+v 0.968168 0.723754 2.711339
+l 3 2
+l 1 4

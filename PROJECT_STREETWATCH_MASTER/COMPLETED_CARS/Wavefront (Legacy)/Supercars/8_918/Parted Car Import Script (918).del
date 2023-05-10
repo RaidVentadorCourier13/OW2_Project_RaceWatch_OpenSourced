@@ -1,0 +1,57 @@
+// THIS SCRIPT IS MAINLY USED FOR PICKING UP THE VERTICES AND EDGES DATA FROM THE CAR MODEL
+// OBJ. MUST BE IN WAVEFRONT (LEGACY) FORMAT
+
+globalvar Vector[] VAR_VEH_MESH_Vertices;
+globalvar define[] VAR_VEH_MESH_Edges;
+
+globalvar Vector[] VAR_VEH_MESH_VRTCS_FRONT_BUMPER;
+globalvar Vector[] VAR_VEH_MESH_VRTCS_FRONT_HOOD;
+globalvar Vector[] VAR_VEH_MESH_VRTCS_BODY;
+globalvar Vector[] VAR_VEH_MESH_VRTCS_ENGINE_HOOD;
+globalvar Vector[] VAR_VEH_MESH_VRTCS_REAR_BUMPER;
+globalvar Vector[] VAR_VEH_MESH_VRTCS_HEADLIGHTS;
+globalvar Vector[] VAR_VEH_MESH_VRTCS_L_R_LIGHTS;
+globalvar Vector[] VAR_VEH_MESH_VRTCS_R_R_LIGHTS;
+globalvar Vector[] VAR_VEH_MESH_VRTCS_NITROUS;
+globalvar Vector[] VAR_VEH_MESH_VRTCS_CARBON_PARTS;
+
+globalvar Number[] VAR_VEH_MESH_EDGES_FRONT_BUMPER;
+globalvar Number[] VAR_VEH_MESH_EDGES_FRONT_HOOD;
+globalvar Number[] VAR_VEH_MESH_EDGES_BODY;
+globalvar Number[] VAR_VEH_MESH_EDGES_ENGINE_HOOD;
+globalvar Number[] VAR_VEH_MESH_EDGES_REAR_BUMPER;
+globalvar Number[] VAR_VEH_MESH_EDGES_HEADLIGHTS;
+globalvar Number[] VAR_VEH_MESH_EDGES_L_R_LIGHTS;
+globalvar Number[] VAR_VEH_MESH_EDGES_R_R_LIGHTS;
+globalvar Number[] VAR_VEH_MESH_EDGES_NITROUS;
+globalvar Number[] VAR_VEH_MESH_EDGES_CARBON_PARTS;
+
+rule: '<Vehicle_Name> (Mesh Array Tables)'
+{
+
+    // Vehicle_Body
+    
+    
+    VAR_VEH_MESH_VRTCS_FRONT_BUMPER = Asset.GetPoints('A_FRONT_BUMPER.obj');
+    VAR_VEH_MESH_VRTCS_FRONT_HOOD = Asset.GetPoints('B_HOOD.obj');
+    VAR_VEH_MESH_VRTCS_BODY = Asset.GetPoints('C_BODY.obj');
+    VAR_VEH_MESH_VRTCS_ENGINE_HOOD = Asset.GetPoints('D_ENGINE_HOOD.obj');
+    VAR_VEH_MESH_VRTCS_REAR_BUMPER = Asset.GetPoints('E_REAR_BUMPER.obj');
+    VAR_VEH_MESH_VRTCS_HEADLIGHTS = Asset.GetPoints('F_HEADLIGHTS.obj');
+    VAR_VEH_MESH_VRTCS_L_R_LIGHTS = Asset.GetPoints('GL_REAR_LIGHT.obj');
+    VAR_VEH_MESH_VRTCS_R_R_LIGHTS = Asset.GetPoints('GR_REAR_LIGHT.obj');
+    VAR_VEH_MESH_VRTCS_NITROUS = Asset.GetPoints('H_NITROUS.obj');
+    VAR_VEH_MESH_VRTCS_CARBON_PARTS = Asset.GetPoints('I_CARBON.obj');
+
+    VAR_VEH_MESH_EDGES_FRONT_BUMPER = Asset.GetLines('A_FRONT_BUMPER.obj');
+    VAR_VEH_MESH_EDGES_FRONT_HOOD = Asset.GetLines('B_HOOD.obj');
+    VAR_VEH_MESH_EDGES_BODY = Asset.GetLines('C_BODY.obj');
+    VAR_VEH_MESH_EDGES_ENGINE_HOOD = Asset.GetLines('D_ENGINE_HOOD.obj');
+    VAR_VEH_MESH_EDGES_REAR_BUMPER = Asset.GetLines('E_REAR_BUMPER.obj');
+    VAR_VEH_MESH_EDGES_HEADLIGHTS = Asset.GetLines('F_HEADLIGHTS.obj');
+    VAR_VEH_MESH_EDGES_L_R_LIGHTS = Asset.GetLines('GL_REAR_LIGHT.obj');
+    VAR_VEH_MESH_EDGES_R_R_LIGHTS = Asset.GetLines('GR_REAR_LIGHT.obj');
+    VAR_VEH_MESH_EDGES_NITROUS = Asset.GetLines('H_NITROUS.obj');
+    VAR_VEH_MESH_EDGES_CARBON_PARTS = Asset.GetLines('I_CARBON.obj');
+
+}
