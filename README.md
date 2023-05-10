@@ -187,7 +187,7 @@ Notice, that the output has changed in Visual Studio Code.
 
 # How do I port the cars into the game?
 
-1. Open the "PROJECT_STREETWATCH_OPEN_SOURCED_BUILD.cs" file in Visual Studio Code
+1. Open the "PROJECT_STREETWATCH_OPEN_SOURCED_BUILD.cs" file, placed in C_SCRIPT folder, in Visual Studio Code
 2. Search for the rule named - #1 <CAR_01_NAME_HERE> (Mesh Array Tables)
 
 3. Replace these Actions...
