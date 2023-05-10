@@ -1,0 +1,10 @@
+# Blender v3.5.1 OBJ File: '1_Skyline_R34.blend'
+# www.blender.org
+mtllib F_HEADLIGHTS.mtl
+o SKYLINE_R34_F_Plane.015
+v 0.567604 0.854961 3.114934
+v 1.082159 0.873302 2.820061
+v -0.567604 0.854961 3.114934
+v -1.082159 0.873302 2.820061
+l 1 2
+l 3 4
