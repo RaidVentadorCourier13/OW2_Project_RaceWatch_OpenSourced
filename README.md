@@ -220,29 +220,6 @@ Notice, that the output has changed in Visual Studio Code for the Import Script 
 		Global.VAR_VEH_MESH_EDGES_CARBON_PARTS = Empty Array;
 
 ...by pasting the Workshop Code Output from Visual Studio Code
-
-        Set Global Variable(VAR_VEH_MESH_VRTCS_FRONT_BUMPER, Empty Array);
-        Set Global Variable(VAR_VEH_MESH_VRTCS_FRONT_HOOD, Empty Array);
-        Set Global Variable(VAR_VEH_MESH_VRTCS_BODY, Empty Array);
-        Set Global Variable(VAR_VEH_MESH_VRTCS_ENGINE_HOOD, Empty Array);
-        Set Global Variable(VAR_VEH_MESH_VRTCS_REAR_BUMPER, Empty Array);
-        Set Global Variable(VAR_VEH_MESH_VRTCS_HEADLIGHTS, Empty Array);
-        Set Global Variable(VAR_VEH_MESH_VRTCS_L_R_LIGHTS, Empty Array);
-        Set Global Variable(VAR_VEH_MESH_VRTCS_R_R_LIGHTS, Empty Array);
-        Set Global Variable(VAR_VEH_MESH_VRTCS_NITROUS, Empty Array);
-        Set Global Variable(VAR_VEH_MESH_VRTCS_CARBON_PARTS, Empty Array);
-        Set Global Variable(VAR_VEH_MESH_EDGES_FRONT_BUMPER, Empty Array);
-        Set Global Variable(VAR_VEH_MESH_EDGES_FRONT_HOOD, Empty Array);
-        Set Global Variable(VAR_VEH_MESH_EDGES_BODY, Empty Array);
-        Set Global Variable(VAR_VEH_MESH_EDGES_ENGINE_HOOD, Empty Array);
-        Set Global Variable(VAR_VEH_MESH_EDGES_REAR_BUMPER, Empty Array);
-        Set Global Variable(VAR_VEH_MESH_EDGES_HEADLIGHTS, Empty Array);
-        Set Global Variable(VAR_VEH_MESH_EDGES_L_R_LIGHTS, Empty Array);
-        Set Global Variable(VAR_VEH_MESH_EDGES_R_R_LIGHTS, Empty Array);
-        Set Global Variable(VAR_VEH_MESH_EDGES_NITROUS, Empty Array);
-        Set Global Variable(VAR_VEH_MESH_EDGES_CARBON_PARTS, Empty Array);
-
-
 ![image](https://user-images.githubusercontent.com/52705052/236937812-1130e487-0695-4b56-bb52-725cd8bedafd.png)
 ![image](https://user-images.githubusercontent.com/52705052/236937825-47e31553-fb74-4f25-b9d2-11ef5e3f435e.png)
 ![image](https://user-images.githubusercontent.com/52705052/236937838-0095b97e-f6a0-45d7-a528-9209bfcb5ef4.png)
