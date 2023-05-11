@@ -86,7 +86,7 @@ settings
 
 	workshop
 	{
-		DYNAMITE TRIAL - START WITH REMAINING TIME: 10
+		DYNAMITE TRIAL - START WITH REMAINING TIME: 15
 	}
 
 	extensions
@@ -858,6 +858,37 @@ rule("INITIAL MECHANICS: SPAWN AND GET VEHICLE INFO")
 	}
 }
 
+rule("INITIAL MECHANICS: GLOBAL ARRAY VALUE LIST")
+{
+	event
+	{
+		Ongoing - Global;
+	}
+
+	actions
+	{
+		"REFER TO: VARIABLE_STRING_TABLES.TXT / ARRAY TABLE - INTERNAL STORAGE VARIABLE"
+		Global.VAR_GBL_INTRNL_STORED_VALUES = Array(1, Workshop Setting Combo(Custom String("A - START UP SETTINGS"), Custom String(
+			"SELECT CAR BODY"), 0, Array(Custom String("2016's Lamborghini Aventador SuperVeloce"), Custom String(
+			"2021's Koenigsegg Jesko"), Custom String("2020's Lamborghini Sián FKP 37"), Custom String("2020's Pininfarina Battista"),
+			Custom String("2018's McLaren Senna"), Custom String("2013's Ferrari LaFerrari"), Custom String("2013's McLaren P1"),
+			Custom String("2013's Porsche 918")), 0), 1, False, 2, 50, 2, Workshop Setting Combo(Custom String(
+			"A - START UP SETTINGS (GAME MODES)"), Custom String("SELECT GAME MODE"), 0, Array(Custom String("FREE DRIVE")), 0),
+			Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("NUMBER OF LAPS"), 3, 1, 30, 1),
+			Workshop Setting Toggle(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("REVERSE VARIANT"), False, 2),
+			Workshop Setting Combo(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("SCORE CONDITION"), 0, Array(
+			Custom String("OFF"), Custom String("ON")), 3), Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"),
+			Custom String("SCORE THRESHOLD"), 100000, 1000, 1000000, 4), Workshop Setting Integer(Custom String(
+			"A - START UP SETTINGS (GAME MODES)"), Custom String("CHECKPOINT RADIUS"), 5, 1, 10, 5), Workshop Setting Integer(
+			Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("DYNAMITE TRIAL - START WITH REMAINING TIME"), 20, 10, 120,
+			6), Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String(
+			"DYNAMITE TRIAL - TIME EARNED VIA CHECKPOINT"), 5, 0, 20, 7));
+		Global.VAR_MENU_ARRAY_COLOR_CURR_LIST = Array(Null, Null, Null, Null, Null, Null, Null, Null, Null, Null);
+		Global.VAR_MENU_ARRAY_RADIO_COLOR_LIST = Array(Null, Color(Gray), Color(Orange), Color(Rose), Color(Lime Green), Color(Red),
+			Custom Color(70, 200, 113, 255), Color(Green));
+	}
+}
+
 disabled rule("")
 {
 	event
@@ -1012,36 +1043,6 @@ disabled rule("MAIN MENU TAB")
 	event
 	{
 		Ongoing - Global;
-	}
-}
-
-rule("MAIN MENU: GLOBAL ARRAY VALUE LIST")
-{
-	event
-	{
-		Ongoing - Global;
-	}
-
-	actions
-	{
-		"REFER TO: VARIABLE_STRING_TABLES.TXT / ARRAY TABLE - INTERNAL STORAGE VARIABLE"
-		Global.VAR_GBL_INTRNL_STORED_VALUES = Array(1, Workshop Setting Combo(Custom String("A - START UP SETTINGS"), Custom String(
-			"SELECT CAR BODY"), 0, Array(Custom String("<CAR_01_NAME_HERE>"), Custom String("<CAR_02_NAME_HERE>"), Custom String(
-			"<CAR_03_NAME_HERE>"), Custom String("<CAR_04_NAME_HERE>"), Custom String("<CAR_05_NAME_HERE>"), Custom String(
-			"<CAR_06_NAME_HERE>"), Custom String("<CAR_07_NAME_HERE>"), Custom String("<CAR_08_NAME_HERE>")), 0), 1, False, 2, 50, 2,
-			Workshop Setting Combo(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("SELECT GAME MODE"), 0, Array(
-			Custom String("FREE DRIVE"), Custom String("RACE"), Custom String("DYNAMITE TRIAL")), 0), Workshop Setting Integer(
-			Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("NUMBER OF LAPS"), 3, 1, 30, 1), Workshop Setting Toggle(
-			Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("REVERSE VARIANT"), False, 2), Workshop Setting Combo(
-			Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("SCORE CONDITION"), 0, Array(Custom String("OFF"),
-			Custom String("ON")), 3), Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String(
-			"SCORE THRESHOLD"), 100000, 1000, 1000000, 4), Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"),
-			Custom String("CHECKPOINT RADIUS"), 5, 1, 10, 5), Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"),
-			Custom String("DYNAMITE TRIAL - START WITH REMAINING TIME"), 20, 10, 120, 6), Workshop Setting Integer(Custom String(
-			"A - START UP SETTINGS (GAME MODES)"), Custom String("DYNAMITE TRIAL - TIME EARNED VIA CHECKPOINT"), 5, 0, 20, 7));
-		Global.VAR_MENU_ARRAY_COLOR_CURR_LIST = Array(Null, Null, Null, Null, Null, Null, Null, Null, Null, Null);
-		Global.VAR_MENU_ARRAY_RADIO_COLOR_LIST = Array(Null, Color(Gray), Color(Orange), Color(Rose), Color(Lime Green), Color(Red),
-			Custom Color(70, 200, 113, 255), Color(Green));
 	}
 }
 
