@@ -49,13 +49,17 @@ settings
 			}
 		}
 
-		disabled Team Deathmatch
+		Team Deathmatch
 		{
 			Game Length In Minutes: 15
 			Imbalanced Team Score To Win: On
 			Score To Win: 1
 			Team 1 Score To Win: 1
 			Team 2 Score To Win: 1
+
+			enabled maps
+			{
+			}
 		}
 
 		General
@@ -82,11 +86,6 @@ settings
 				Roll Always Active: On
 			}
 		}
-	}
-
-	workshop
-	{
-		DYNAMITE TRIAL - START WITH REMAINING TIME: 15
 	}
 
 	extensions
@@ -178,6 +177,7 @@ variables
 		76: VAR_GLB_ARRAY_VAL_DRIFT_AWARD
 		77: VAR_GLB_ARRAY_VAL_AIR_AWARD
 		78: VAR_GLB_ARRAY_STUNT_MECHANICS
+		79: VAR_GLB_ARRAY_CHECKPOINT_TABLE
 		80: VAR_GLB_VEH_REG_START_POS
 		81: VAR_GLB_VEH_REG_START_FACE
 		82: VAR_GLB_VEH_REV_START_POS
@@ -342,9 +342,9 @@ rule("MAIN MENU: GLOBAL STRING LIST")
 	{
 		"REFER TO \"VARIABLE_STRING_TABLES.TXT\" FILE"
 		Global.VAR_MENU_ARRAY_STRING_MAIN = Array(Custom String("PROJECT: STREETWATCH"), Custom String(
-			"BY RAIDVENTADOR_COURIER_13 AND DELTIN"), Custom String("OPEN-SOURCED BUILD"), Custom String("VEHICLE CONTROLS"),
-			Custom String("PLAY"), Custom String("SELECT CAR:"), Custom String("TUNE CAR"), Custom String("MODE SETTINGS"), Custom String(
-			"EXIT TO LOBBY"), Custom String("EXIT TO MAIN MENU"), Custom String(
+			"BY RAIDVENTADOR_COURIER_13 AND DELTIN"), Custom String("XXXXX - BASIC SUPERCAR PACK (DEVELOPMENT BUILD)"), Custom String(
+			"VEHICLE CONTROLS"), Custom String("PLAY"), Custom String("SELECT CAR:"), Custom String("TUNE CAR"), Custom String(
+			"MODE SETTINGS"), Custom String("EXIT TO LOBBY"), Custom String("EXIT TO MAIN MENU"), Custom String(
 			">                                                                                 <"), Custom String("SETTINGS SAVED"),
 			Custom String("SETTING REVERTED"), Custom String("THE CURRENT MAP HAS NO TRACK"), Custom String(
 			"THE TRACK DOESN'T HAVE A REVERSE VARIANT"));
@@ -409,7 +409,7 @@ rule("IN-GAME GLOBAL MECHANICS: STRING LIST")
 	}
 }
 
-disabled rule("Car Models")
+disabled rule("Cars / Open-Sourced")
 {
 	event
 	{
@@ -498,7 +498,7 @@ rule("#2 <CAR_02_NAME_HERE> (Mesh Array Tables)")
 		Global.VAR_VEH_MESH_EDGES_NITROUS = Empty Array;
 		Global.VAR_VEH_MESH_EDGES_CARBON_PARTS = Empty Array;
 		"PASTE YOUR CAR HERE - Original Gamemode Creator: GraczCourier (now known as RaidVentador_Courier_13)"
-		Global.VAR_PLAYER_RACER.VAR_VEH_COLOR_DEFAULT = Color(Gray);
+		Global.VAR_PLAYER_RACER.VAR_VEH_COLOR_DEFAULT = Color(Blue);
 		Call Subroutine(SUB_VEH_VSL_GET_COLORS);
 	}
 }
@@ -541,7 +541,7 @@ rule("#3 <CAR_03_NAME_HERE> (Mesh Array Tables)")
 		Global.VAR_VEH_MESH_EDGES_NITROUS = Empty Array;
 		Global.VAR_VEH_MESH_EDGES_CARBON_PARTS = Empty Array;
 		"PASTE YOUR CAR HERE - Original Gamemode Creator: GraczCourier (now known as RaidVentador_Courier_13)"
-		Global.VAR_PLAYER_RACER.VAR_VEH_COLOR_DEFAULT = Color(Green);
+		Global.VAR_PLAYER_RACER.VAR_VEH_COLOR_DEFAULT = Color(Blue);
 		Call Subroutine(SUB_VEH_VSL_GET_COLORS);
 	}
 }
@@ -670,7 +670,7 @@ rule("#6 <CAR_06_NAME_HERE> (Mesh Array Tables)")
 		Global.VAR_VEH_MESH_EDGES_NITROUS = Empty Array;
 		Global.VAR_VEH_MESH_EDGES_CARBON_PARTS = Empty Array;
 		"PASTE YOUR CAR HERE - Original Gamemode Creator: GraczCourier (now known as RaidVentador_Courier_13)"
-		Global.VAR_PLAYER_RACER.VAR_VEH_COLOR_DEFAULT = Color(Red);
+		Global.VAR_PLAYER_RACER.VAR_VEH_COLOR_DEFAULT = Color(Blue);
 		Call Subroutine(SUB_VEH_VSL_GET_COLORS);
 	}
 }
@@ -713,7 +713,7 @@ rule("#7 <CAR_07_NAME_HERE> (Mesh Array Tables)")
 		Global.VAR_VEH_MESH_EDGES_NITROUS = Empty Array;
 		Global.VAR_VEH_MESH_EDGES_CARBON_PARTS = Empty Array;
 		"PASTE YOUR CAR HERE - Original Gamemode Creator: GraczCourier (now known as RaidVentador_Courier_13)"
-		Global.VAR_PLAYER_RACER.VAR_VEH_COLOR_DEFAULT = Color(Orange);
+		Global.VAR_PLAYER_RACER.VAR_VEH_COLOR_DEFAULT = Color(Blue);
 		Call Subroutine(SUB_VEH_VSL_GET_COLORS);
 	}
 }
@@ -756,7 +756,7 @@ rule("#8 <CAR_08_NAME_HERE> (Mesh Array Tables)")
 		Global.VAR_VEH_MESH_EDGES_NITROUS = Empty Array;
 		Global.VAR_VEH_MESH_EDGES_CARBON_PARTS = Empty Array;
 		"PASTE YOUR CAR HERE - Original Gamemode Creator: GraczCourier (now known as RaidVentador_Courier_13)"
-		Global.VAR_PLAYER_RACER.VAR_VEH_COLOR_DEFAULT = Color(Gray);
+		Global.VAR_PLAYER_RACER.VAR_VEH_COLOR_DEFAULT = Color(Blue);
 		Call Subroutine(SUB_VEH_VSL_GET_COLORS);
 	}
 }
@@ -807,54 +807,60 @@ rule("Project: Streetwatch - Original Build by GraczCourier (now known as RaidVe
 	}
 }
 
-rule("INITIAL MECHANICS: GET PLAYER INFO")
+rule("INITIAL MECHANICS: GET PLAYER AND THEIR VEHICLE'S INFO")
 {
 	event
 	{
-		Ongoing - Global;
+		Ongoing - Each Player;
+		All;
+		Slot 0;
 	}
 
 	conditions
 	{
 		"THIS \"GAME\"MODE APPEARED ON OVERWATCH'S OFFICIAL TWITTER ACCOUNT"
-		Has Spawned(Global.VAR_PLAYER_RACER) == True;
+		Entity Exists(Event Player) == True;
 		"https://twitter.com/PlayOverwatch/status/1363261836515106817"
 		Global.VAR_PLAYER_RACER.VAR_PLAYER_IS_RACER == True;
 	}
 
 	actions
 	{
-		Start Camera(All Players(All Teams), Vector(0, 100, 0), Vector(0.100, 150, 10), 0);
-		Call Subroutine(SUB_VEH_DISABLE_INPUT);
-		Set Move Speed(Global.VAR_PLAYER_RACER, 0);
-		Set Status(Global.VAR_PLAYER_RACER, Null, Invincible, 9999);
-		Set Respawn Max Time(Global.VAR_PLAYER_RACER, 9999);
-		Disable Hero HUD(Global.VAR_PLAYER_RACER);
-		Disable Game Mode HUD(Global.VAR_PLAYER_RACER);
-		Disable Game Mode In-World UI(Global.VAR_PLAYER_RACER);
+		Set Respawn Max Time(Event Player, 9999);
+		Disable Hero HUD(Event Player);
+		Disable Game Mode HUD(Event Player);
+		Disable Game Mode In-World UI(Event Player);
+		Create Dummy Bot(Hero(Wrecking Ball), Team Of(Event Player), 1, Global.VAR_GLB_VEH_REG_START_POS,
+			Global.VAR_GLB_VEH_REG_START_FACE);
+		Global.VAR_DRIVEABLE_VEHICLE = Players In Slot(1, Team Of(Event Player));
+		Event Player.VAR_RACER_VEHICLE = Players In Slot(1, Team Of(Event Player));
+		Set Invisible(Event Player.VAR_RACER_VEHICLE, All);
+		Set Respawn Max Time(Event Player.VAR_RACER_VEHICLE, 9999);
+		Start Forcing Dummy Bot Name(Event Player.VAR_RACER_VEHICLE, Custom String("{0}'s Vehicle", Event Player));
 	}
 }
 
-rule("INITIAL MECHANICS: SPAWN AND GET VEHICLE INFO")
+rule("INITIAL MECHANICS: PLAYER SPAWNED")
 {
 	event
 	{
-		Ongoing - Global;
+		Ongoing - Each Player;
+		All;
+		Slot 0;
 	}
 
 	conditions
 	{
 		Has Spawned(Global.VAR_PLAYER_RACER) == True;
+		Global.VAR_MENU_VAL_CURR_MENU == Custom String("MAIN_MENU");
 	}
 
 	actions
 	{
-		Create Dummy Bot(Hero(Wrecking Ball), Team Of(Global.VAR_PLAYER_RACER), 1, Position Of(Global.VAR_PLAYER_RACER), Empty Array);
-		Global.VAR_DRIVEABLE_VEHICLE = Players In Slot(1, Team Of(Global.VAR_PLAYER_RACER));
-		Global.VAR_PLAYER_RACER.VAR_RACER_VEHICLE = Players In Slot(1, Team Of(Global.VAR_PLAYER_RACER));
-		Set Invisible(Global.VAR_DRIVEABLE_VEHICLE, All);
-		Set Respawn Max Time(Global.VAR_DRIVEABLE_VEHICLE, 9999);
-		Start Forcing Dummy Bot Name(Global.VAR_DRIVEABLE_VEHICLE, Custom String("{0}'s Vehicle", Global.VAR_PLAYER_RACER));
+		Start Camera(Event Player, Vector(0, 100, 0), Vector(0.100, 150, 10), 0);
+		Call Subroutine(SUB_VEH_DISABLE_INPUT);
+		Set Move Speed(Event Player, 0);
+		Set Status(Event Player, Null, Invincible, 9999);
 	}
 }
 
@@ -869,20 +875,19 @@ rule("INITIAL MECHANICS: GLOBAL ARRAY VALUE LIST")
 	{
 		"REFER TO: VARIABLE_STRING_TABLES.TXT / ARRAY TABLE - INTERNAL STORAGE VARIABLE"
 		Global.VAR_GBL_INTRNL_STORED_VALUES = Array(1, Workshop Setting Combo(Custom String("A - START UP SETTINGS"), Custom String(
-			"SELECT CAR BODY"), 0, Array(Custom String("2016's Lamborghini Aventador SuperVeloce"), Custom String(
-			"2021's Koenigsegg Jesko"), Custom String("2020's Lamborghini Sián FKP 37"), Custom String("2020's Pininfarina Battista"),
-			Custom String("2018's McLaren Senna"), Custom String("2013's Ferrari LaFerrari"), Custom String("2013's McLaren P1"),
-			Custom String("2013's Porsche 918")), 0), 1, False, 2, 50, 2, Workshop Setting Combo(Custom String(
-			"A - START UP SETTINGS (GAME MODES)"), Custom String("SELECT GAME MODE"), 0, Array(Custom String("FREE DRIVE")), 0),
-			Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("NUMBER OF LAPS"), 3, 1, 30, 1),
-			Workshop Setting Toggle(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("REVERSE VARIANT"), False, 2),
-			Workshop Setting Combo(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("SCORE CONDITION"), 0, Array(
-			Custom String("OFF"), Custom String("ON")), 3), Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"),
-			Custom String("SCORE THRESHOLD"), 100000, 1000, 1000000, 4), Workshop Setting Integer(Custom String(
-			"A - START UP SETTINGS (GAME MODES)"), Custom String("CHECKPOINT RADIUS"), 5, 1, 10, 5), Workshop Setting Integer(
-			Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("DYNAMITE TRIAL - START WITH REMAINING TIME"), 20, 10, 120,
-			6), Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String(
-			"DYNAMITE TRIAL - TIME EARNED VIA CHECKPOINT"), 5, 0, 20, 7));
+			"SELECT CAR BODY"), 0, Array(Custom String("<CAR_01_NAME_HERE>"), Custom String("<CAR_02_NAME_HERE>"), Custom String(
+			"<CAR_03_NAME_HERE>"), Custom String("<CAR_04_NAME_HERE>"), Custom String("<CAR_05_NAME_HERE>"), Custom String(
+			"<CAR_06_NAME_HERE>"), Custom String("<CAR_07_NAME_HERE>"), Custom String("<CAR_08_NAME_HERE>")), 0), 1, False, 2, 50, 2,
+			Workshop Setting Combo(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("SELECT GAME MODE"), 0, Array(
+			Custom String("FREE DRIVE")), 0), Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String(
+			"NUMBER OF LAPS"), 3, 1, 30, 1), Workshop Setting Toggle(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String(
+			"REVERSE VARIANT"), False, 2), Workshop Setting Combo(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String(
+			"SCORE CONDITION"), 0, Array(Custom String("OFF"), Custom String("ON")), 3), Workshop Setting Integer(Custom String(
+			"A - START UP SETTINGS (GAME MODES)"), Custom String("SCORE THRESHOLD"), 100000, 1000, 1000000, 4), Workshop Setting Integer(
+			Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("CHECKPOINT RADIUS"), 5, 1, 10, 5),
+			Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String(
+			"DYNAMITE TRIAL - START WITH REMAINING TIME"), 10, 10, 120, 6), Workshop Setting Integer(Custom String(
+			"A - START UP SETTINGS (GAME MODES)"), Custom String("DYNAMITE TRIAL - TIME EARNED VIA CHECKPOINT"), 5, 0, 20, 7));
 		Global.VAR_MENU_ARRAY_COLOR_CURR_LIST = Array(Null, Null, Null, Null, Null, Null, Null, Null, Null, Null);
 		Global.VAR_MENU_ARRAY_RADIO_COLOR_LIST = Array(Null, Color(Gray), Color(Orange), Color(Rose), Color(Lime Green), Color(Red),
 			Custom Color(70, 200, 113, 255), Color(Green));
@@ -902,11 +907,6 @@ rule("INITIAL MECHANICS: GET MAP INFO")
 	event
 	{
 		Ongoing - Global;
-	}
-
-	conditions
-	{
-		Entity Exists(Global.VAR_PLAYER_RACER) == True;
 	}
 
 	actions
@@ -929,12 +929,6 @@ rule("INITIAL MECHANICS: GET SPAWN POSITIONS AND FACING TABLES")
 		Ongoing - Global;
 	}
 
-	conditions
-	{
-		Entity Exists(Global.VAR_PLAYER_RACER) == True;
-		Has Spawned(Global.VAR_PLAYER_RACER) == True;
-	}
-
 	actions
 	{
 		If(Array Contains(Array(Game Mode(Deathmatch), Game Mode(Team Deathmatch), Game Mode(Bounty Hunter)), Current Game Mode) == True);
@@ -947,7 +941,7 @@ rule("INITIAL MECHANICS: GET SPAWN POSITIONS AND FACING TABLES")
 	}
 }
 
-rule("INITIAL MECHANICS: GET CHECKPOINT TABLES")
+disabled rule("INITIAL MECHANICS: GET CHECKPOINT TABLES")
 {
 	event
 	{
@@ -959,6 +953,24 @@ rule("INITIAL MECHANICS: GET CHECKPOINT TABLES")
 		Entity Exists(Global.VAR_PLAYER_RACER) == True;
 		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [7] - CURRENT MODE:"
 		Global.VAR_GBL_INTRNL_STORED_VALUES[7] > 0;
+	}
+
+	actions
+	{
+		If(Current Map == Null);
+			"CHECKPOINT POSITIONS FOR: <MAP_NAME>"
+			Global.VAR_GLB_ARRAY_CHECKPOINT_TABLE = Array(Null);
+		Else If(Current Map == Null);
+			"CHECKPOINT POSITIONS FOR: <MAP_NAME>"
+			Global.VAR_GLB_ARRAY_CHECKPOINT_TABLE = Array(Null);
+	}
+}
+
+disabled rule("")
+{
+	event
+	{
+		Ongoing - Global;
 	}
 }
 
@@ -1072,14 +1084,6 @@ rule("MAIN MENU: LOADING VISUAL LOOP")
 	}
 }
 
-disabled rule("")
-{
-	event
-	{
-		Ongoing - Global;
-	}
-}
-
 rule("MAIN MENU: CREATE MENU NAVIGATION HELP HUD")
 {
 	event
@@ -1089,7 +1093,7 @@ rule("MAIN MENU: CREATE MENU NAVIGATION HELP HUD")
 
 	conditions
 	{
-		Has Spawned(Global.VAR_PLAYER_RACER) == True;
+		Entity Exists(Global.VAR_PLAYER_RACER) == True;
 	}
 
 	actions
@@ -4955,7 +4959,7 @@ rule("STUNT MECHANICS: BREAK STUNTS WHEN CRASHED")
 	conditions
 	{
 		Event Player.VAR_RACER_VEHICLE_IS_ALIVE == True;
-		Event Player.VAR_VSL_STUNTS_ENABLED == True;
+		disabled Event Player.VAR_VSL_STUNTS_ENABLED == True;
 		(Event Player.VAR_VSL_STUNT_DRIFT_TRIGGER || Event Player.VAR_VSL_STUNT_AIR_TRIGGER) == True;
 		Speed Of In Direction(Event Player.VAR_RACER_VEHICLE, World Vector Of(Forward, Event Player.VAR_RACER_VEHICLE, Rotation)) <= 4;
 	}
@@ -5536,6 +5540,7 @@ rule("Project: Streetwatch - Original Build by GraczCourier (now known as RaidVe
 
 	actions
 	{
+		Disable Inspector Recording;
 		If((Global.COCONUT == Custom String("GRACZCOURIER") && Global.ALPINE_CHOCOLATE_WIT_CEMENT == Custom String("GRACZC0URIER"))
 			== True);
 			Global.A_PIECE_OF_ASPHALT_THAT_I_FOUND = True;
@@ -5545,6 +5550,7 @@ rule("Project: Streetwatch - Original Build by GraczCourier (now known as RaidVe
 		End;
 		"Remove Later"
 		Global.THE_RAVEN_CAN_ONLY_WATCH_OMENS = True;
+		Enable Inspector Recording;
 	}
 }
 
