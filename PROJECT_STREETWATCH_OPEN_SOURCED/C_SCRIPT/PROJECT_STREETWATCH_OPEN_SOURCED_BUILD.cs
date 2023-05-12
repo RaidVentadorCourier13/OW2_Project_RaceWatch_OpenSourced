@@ -354,9 +354,9 @@ rule("MAIN MENU: GLOBAL STRING LIST")
 			Custom String("- SWITCH CAMERA"), Custom String("- RESPAWN (WHEN CRASHED)"), Custom String("PRESS"), Custom String("OR"),
 			Custom String("TO EXIT TO MAIN MENU"), Custom String("MOVE LEFT"), Custom String("MOVE RIGHT"));
 		"REFER TO \"VARIABLE_STRING_TABLES.TXT\" FILE"
-		Global.VAR_MENU_ARRAY_STRING_CAR = Array(Custom String("<CAR_01_NAME_HERE>"), Custom String("<CAR_02_NAME_HERE>"), Custom String(
-			"<CAR_03_NAME_HERE>"), Custom String("<CAR_04_NAME_HERE>"), Custom String("<CAR_05_NAME_HERE>"), Custom String(
-			"<CAR_06_NAME_HERE>"), Custom String("<CAR_07_NAME_HERE>"), Custom String("<CAR_08_NAME_HERE>"));
+		Global.VAR_MENU_ARRAY_STRING_CAR = Array(Custom String("CAR_01_NAME_HERE"), Custom String("CAR_02_NAME_HERE"), Custom String(
+			"CAR_03_NAME_HERE"), Custom String("CAR_04_NAME_HERE"), Custom String("CAR_05_NAME_HERE"), Custom String("CAR_06_NAME_HERE"),
+			Custom String("CAR_07_NAME_HERE"), Custom String("CAR_08_NAME_HERE"));
 		Global.VAR_MENU_ARRAY_STRING_MODE_NAME = Array(Custom String("FREE DRIVE"), Custom String("RACE"), Custom String(
 			"DYNAMITE TRIAL"));
 		Wait(0.100, Ignore Condition);
@@ -875,19 +875,19 @@ rule("INITIAL MECHANICS: GLOBAL ARRAY VALUE LIST")
 	{
 		"REFER TO: VARIABLE_STRING_TABLES.TXT / ARRAY TABLE - INTERNAL STORAGE VARIABLE"
 		Global.VAR_GBL_INTRNL_STORED_VALUES = Array(1, Workshop Setting Combo(Custom String("A - START UP SETTINGS"), Custom String(
-			"SELECT CAR BODY"), 0, Array(Custom String("<CAR_01_NAME_HERE>"), Custom String("<CAR_02_NAME_HERE>"), Custom String(
-			"<CAR_03_NAME_HERE>"), Custom String("<CAR_04_NAME_HERE>"), Custom String("<CAR_05_NAME_HERE>"), Custom String(
-			"<CAR_06_NAME_HERE>"), Custom String("<CAR_07_NAME_HERE>"), Custom String("<CAR_08_NAME_HERE>")), 0), 1, False, 2, 50, 2,
-			Workshop Setting Combo(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("SELECT GAME MODE"), 0, Array(
-			Custom String("FREE DRIVE")), 0), Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String(
-			"NUMBER OF LAPS"), 3, 1, 30, 1), Workshop Setting Toggle(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String(
-			"REVERSE VARIANT"), False, 2), Workshop Setting Combo(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String(
-			"SCORE CONDITION"), 0, Array(Custom String("OFF"), Custom String("ON")), 3), Workshop Setting Integer(Custom String(
-			"A - START UP SETTINGS (GAME MODES)"), Custom String("SCORE THRESHOLD"), 100000, 1000, 1000000, 4), Workshop Setting Integer(
-			Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("CHECKPOINT RADIUS"), 5, 1, 10, 5),
-			Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String(
-			"DYNAMITE TRIAL - START WITH REMAINING TIME"), 10, 10, 120, 6), Workshop Setting Integer(Custom String(
-			"A - START UP SETTINGS (GAME MODES)"), Custom String("DYNAMITE TRIAL - TIME EARNED VIA CHECKPOINT"), 5, 0, 20, 7));
+			"SELECT CAR BODY"), 0, Array(Custom String("CAR_01_NAME_HERE"), Custom String("CAR_02_NAME_HERE"), Custom String(
+			"CAR_03_NAME_HERE"), Custom String("CAR_04_NAME_HERE"), Custom String("CAR_05_NAME_HERE"), Custom String("CAR_06_NAME_HERE"),
+			Custom String("CAR_07_NAME_HERE"), Custom String("CAR_08_NAME_HERE")), 0), 1, False, 2, 50, 2, Workshop Setting Combo(
+			Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("SELECT GAME MODE"), 0, Array(Custom String("FREE DRIVE")),
+			0), Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("NUMBER OF LAPS"), 3, 1, 30,
+			1), Workshop Setting Toggle(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("REVERSE VARIANT"), False, 2),
+			Workshop Setting Combo(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("SCORE CONDITION"), 0, Array(
+			Custom String("OFF"), Custom String("ON")), 3), Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"),
+			Custom String("SCORE THRESHOLD"), 100000, 1000, 1000000, 4), Workshop Setting Integer(Custom String(
+			"A - START UP SETTINGS (GAME MODES)"), Custom String("CHECKPOINT RADIUS"), 5, 1, 10, 5), Workshop Setting Integer(
+			Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("DYNAMITE TRIAL - START WITH REMAINING TIME"), 10, 10, 120,
+			6), Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String(
+			"DYNAMITE TRIAL - TIME EARNED VIA CHECKPOINT"), 5, 0, 20, 7));
 		Global.VAR_MENU_ARRAY_COLOR_CURR_LIST = Array(Null, Null, Null, Null, Null, Null, Null, Null, Null, Null);
 		Global.VAR_MENU_ARRAY_RADIO_COLOR_LIST = Array(Null, Color(Gray), Color(Orange), Color(Rose), Color(Lime Green), Color(Red),
 			Custom Color(70, 200, 113, 255), Color(Green));
@@ -3602,14 +3602,17 @@ rule("VEHICLE MECHANICS SUBROUTINE: STEERING ON")
 		Chase Player Variable At Rate(Event Player, VAR_VEH_FACING, Event Player.VAR_VEH_STEERING_DIRECTION,
 			Event Player.VAR_VEH_STEERING_CNTR_VALUE, Destination and Rate);
 		"FOR INDEXES REFER TO: GAME IN PROGRESS \\ VEHICLE \\ ARRAY TABLE - VEHICLE MECHANICS \n [2] - MAIN STEERING ACCELERATION - DESTINATION (RECEIVER) \n [5] -  MAIN STEERING ACCELERATION - RATE (RECEIVER)"
-		Chase Player Variable At Rate(Event Player, VAR_VEH_STEERING_CNTR_VALUE, Event Player.VAR_ARRAY_CAR_MECHANICS[2],
-			Event Player.VAR_ARRAY_CAR_MECHANICS[5], Destination and Rate);
+		Chase Player Variable At Rate(Event Player, VAR_VEH_STEERING_CNTR_VALUE,
+			Event Player.VAR_VEH_ACCELER_THROTTLE * Event Player.VAR_ARRAY_CAR_MECHANICS[2], Event Player.VAR_ARRAY_CAR_MECHANICS[5],
+			Destination and Rate);
 		"FOR INDEXES REFER TO: GAME IN PROGRESS \\ VEHICLE \\ ARRAY TABLE - VEHICLE MECHANICS \n [3] - LEFT STEERING ACCELERATION - DESTINATION (RECEIVER) \n [5] -  MAIN STEERING ACCELERATION - RATE (RECEIVER)"
-		Chase Player Variable At Rate(Event Player, VAR_VEH_STEERING_LEFT_VALUE, Event Player.VAR_ARRAY_CAR_MECHANICS[3],
-			Event Player.VAR_ARRAY_CAR_MECHANICS[5], Destination and Rate);
+		Chase Player Variable At Rate(Event Player, VAR_VEH_STEERING_LEFT_VALUE,
+			Event Player.VAR_VEH_ACCELER_THROTTLE * Event Player.VAR_ARRAY_CAR_MECHANICS[3], Event Player.VAR_ARRAY_CAR_MECHANICS[5],
+			Destination and Rate);
 		"FOR INDEXES REFER TO: GAME IN PROGRESS \\ VEHICLE \\ ARRAY TABLE - VEHICLE MECHANICS \n [4] - RIGHT STEERING ACCELERATION - DESTINATION (RECEIVER) \n [5] - MAIN STEERING ACCELERATION - RATE (RECEIVER)"
-		Chase Player Variable At Rate(Event Player, VAR_VEH_STEERING_RIGHT_VALUE, Event Player.VAR_ARRAY_CAR_MECHANICS[4],
-			Event Player.VAR_ARRAY_CAR_MECHANICS[5], Destination and Rate);
+		Chase Player Variable At Rate(Event Player, VAR_VEH_STEERING_RIGHT_VALUE,
+			Event Player.VAR_VEH_ACCELER_THROTTLE * Event Player.VAR_ARRAY_CAR_MECHANICS[4], Event Player.VAR_ARRAY_CAR_MECHANICS[5],
+			Destination and Rate);
 	}
 }
 
@@ -3767,6 +3770,7 @@ rule("CAR ACCELERATION MECHANICS: Set Acceleration Direction to Backward")
 
 	actions
 	{
+		Call Subroutine(SUB_VEH_CHASE_GRIP_RESET_BOOST);
 		Event Player.VAR_VEH_ACCELER_DIRECTION = -1;
 		If(Hero Of(Event Player) == Hero(Lúcio));
 			Event Player.VAR_VEH_MOVE_SPEED = 50.500;
