@@ -55,13 +55,18 @@ settings
 			}
 		}
 
-		disabled Team Deathmatch
+		Team Deathmatch
 		{
 			Game Length In Minutes: 15
 			Imbalanced Team Score To Win: On
 			Score To Win: 1
 			Team 1 Score To Win: 1
 			Team 2 Score To Win: 1
+
+			enabled maps
+			{
+				Black Forest 972777519512063901
+			}
 		}
 
 		General
@@ -88,11 +93,6 @@ settings
 				Roll Always Active: On
 			}
 		}
-	}
-
-	workshop
-	{
-		DYNAMITE TRIAL - START WITH REMAINING TIME: 10
 	}
 
 	extensions
@@ -335,11 +335,12 @@ subroutines
 	32: SUB_VEH_STUNTS_BREAK
 	33: SUB_VEH_NITROUS_CHANGE_SPEED
 	34: SUB_VEH_NITROUS_STOP
-	35: SUB_GPL_CP_MODE_CP_REACHED
+	35: SUB_GPL_MODE_CHECKPOINT_REACHED
 	36: SUB_VEH_STUNTS_SCORE_AND_RESET
-	37: SUB_GPL_CP_MODE_RESET_TO_START
+	37: SUB_GPL_MODE_CHECKPOINT_RESPAWN
 	38: SUB_GPL_VSL_BST_CLOCK_BLINK
 	39: SUB_VEH_VSL_GET_COLORS
+	40: SUB_GPL_MODE_CHECKPOINT_RESET
 }
 
 disabled rule("Project: Streetwatch - Original Build by GraczCourier (now known as RaidVentador_Courier_13)")
@@ -1393,54 +1394,91 @@ rule("Project: Streetwatch - Original Build by GraczCourier (now known as RaidVe
 	}
 }
 
-rule("INITIAL MECHANICS: GET PLAYER INFO")
+rule("INITIAL MECHANICS: GET PLAYER AND THEIR VEHICLE'S INFO")
 {
 	event
 	{
-		Ongoing - Global;
+		Ongoing - Each Player;
+		All;
+		Slot 0;
 	}
 
 	conditions
 	{
 		"THIS \"GAME\"MODE APPEARED ON OVERWATCH'S OFFICIAL TWITTER ACCOUNT"
-		Has Spawned(Global.VAR_PLAYER_RACER) == True;
+		Entity Exists(Event Player) == True;
 		"https://twitter.com/PlayOverwatch/status/1363261836515106817"
 		Global.VAR_PLAYER_RACER.VAR_PLAYER_IS_RACER == True;
 	}
 
 	actions
 	{
-		Start Camera(All Players(All Teams), Vector(0, 100, 0), Vector(0.100, 150, 10), 0);
-		Call Subroutine(SUB_VEH_DISABLE_INPUT);
-		Set Move Speed(Global.VAR_PLAYER_RACER, 0);
-		Set Status(Global.VAR_PLAYER_RACER, Null, Invincible, 9999);
-		Set Respawn Max Time(Global.VAR_PLAYER_RACER, 9999);
-		Disable Hero HUD(Global.VAR_PLAYER_RACER);
-		Disable Game Mode HUD(Global.VAR_PLAYER_RACER);
-		Disable Game Mode In-World UI(Global.VAR_PLAYER_RACER);
+		Set Respawn Max Time(Event Player, 9999);
+		Disable Hero HUD(Event Player);
+		Disable Game Mode HUD(Event Player);
+		Disable Game Mode In-World UI(Event Player);
+		Create Dummy Bot(Hero(Wrecking Ball), Team Of(Event Player), 1, Global.VAR_GLB_VEH_REG_START_POS,
+			Global.VAR_GLB_VEH_REG_START_FACE);
+		Global.VAR_DRIVEABLE_VEHICLE = Players In Slot(1, Team Of(Event Player));
+		Event Player.VAR_RACER_VEHICLE = Players In Slot(1, Team Of(Event Player));
+		Set Invisible(Event Player.VAR_RACER_VEHICLE, All);
+		Set Respawn Max Time(Event Player.VAR_RACER_VEHICLE, 9999);
+		Start Forcing Dummy Bot Name(Event Player.VAR_RACER_VEHICLE, Custom String("{0}'s Vehicle", Event Player));
 	}
 }
 
-rule("INITIAL MECHANICS: SPAWN AND GET VEHICLE INFO")
+rule("INITIAL MECHANICS: PLAYER SPAWNED")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		Slot 0;
+	}
+
+	conditions
+	{
+		Has Spawned(Global.VAR_PLAYER_RACER) == True;
+		Global.VAR_MENU_VAL_CURR_MENU == Custom String("MAIN_MENU");
+	}
+
+	actions
+	{
+		Start Camera(Event Player, Vector(0, 100, 0), Vector(0.100, 150, 10), 0);
+		Call Subroutine(SUB_VEH_DISABLE_INPUT);
+		Set Move Speed(Event Player, 0);
+		Set Status(Event Player, Null, Invincible, 9999);
+	}
+}
+
+rule("INITIAL MECHANICS: GLOBAL ARRAY VALUE LIST")
 {
 	event
 	{
 		Ongoing - Global;
 	}
 
-	conditions
-	{
-		Has Spawned(Global.VAR_PLAYER_RACER) == True;
-	}
-
 	actions
 	{
-		Create Dummy Bot(Hero(Wrecking Ball), Team Of(Global.VAR_PLAYER_RACER), 1, Position Of(Global.VAR_PLAYER_RACER), Empty Array);
-		Global.VAR_DRIVEABLE_VEHICLE = Players In Slot(1, Team Of(Global.VAR_PLAYER_RACER));
-		Global.VAR_PLAYER_RACER.VAR_RACER_VEHICLE = Players In Slot(1, Team Of(Global.VAR_PLAYER_RACER));
-		Set Invisible(Global.VAR_DRIVEABLE_VEHICLE, All);
-		Set Respawn Max Time(Global.VAR_DRIVEABLE_VEHICLE, 9999);
-		Start Forcing Dummy Bot Name(Global.VAR_DRIVEABLE_VEHICLE, Custom String("{0}'s Vehicle", Global.VAR_PLAYER_RACER));
+		"REFER TO: VARIABLE_STRING_TABLES.TXT / ARRAY TABLE - INTERNAL STORAGE VARIABLE"
+		Global.VAR_GBL_INTRNL_STORED_VALUES = Array(1, Workshop Setting Combo(Custom String("A - START UP SETTINGS"), Custom String(
+			"SELECT CAR BODY"), 0, Array(Custom String("2016's Lamborghini Aventador SuperVeloce"), Custom String(
+			"2021's Koenigsegg Jesko"), Custom String("2020's Lamborghini Sián FKP 37"), Custom String("2020's Pininfarina Battista"),
+			Custom String("2018's McLaren Senna"), Custom String("2013's Ferrari LaFerrari"), Custom String("2013's McLaren P1"),
+			Custom String("2013's Porsche 918")), 0), 1, False, 2, 50, 2, Workshop Setting Combo(Custom String(
+			"A - START UP SETTINGS (GAME MODES)"), Custom String("SELECT GAME MODE"), 0, Array(Custom String("FREE DRIVE"), Custom String(
+			"RACE"), Custom String("DYNAMITE TRIAL")), 0), Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"),
+			Custom String("NUMBER OF LAPS"), 3, 1, 30, 1), Workshop Setting Toggle(Custom String("A - START UP SETTINGS (GAME MODES)"),
+			Custom String("REVERSE VARIANT"), False, 2), Workshop Setting Combo(Custom String("A - START UP SETTINGS (GAME MODES)"),
+			Custom String("SCORE CONDITION"), 0, Array(Custom String("OFF"), Custom String("ON")), 3), Workshop Setting Integer(
+			Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("SCORE THRESHOLD"), 100000, 1000, 1000000, 4),
+			Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("CHECKPOINT RADIUS"), 5, 1, 10, 5),
+			Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String(
+			"DYNAMITE TRIAL - START WITH REMAINING TIME"), 10, 10, 120, 6), Workshop Setting Integer(Custom String(
+			"A - START UP SETTINGS (GAME MODES)"), Custom String("DYNAMITE TRIAL - TIME EARNED VIA CHECKPOINT"), 5, 0, 20, 7));
+		Global.VAR_MENU_ARRAY_COLOR_CURR_LIST = Array(Null, Null, Null, Null, Null, Null, Null, Null, Null, Null);
+		Global.VAR_MENU_ARRAY_RADIO_COLOR_LIST = Array(Null, Color(Gray), Color(Orange), Color(Rose), Color(Lime Green), Color(Red),
+			Custom Color(70, 200, 113, 255), Color(Green));
 	}
 }
 
@@ -1459,15 +1497,10 @@ rule("INITIAL MECHANICS: GET MAP INFO")
 		Ongoing - Global;
 	}
 
-	conditions
-	{
-		Entity Exists(Global.VAR_PLAYER_RACER) == True;
-	}
-
 	actions
 	{
-		If(Array Contains(Array(Map(Circuit royal), Map(King's Row), Map(Blizzard World), Map(Busan), Map(New Queen Street), Map(Paris)),
-			Current Map) == True);
+		If(Array Contains(Array(Map(Circuit royal), Map(King's Row), Map(Blizzard World), Map(Busan), Map(New Queen Street), Map(Paris),
+			Map(Black Forest)), Current Map) == True);
 			Global.VAR_GLB_RACE_HAS_TRACK = True;
 			Global.VAR_GLB_RACE_HAS_REV_VARIANT = True;
 		Else If(Array Contains(Array(Map(Colosseo)), Current Map) == True);
@@ -1495,12 +1528,6 @@ rule("INITIAL MECHANICS: GET SPAWN POSITIONS AND FACING TABLES")
 		Ongoing - Global;
 	}
 
-	conditions
-	{
-		Entity Exists(Global.VAR_PLAYER_RACER) == True;
-		Has Spawned(Global.VAR_PLAYER_RACER) == True;
-	}
-
 	actions
 	{
 		If(Current Map == Map(Circuit royal));
@@ -1508,7 +1535,7 @@ rule("INITIAL MECHANICS: GET SPAWN POSITIONS AND FACING TABLES")
 			Global.VAR_GLB_VEH_REG_START_POS = Vector(-18.161, 7.017, 3.987);
 			Global.VAR_GLB_VEH_REG_START_FACE = 90;
 			Global.VAR_GLB_VEH_REV_START_POS = Vector(1.067, 7.016, 3.982);
-			Global.VAR_GLB_VEH_REV_START_FACE = -179.500;
+			Global.VAR_GLB_VEH_REV_START_FACE = -90;
 		Else If(Current Map == Map(Paris));
 			"STARTING POSITIONS FOR: PARIS"
 			Global.VAR_GLB_VEH_REG_START_POS = Vector(16.254, 11.174, -54.481);
@@ -1543,6 +1570,12 @@ rule("INITIAL MECHANICS: GET SPAWN POSITIONS AND FACING TABLES")
 			Global.VAR_GLB_VEH_REG_START_FACE = -179;
 			Global.VAR_GLB_VEH_REV_START_POS = Vector(108.188, 17.185, -132.011);
 			Global.VAR_GLB_VEH_REV_START_FACE = 0;
+		Else If(Current Map == Map(Black Forest));
+			"STARTING POSITIONS FOR: BLACK FOREST"
+			Global.VAR_GLB_VEH_REG_START_POS = Vector(-23.024, 14.218, 18.716);
+			Global.VAR_GLB_VEH_REG_START_FACE = 177.500;
+			Global.VAR_GLB_VEH_REV_START_POS = Vector(-22.824, 13.488, -2.604);
+			Global.VAR_GLB_VEH_REV_START_FACE = -6;
 		Else;
 			If(Array Contains(Array(Game Mode(Deathmatch), Game Mode(Team Deathmatch), Game Mode(Bounty Hunter)), Current Game Mode) == True);
 				Global.VAR_GLB_VEH_REG_START_POS = Spawn Points(All Teams);
@@ -1574,8 +1607,8 @@ rule("INITIAL MECHANICS: GET CHECKPOINT TABLES")
 		If(Current Map == Map(Circuit royal));
 			"CHECKPOINT POSITIONS FOR: CIRCUIT ROYAL"
 			Global.VAR_GLB_ARRAY_CHECKPOINT_TABLE = Array(Vector(-7.726, 7.017, 4.409), Vector(10.271, 11.074, -36.937), Vector(22.224, 16.032,
-				-16.350), Vector(59.872, 16.209, -25.084), Vector(-4.645, 7.017, 4.237), Vector(-30.609, 7.047, -42.150), Vector(-53.025,
-				5.403, -24.093), Vector(-22.489, 7.027, -27.145));
+				-16.350), Vector(59.872, 16.209, -25.084), Vector(44.329, 16.255, -20.952), Vector(-4.645, 7.017, 4.237), Vector(-30.609,
+				7.047, -42.150), Vector(-53.025, 5.403, -24.093), Vector(-22.489, 7.027, -27.145));
 		Else If(Current Map == Map(Paris));
 			"CHECKPOINT POSITIONS FOR: PARIS"
 			Global.VAR_GLB_ARRAY_CHECKPOINT_TABLE = Array(Vector(11.979, 11.171, -50.056), Vector(-28.579, 11.174, -23.800), Vector(-45.897,
@@ -1607,6 +1640,18 @@ rule("INITIAL MECHANICS: GET CHECKPOINT TABLES")
 			Global.VAR_GLB_ARRAY_CHECKPOINT_TABLE = Array(Vector(108.089, 17.485, -121.004), Vector(77.591, 14.484, -117.054), Vector(51.910,
 				7.257, -94.019), Vector(26.465, 14.485, -117.185), Vector(-4.332, 17.185, -120.854), Vector(26.465, 14.485, -117.185), Vector(
 				51.892, 7.557, -93.985), Vector(77.871, 14.485, -116.979));
+		Else If(Current Map == Map(Black Forest));
+			"CHECKPOINT POSITIONS FOR: BLACK FOREST"
+			Global.VAR_GLB_ARRAY_CHECKPOINT_TABLE = Array(Vector(-23.716, 13.342, 7.002), Vector(-9.664, 14.361, -8.876), Vector(20.915,
+				12.603, -15.076), Vector(20.779, 12.575, 24.406), Vector(-8.668, 14.260, 17.957));
+	}
+}
+
+disabled rule("")
+{
+	event
+	{
+		Ongoing - Global;
 	}
 }
 
@@ -1694,37 +1739,6 @@ disabled rule("MAIN MENU TAB")
 	}
 }
 
-rule("MAIN MENU: GLOBAL ARRAY VALUE LIST")
-{
-	event
-	{
-		Ongoing - Global;
-	}
-
-	actions
-	{
-		"REFER TO: VARIABLE_STRING_TABLES.TXT / ARRAY TABLE - INTERNAL STORAGE VARIABLE"
-		Global.VAR_GBL_INTRNL_STORED_VALUES = Array(1, Workshop Setting Combo(Custom String("A - START UP SETTINGS"), Custom String(
-			"SELECT CAR BODY"), 0, Array(Custom String("2016's Lamborghini Aventador SuperVeloce"), Custom String(
-			"2021's Koenigsegg Jesko"), Custom String("2020's Lamborghini Sián FKP 37"), Custom String("2020's Pininfarina Battista"),
-			Custom String("2018's McLaren Senna"), Custom String("2013's Ferrari LaFerrari"), Custom String("2013's McLaren P1"),
-			Custom String("2013's Porsche 918")), 0), 1, False, 2, 50, 2, Workshop Setting Combo(Custom String(
-			"A - START UP SETTINGS (GAME MODES)"), Custom String("SELECT GAME MODE"), 0, Array(Custom String("FREE DRIVE"), Custom String(
-			"RACE"), Custom String("DYNAMITE TRIAL")), 0), Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"),
-			Custom String("NUMBER OF LAPS"), 3, 1, 30, 1), Workshop Setting Toggle(Custom String("A - START UP SETTINGS (GAME MODES)"),
-			Custom String("REVERSE VARIANT"), False, 2), Workshop Setting Combo(Custom String("A - START UP SETTINGS (GAME MODES)"),
-			Custom String("SCORE CONDITION"), 0, Array(Custom String("OFF"), Custom String("ON")), 3), Workshop Setting Integer(
-			Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("SCORE THRESHOLD"), 100000, 1000, 1000000, 4),
-			Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("CHECKPOINT RADIUS"), 5, 1, 10, 5),
-			Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String(
-			"DYNAMITE TRIAL - START WITH REMAINING TIME"), 20, 10, 120, 6), Workshop Setting Integer(Custom String(
-			"A - START UP SETTINGS (GAME MODES)"), Custom String("DYNAMITE TRIAL - TIME EARNED VIA CHECKPOINT"), 5, 0, 20, 7));
-		Global.VAR_MENU_ARRAY_COLOR_CURR_LIST = Array(Null, Null, Null, Null, Null, Null, Null, Null, Null, Null);
-		Global.VAR_MENU_ARRAY_RADIO_COLOR_LIST = Array(Null, Color(Gray), Color(Orange), Color(Rose), Color(Lime Green), Color(Red),
-			Custom Color(70, 200, 113, 255), Color(Green));
-	}
-}
-
 rule("MAIN MENU: LOADING VISUAL LOOP")
 {
 	event
@@ -1751,14 +1765,6 @@ rule("MAIN MENU: LOADING VISUAL LOOP")
 	}
 }
 
-disabled rule("")
-{
-	event
-	{
-		Ongoing - Global;
-	}
-}
-
 rule("MAIN MENU: CREATE MENU NAVIGATION HELP HUD")
 {
 	event
@@ -1768,7 +1774,7 @@ rule("MAIN MENU: CREATE MENU NAVIGATION HELP HUD")
 
 	conditions
 	{
-		Has Spawned(Global.VAR_PLAYER_RACER) == True;
+		Entity Exists(Global.VAR_PLAYER_RACER) == True;
 	}
 
 	actions
@@ -5634,7 +5640,7 @@ rule("STUNT MECHANICS: BREAK STUNTS WHEN CRASHED")
 	conditions
 	{
 		Event Player.VAR_RACER_VEHICLE_IS_ALIVE == True;
-		Event Player.VAR_VSL_STUNTS_ENABLED == True;
+		disabled Event Player.VAR_VSL_STUNTS_ENABLED == True;
 		(Event Player.VAR_VSL_STUNT_DRIFT_TRIGGER || Event Player.VAR_VSL_STUNT_AIR_TRIGGER) == True;
 		Speed Of In Direction(Event Player.VAR_RACER_VEHICLE, World Vector Of(Forward, Event Player.VAR_RACER_VEHICLE, Rotation)) <= 4;
 	}
@@ -6215,6 +6221,7 @@ rule("Project: Streetwatch - Original Build by GraczCourier (now known as RaidVe
 
 	actions
 	{
+		Disable Inspector Recording;
 		If((Global.COCONUT == Custom String("GRACZCOURIER") && Global.ALPINE_CHOCOLATE_WIT_CEMENT == Custom String("GRACZC0URIER"))
 			== True);
 			Global.A_PIECE_OF_ASPHALT_THAT_I_FOUND = True;
@@ -6224,6 +6231,7 @@ rule("Project: Streetwatch - Original Build by GraczCourier (now known as RaidVe
 		End;
 		"Remove Later"
 		Global.THE_RAVEN_CAN_ONLY_WATCH_OMENS = True;
+		Enable Inspector Recording;
 	}
 }
 
@@ -6319,6 +6327,61 @@ rule("MODE MECHANICS: MAKE VEHICLE READY")
 	}
 }
 
+rule("MODE MECHANICS: SET TARGET SCORE TO RED")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		Slot 0;
+	}
+
+	conditions
+	{
+		Event Player.VAR_RACER_VEHICLE_IS_READY == True;
+		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [10] - SCORE CONDITION:"
+		Global.VAR_GBL_INTRNL_STORED_VALUES[10] == 1;
+		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [11] - SCORE THRESHOLD:"
+		Event Player.VAR_STUNTS_SCORE <= Global.VAR_GBL_INTRNL_STORED_VALUES[11];
+	}
+
+	actions
+	{
+		Event Player.VAR_VSL_HUD_TGT_SCORE_COLOR = Color(Red);
+		Event Player.VAR_VSL_HUD_TGT_SCORE_ICON = Icon String(X);
+	}
+}
+
+rule("MODE MECHANICS: SET TARGET SCORE TO WHITE")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		Slot 0;
+	}
+
+	conditions
+	{
+		Event Player.VAR_RACER_VEHICLE_IS_READY == True;
+		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [10] - SCORE CONDITION:"
+		Global.VAR_GBL_INTRNL_STORED_VALUES[10] == 1;
+		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [11] - SCORE THRESHOLD:"
+		Event Player.VAR_STUNTS_SCORE >= Global.VAR_GBL_INTRNL_STORED_VALUES[11];
+		Event Player.VAR_VSL_HUD_TGT_SCORE_TRIGGER == False;
+	}
+
+	actions
+	{
+		Event Player.VAR_VSL_HUD_TGT_SCORE_COLOR = Color(White);
+		Event Player.VAR_VSL_HUD_TGT_SCORE_TRIGGER = True;
+		Event Player.VAR_VSL_HUD_TGT_SCORE_ICON = Icon String(Checkmark);
+		"FOR INDEXES REFER TO: GAME IN PROGRESS \\ GLOBAL \\ ARRAY TABLE - IN-GAME STRINGS \n [24] - TARGET SCORE REACHED!"
+		Small Message(Global.VAR_PLAYER_RACER, Custom String("  {0} {1}", Icon String(Checkmark),
+			Global.VAR_GLB_ARRAY_STRING_IN_GAME[24]));
+	}
+}
+
 rule("RACE MODE MECHANICS: PREPARE RACE (GLOBALS)")
 {
 	event
@@ -6367,10 +6430,10 @@ rule("RACE MODE MECHANICS: PREPARE RACE (PLAYERS)")
 		Event Player.VAR_NITROUS_CURR_VAL_TANK = Global.VAR_GBL_INTRNL_STORED_VALUES[5];
 		Event Player.VAR_GPL_MODE_CURRENT_LAP = 0;
 		Event Player.VAR_GPL_MODE_CP_CURRENT = 0;
-		Event Player.VAR_VSL_TXT_CLK_CLK_MINUTES = 0;
-		Event Player.VAR_VSL_TXT_CLK_CLK_SECONDS = 0;
-		Event Player.VAR_VSL_TXT_CLK_LAP_MINUTES = 0;
-		Event Player.VAR_VSL_TXT_CLK_LAP_SECONDS = 0;
+		Event Player.VAR_VSL_TXT_CLK_CLK_MINUTES = Custom String("--");
+		Event Player.VAR_VSL_TXT_CLK_CLK_SECONDS = Custom String("--");
+		Event Player.VAR_VSL_TXT_CLK_LAP_MINUTES = Custom String("--");
+		Event Player.VAR_VSL_TXT_CLK_LAP_SECONDS = Custom String("--");
 		Event Player.VAR_VSL_TXT_CLK_LST_MINUTES = Custom String("--");
 		Event Player.VAR_VSL_TXT_CLK_LST_SECONDS = Custom String("--");
 		Event Player.VAR_VSL_TXT_CLK_BST_MINUTES = Custom String("--");
@@ -6378,6 +6441,7 @@ rule("RACE MODE MECHANICS: PREPARE RACE (PLAYERS)")
 		Event Player.VAR_VSL_HUD_TGT_SCORE_TRIGGER = False;
 		Event Player.VAR_STUNTS_SCORE = 0;
 		Event Player.VAR_GPL_MODE_CP_TYPE = Custom String("CHECKPOINT_RACE_LINE");
+		Event Player.VAR_GPL_MODE_CP_CURR_COLOR = Color(Green);
 		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [13] - REMAINING TIME AT THE START:"
 		Event Player.VAR_VAL_DT_MODE_CHASE_TIME = Global.VAR_GBL_INTRNL_STORED_VALUES[13];
 		Wait(1, Ignore Condition);
@@ -6441,65 +6505,11 @@ rule("RACE MODE MECHANICS: START THE RACE (PLAYERS)")
 		"FOR INDEXES REFER TO: GAME IN PROGRESS \\ VEHICLE \\ ARRAY TABLE - CAR NAVIGATION \n [6] - ENGINE STATUS - ENABLED WHEN RACE STARTS"
 		Event Player.VAR_ARRAY_CAR_NAVIGATION[6] = 1;
 		Event Player.VAR_RACER_INPUT_ENABLED = True;
+		Event Player.VAR_VSL_TXT_CLK_CLK_MINUTES = 0;
 	}
 }
 
-rule("MODE MECHANICS: SET TARGET SCORE TO RED")
-{
-	event
-	{
-		Ongoing - Each Player;
-		All;
-		Slot 0;
-	}
-
-	conditions
-	{
-		Event Player.VAR_RACER_VEHICLE_IS_READY == True;
-		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [10] - SCORE CONDITION:"
-		Global.VAR_GBL_INTRNL_STORED_VALUES[10] == 1;
-		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [11] - SCORE THRESHOLD:"
-		Event Player.VAR_STUNTS_SCORE <= Global.VAR_GBL_INTRNL_STORED_VALUES[11];
-	}
-
-	actions
-	{
-		Event Player.VAR_VSL_HUD_TGT_SCORE_COLOR = Color(Red);
-		Event Player.VAR_VSL_HUD_TGT_SCORE_ICON = Icon String(X);
-	}
-}
-
-rule("MODE MECHANICS: SET TARGET SCORE TO WHITE")
-{
-	event
-	{
-		Ongoing - Each Player;
-		All;
-		Slot 0;
-	}
-
-	conditions
-	{
-		Event Player.VAR_RACER_VEHICLE_IS_READY == True;
-		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [10] - SCORE CONDITION:"
-		Global.VAR_GBL_INTRNL_STORED_VALUES[10] == 1;
-		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [11] - SCORE THRESHOLD:"
-		Event Player.VAR_STUNTS_SCORE >= Global.VAR_GBL_INTRNL_STORED_VALUES[11];
-		Event Player.VAR_VSL_HUD_TGT_SCORE_TRIGGER == False;
-	}
-
-	actions
-	{
-		Event Player.VAR_VSL_HUD_TGT_SCORE_COLOR = Color(White);
-		Event Player.VAR_VSL_HUD_TGT_SCORE_TRIGGER = True;
-		Event Player.VAR_VSL_HUD_TGT_SCORE_ICON = Icon String(Checkmark);
-		"FOR INDEXES REFER TO: GAME IN PROGRESS \\ GLOBAL \\ ARRAY TABLE - IN-GAME STRINGS \n [24] - TARGET SCORE REACHED!"
-		Small Message(Global.VAR_PLAYER_RACER, Custom String("  {0} {1}", Icon String(Checkmark),
-			Global.VAR_GLB_ARRAY_STRING_IN_GAME[24]));
-	}
-}
-
-rule("RACE MODE MECHANICS: CREATE CHECKPOINT SPHERE FOR RACER")
+rule("RACE MODE MECHANICS: CREATE CHECKPOINT SPHERE AND ICON FOR RACER")
 {
 	event
 	{
@@ -6519,32 +6529,13 @@ rule("RACE MODE MECHANICS: CREATE CHECKPOINT SPHERE FOR RACER")
 		Create Effect(Global.VAR_PLAYER_RACER.VAR_RACER_HUD, Sphere, Global.VAR_PLAYER_RACER.VAR_GPL_MODE_CP_CURR_COLOR,
 			Global.VAR_GLB_ARRAY_CHECKPOINT_TABLE[Global.VAR_PLAYER_RACER.VAR_GPL_MODE_CP_CURRENT],
 			Global.VAR_GBL_INTRNL_STORED_VALUES[12], Visible To Position Radius and Color);
-	}
-}
-
-rule("RACE MODE MECHANICS: CREATE CHECKPOINT ICON FOR RACER")
-{
-	event
-	{
-		Ongoing - Global;
-	}
-
-	conditions
-	{
-		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [7] - CURRENT MODE:"
-		Global.VAR_GBL_INTRNL_STORED_VALUES[7] != 0;
-		Global.VAR_GLB_VEHICLE_DEPLOY_STATUS == Custom String("DEPLOY_CAR");
-	}
-
-	actions
-	{
 		Create Icon(Global.VAR_PLAYER_RACER.VAR_RACER_HUD,
 			Global.VAR_GLB_ARRAY_CHECKPOINT_TABLE[Global.VAR_PLAYER_RACER.VAR_GPL_MODE_CP_CURRENT], Flag, Visible To Position and Color,
 			Global.VAR_PLAYER_RACER.VAR_GPL_MODE_CP_CURR_COLOR, True);
 	}
 }
 
-rule("RACE MODE MECHANICS: RACER REACHED START/FINISH CHECKPOINT")
+rule("RACE MODE MECHANICS: RACER REACHED CHECKPOINT")
 {
 	event
 	{
@@ -6557,7 +6548,6 @@ rule("RACE MODE MECHANICS: RACER REACHED START/FINISH CHECKPOINT")
 	{
 		Global.VAR_GLB_RACE_STATUS == Custom String("RACE_ON");
 		Event Player.VAR_PLAYER_RACER_INSIDE_VEHICLE == True;
-		Event Player.VAR_GPL_MODE_CP_TYPE == Custom String("CHECKPOINT_RACE_LINE");
 		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [12] - CHECKPOINT RADIUS: "
 		Distance Between(Event Player.VAR_RACER_VEHICLE, Global.VAR_GLB_ARRAY_CHECKPOINT_TABLE[Event Player.VAR_GPL_MODE_CP_CURRENT])
 			<= Global.VAR_GBL_INTRNL_STORED_VALUES[12];
@@ -6565,118 +6555,30 @@ rule("RACE MODE MECHANICS: RACER REACHED START/FINISH CHECKPOINT")
 
 	actions
 	{
-		Call Subroutine(SUB_GPL_CP_MODE_CP_REACHED);
-		Event Player.VAR_GPL_MODE_CURRENT_LAP += 1;
-		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [9] - IS REVERSED?: "
-		If(Global.VAR_GBL_INTRNL_STORED_VALUES[9] == False);
-			Event Player.VAR_GPL_MODE_CP_CURRENT += 1;
-		Else;
-			Event Player.VAR_GPL_MODE_CP_CURRENT = Count Of(Global.VAR_GLB_ARRAY_CHECKPOINT_TABLE);
-		End;
-		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [7] - CURRENT MODE:"
-		If(Global.VAR_GBL_INTRNL_STORED_VALUES[7] == 2);
+		If(Event Player.VAR_GPL_MODE_CP_TYPE == Custom String("CHECKPOINT_RACE_LINE"));
+			Event Player.VAR_GPL_MODE_CURRENT_LAP += 1;
+			"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [7] - CURRENT MODE:"
+			If(Global.VAR_GBL_INTRNL_STORED_VALUES[7] == 2);
+				If(Event Player.VAR_GPL_MODE_CURRENT_LAP == 1);
+					Chase Player Variable At Rate(Event Player, VAR_VAL_DT_MODE_CHASE_TIME, Event Player.VAR_VSL_TXT_DT_TMR_DEST, 1,
+						Destination and Rate);
+				End;
+			End;
+			If(Event Player.VAR_GPL_MODE_CURRENT_LAP > 1);
+				Event Player.VAR_VSL_TXT_CLK_LST_MINUTES = Event Player.VAR_VSL_TXT_CLK_LAP_MINUTES;
+				Event Player.VAR_VSL_TXT_CLK_LST_SECONDS = Event Player.VAR_VSL_TXT_CLK_LAP_SECONDS;
+				Event Player.VAR_VSL_TXT_CLK_TIME_TRIGGER = True;
+			End;
 			If(Event Player.VAR_GPL_MODE_CURRENT_LAP == 1);
-				Chase Player Variable At Rate(Event Player, VAR_VAL_DT_MODE_CHASE_TIME, Event Player.VAR_VSL_TXT_DT_TMR_DEST, 1,
-					Destination and Rate);
+				Global.VAR_GPL_RACE_START_CLOCKS = True;
 			End;
+			Event Player.VAR_VSL_TXT_CLK_LAP_MINUTES = 0;
+			Event Player.VAR_VSL_TXT_CLK_LAP_SECONDS = 0;
+			Event Player.VAR_GPL_MODE_CP_TYPE = Custom String("CHECKPOINT_REGULAR");
+			Event Player.VAR_GPL_MODE_CP_CURR_COLOR = Color(Orange);
 		End;
-		If(Event Player.VAR_GPL_MODE_CURRENT_LAP > 1);
-			Event Player.VAR_VSL_TXT_CLK_LST_MINUTES = Event Player.VAR_VSL_TXT_CLK_LAP_MINUTES;
-			Event Player.VAR_VSL_TXT_CLK_LST_SECONDS = Event Player.VAR_VSL_TXT_CLK_LAP_SECONDS;
-			Event Player.VAR_VSL_TXT_CLK_TIME_TRIGGER = True;
-		End;
-		If(Event Player.VAR_GPL_MODE_CURRENT_LAP == 1);
-			Global.VAR_GPL_RACE_START_CLOCKS = True;
-		End;
-		Event Player.VAR_VSL_TXT_CLK_LAP_MINUTES = 0;
-		Event Player.VAR_VSL_TXT_CLK_LAP_SECONDS = 0;
-		Wait(0.100, Ignore Condition);
-		Event Player.VAR_GPL_MODE_CP_TYPE = Custom String("CHECKPOINT_REGULAR");
-	}
-}
-
-rule("RACE MODE MECHANICS: RACER REACHED REGULAR CHECKPOINT")
-{
-	event
-	{
-		Ongoing - Each Player;
-		All;
-		Slot 0;
-	}
-
-	conditions
-	{
-		Global.VAR_GLB_RACE_STATUS == Custom String("RACE_ON");
-		Event Player.VAR_PLAYER_RACER_INSIDE_VEHICLE == True;
-		Event Player.VAR_GPL_MODE_CP_TYPE == Custom String("CHECKPOINT_REGULAR");
-		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [12] - CHECKPOINT RADIUS: "
-		Distance Between(Event Player, Global.VAR_GLB_ARRAY_CHECKPOINT_TABLE[Event Player.VAR_GPL_MODE_CP_CURRENT])
-			<= Global.VAR_GBL_INTRNL_STORED_VALUES[12];
-	}
-
-	actions
-	{
-		Call Subroutine(SUB_GPL_CP_MODE_CP_REACHED);
-		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [9] - IS REVERSED?: "
-		If(Global.VAR_GBL_INTRNL_STORED_VALUES[9] == False);
-			If(Event Player.VAR_GPL_MODE_CP_CURRENT != Count Of(Global.VAR_GLB_ARRAY_CHECKPOINT_TABLE));
-				Event Player.VAR_GPL_MODE_CP_CURRENT += 1;
-			End;
-		Else;
-			If(Event Player.VAR_GPL_MODE_CP_CURRENT != First Of(Global.VAR_GLB_ARRAY_CHECKPOINT_TABLE));
-				Event Player.VAR_GPL_MODE_CP_CURRENT -= 1;
-			End;
-		End;
-	}
-}
-
-rule("RACE MODE MECHANICS: RACER REACHED FINAL REGULAR CHECKPOINT (REGULAR DIRECTION)")
-{
-	event
-	{
-		Ongoing - Each Player;
-		All;
-		Slot 0;
-	}
-
-	conditions
-	{
-		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [9] - IS REVERSED?:"
-		Global.VAR_GBL_INTRNL_STORED_VALUES[9] == False;
-		Global.VAR_GLB_RACE_STATUS == Custom String("RACE_ON");
-		Global.VAR_PLAYER_RACER.VAR_PLAYER_RACER_INSIDE_VEHICLE == True;
-		Global.VAR_PLAYER_RACER.VAR_GPL_MODE_CP_TYPE == Custom String("CHECKPOINT_REGULAR");
-		Global.VAR_PLAYER_RACER.VAR_GPL_MODE_CP_CURRENT == Count Of(Global.VAR_GLB_ARRAY_CHECKPOINT_TABLE);
-	}
-
-	actions
-	{
-		Call Subroutine(SUB_GPL_CP_MODE_RESET_TO_START);
-	}
-}
-
-rule("RACE MODE MECHANICS: RACER REACHED FINAL REGULAR CHECKPOINT (REVERSED DIRECTION)")
-{
-	event
-	{
-		Ongoing - Each Player;
-		All;
-		Slot 0;
-	}
-
-	conditions
-	{
-		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [9] - IS REVERSED?:"
-		Global.VAR_GBL_INTRNL_STORED_VALUES[9] == True;
-		Global.VAR_GLB_RACE_STATUS == Custom String("RACE_ON");
-		Global.VAR_PLAYER_RACER.VAR_PLAYER_RACER_INSIDE_VEHICLE == True;
-		Global.VAR_PLAYER_RACER.VAR_GPL_MODE_CP_TYPE == Custom String("CHECKPOINT_REGULAR");
-		Global.VAR_PLAYER_RACER.VAR_GPL_MODE_CP_CURRENT == 0;
-	}
-
-	actions
-	{
-		Call Subroutine(SUB_GPL_CP_MODE_RESET_TO_START);
+		Call Subroutine(SUB_GPL_MODE_CHECKPOINT_REACHED);
+		Call Subroutine(SUB_GPL_MODE_CHECKPOINT_RESPAWN);
 	}
 }
 
@@ -6685,7 +6587,38 @@ rule("RACE MODE MECHANICS SUBROUTINE: CHECKPOINT REACHED")
 	event
 	{
 		Subroutine;
-		SUB_GPL_CP_MODE_CP_REACHED;
+		SUB_GPL_MODE_CHECKPOINT_REACHED;
+	}
+
+	actions
+	{
+		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [9] - IS REVERSED?: (NORMAL DIRECTION)"
+		If(Global.VAR_GBL_INTRNL_STORED_VALUES[9] == False);
+			Event Player.VAR_GPL_MODE_CP_CURRENT += 1;
+			"FINAL REGULAR CHECKPOINT REACHED"
+			If(Event Player.VAR_GPL_MODE_CP_CURRENT == Count Of(Global.VAR_GLB_ARRAY_CHECKPOINT_TABLE));
+				Call Subroutine(SUB_GPL_MODE_CHECKPOINT_RESET);
+			End;
+		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [9] - IS REVERSED?: (REVERSED DIRECTION)"
+		Else;
+			Event Player.VAR_GPL_MODE_CP_CURRENT -= 1;
+			If(Event Player.VAR_GPL_MODE_CP_CURRENT == -1);
+				Event Player.VAR_GPL_MODE_CP_CURRENT = Count Of(Global.VAR_GLB_ARRAY_CHECKPOINT_TABLE);
+				Event Player.VAR_GPL_MODE_CP_CURRENT -= 1;
+			"FINAL REGULAR CHECKPOINT REACHED"
+			Else If(Event Player.VAR_GPL_MODE_CP_CURRENT == 0);
+				Call Subroutine(SUB_GPL_MODE_CHECKPOINT_RESET);
+			End;
+		End;
+	}
+}
+
+rule("RACE MODE MECHANICS SUBROUTINE: RESPAWN SAVED")
+{
+	event
+	{
+		Subroutine;
+		SUB_GPL_MODE_CHECKPOINT_RESPAWN;
 	}
 
 	actions
@@ -6707,63 +6640,19 @@ rule("RACE MODE MECHANICS SUBROUTINE: CHECKPOINT REACHED")
 	}
 }
 
-rule("RACE MODE MECHANICS SUBROUTINE: RACER REACHED FINAL REGULAR CHECKPOINT")
+rule("RACE MODE MECHANICS SUBROUTINE: RESET FINAL CHECKPOINT TO START")
 {
 	event
 	{
 		Subroutine;
-		SUB_GPL_CP_MODE_RESET_TO_START;
+		SUB_GPL_MODE_CHECKPOINT_RESET;
 	}
 
 	actions
 	{
-		Global.VAR_PLAYER_RACER.VAR_GPL_MODE_CP_TYPE = Custom String("CHECKPOINT_RACE_LINE");
-		Global.VAR_PLAYER_RACER.VAR_GPL_MODE_CP_CURRENT = 0;
-	}
-}
-
-rule("RACE MODE MECHANICS: SET CHECKPOINT'S COLOR TO GREEN")
-{
-	event
-	{
-		Ongoing - Each Player;
-		All;
-		Slot 0;
-	}
-
-	conditions
-	{
-		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [7] - CURRENT MODE:"
-		Global.VAR_GBL_INTRNL_STORED_VALUES[7] > 0;
-		Global.VAR_PLAYER_RACER.VAR_GPL_MODE_CP_TYPE == Custom String("CHECKPOINT_RACE_LINE");
-	}
-
-	actions
-	{
-		Global.VAR_PLAYER_RACER.VAR_GPL_MODE_CP_CURR_COLOR = Color(Green);
-	}
-}
-
-rule("RACE MODE MECHANICS: SET CHECKPOINT'S COLOR TO ORANGE")
-{
-	event
-	{
-		Ongoing - Each Player;
-		All;
-		Slot 0;
-	}
-
-	conditions
-	{
-		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [7] - CURRENT MODE:"
-		Global.VAR_GBL_INTRNL_STORED_VALUES[7] > 0;
-		Global.VAR_GLB_RACE_STATUS == Custom String("RACE_ON");
-		Global.VAR_PLAYER_RACER.VAR_GPL_MODE_CP_TYPE == Custom String("CHECKPOINT_REGULAR");
-	}
-
-	actions
-	{
-		Global.VAR_PLAYER_RACER.VAR_GPL_MODE_CP_CURR_COLOR = Color(Orange);
+		Event Player.VAR_GPL_MODE_CP_TYPE = Custom String("CHECKPOINT_RACE_LINE");
+		Event Player.VAR_GPL_MODE_CP_CURR_COLOR = Color(Green);
+		Event Player.VAR_GPL_MODE_CP_CURRENT = 0;
 	}
 }
 
