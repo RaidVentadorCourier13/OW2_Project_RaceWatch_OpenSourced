@@ -457,7 +457,7 @@ rule("DOLLY CAMERA TOOL: Trigger Dolly Camera")
 				If(Event Player.VAR_PLAYER_RACER_INSIDE_VEHICLE == True);
 					Call Subroutine(SUB_VEH_CAMERA_START);
 				Else;
-					Stop Camera(All Players(All Teams));
+					Stop Camera(Global.VAR_PLAYER_RACER);
 				End;
 			"TURN ON DOLLY CAM"
 			Else;
@@ -539,13 +539,15 @@ rule("DOLLY CAMERA TOOL: Activate Dolly Camera")
 
 	actions
 	{
+		Stop Camera(Global.VAR_PLAYER_RACER);
 		Global.VAR_DOLLY_CAM_CURRENT = 0;
-		Stop Camera(All Players(All Teams));
-		Wait(0.016, Ignore Condition);
-		Start Camera(All Players(All Teams), Global.VAR_DOLLY_CAM_CURRENT_POS, Global.VAR_DOLLY_CAM_CURRENT_FACE, 0);
 		Global.VAR_DOLLY_CAM_CURRENT_POS = Global.VAR_DOLLY_CAM_ARRAY_POS[Global.VAR_DOLLY_CAM_CURRENT];
 		Global.VAR_DOLLY_CAM_CURRENT_FACE = Global.VAR_DOLLY_CAM_ARRAY_FACE[Global.VAR_DOLLY_CAM_CURRENT];
-		Start Camera(All Players(All Teams), Global.VAR_DOLLY_CAM_CURRENT_POS, Global.VAR_DOLLY_CAM_CURRENT_FACE,
+		Wait(0.016, Ignore Condition);
+		Start Camera(Global.VAR_PLAYER_RACER, Global.VAR_DOLLY_CAM_CURRENT_POS, Global.VAR_DOLLY_CAM_CURRENT_FACE, 0);
+		Stop Camera(Global.VAR_PLAYER_RACER);
+		Wait(0.016, Ignore Condition);
+		Start Camera(Global.VAR_PLAYER_RACER, Global.VAR_DOLLY_CAM_CURRENT_POS, Global.VAR_DOLLY_CAM_CURRENT_FACE,
 			Global.VAR_DOLLY_CAM_BLEND_SPEED);
 	}
 }
