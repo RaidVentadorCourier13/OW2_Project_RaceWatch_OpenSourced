@@ -362,7 +362,7 @@ rule("MAIN MENU: GLOBAL STRING LIST")
 	{
 		"REFER TO \"VARIABLE_STRING_TABLES.TXT\" FILE"
 		Global.VAR_MENU_ARRAY_STRING_MAIN = Array(Custom String("PROJECT: STREETWATCH"), Custom String(
-			"BY RAIDVENTADOR_COURIER_13 AND DELTIN"), Custom String("XXXXX - BASIC SUPERCAR PACK (DEVELOPMENT BUILD)"), Custom String(
+			"BY RAIDVENTADOR_COURIER_13 AND DELTIN"), Custom String("4XQP4 - BASIC SUPERCAR PACK"), Custom String(
 			"VEHICLE CONTROLS"), Custom String("PLAY"), Custom String("SELECT CAR:"), Custom String("TUNE CAR"), Custom String(
 			"MODE SETTINGS"), Custom String("EXIT TO LOBBY"), Custom String("EXIT TO MAIN MENU"), Custom String(
 			">                                                                                 <"), Custom String("SETTINGS SAVED"),
