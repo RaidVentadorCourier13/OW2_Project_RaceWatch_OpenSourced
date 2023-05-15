@@ -2,7 +2,7 @@ settings
 {
 	main
 	{
-		Description: "Project: Streetwatch by GraczCourier (now known as RaidVentador_Courier_13) \n OVERDRIVE UPDATE \n \n Gamemode Homepage: \n https://workshop.codes/4XQP4 \n Support the Creator via Ko-Fi:\n https://ko-fi.com/raidventador_courier_13 \n \n Special Thanks to:\n Deltin and Lotto for help and contribution"
+		Description: "Project: Streetwatch by GraczCourier (now known as RaidVentador_Courier_13) \n OPEN HORIZONS UPDATE \n \n Gamemode Homepage: \n https://workshop.codes/4XQP4 \n Support the Creator via Ko-Fi:\n https://ko-fi.com/raidventador_courier_13 \n \n Special Thanks to:\n Deltin and Lotto for help and contribution"
 		Mode Name: "Project: Streetwatch"
 	}
 
