@@ -229,9 +229,10 @@ Notice, that the output has changed in Visual Studio Code for the Import Script 
 
 ...by pasting the Workshop Code Output from Visual Studio Code
 
-3a: Optionally, you can change the color value in the following action to determine the car's default color:
+3a: Optionally, you can change the color value in the following (and highlighted) action to determine the car's default color:
 
-Global.VAR_PLAYER_RACER.VAR_VEH_COLOR_DEFAULT = Color(Gray);
+Global.VAR_PLAYER_RACER.VAR_VEH_COLOR_DEFAULT = Color(Blue);
+![ScreenShot_23-05-11_19-33-54-000](https://github.com/RaidVentadorCourier13/Project_Streetwatch_Open_Sourced/assets/52705052/5cf567c2-0264-44d8-abf6-7fd1dc0eb860)
 
 4: Copy the entire script and paste it to Overwatch.
 
