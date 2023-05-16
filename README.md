@@ -43,7 +43,8 @@ For the import script I recommend using the: v2.0-beta. 13
 It will take a while for the server to ping with OSTW.
 
 If you'll notice the "Failed to Ping OSTW", try repeating Step 3.
-![image](https://github.com/GraczCourier/Project_Streetwatch_Open_Sourced/assets/52705052/53215626-a860-4d28-bc80-93bae8e8a1da)
+![image](https://github.com/RaidVentadorCourier13/Project_Streetwatch_Open_Sourced/assets/52705052/534b1ab4-6f94-4738-8461-94858165d862)
+
 
 
 # Part 1 - Building the car
@@ -155,8 +156,8 @@ Click on Terminal > New Terminal, and then for the Output select Workshop Code.
 ![image](https://user-images.githubusercontent.com/52705052/236928114-e1f8fa92-047f-4933-be22-8e81f90426cd.png)
 
 You can see in the Output, that this Import Script has Empty Arrays. That's because the OBJ. models of the car's parts inside the A_YOUR_CAR_TEMPLATE folder are empty.
-![image](https://github.com/GraczCourier/Project_Streetwatch_Open_Sourced/assets/52705052/1c82f280-f262-4112-ba4c-0f547c3f4d65)
-![image](https://github.com/GraczCourier/Project_Streetwatch_Open_Sourced/assets/52705052/07eac5ac-bef8-44ea-86a8-2f9249438599)
+![image](https://github.com/RaidVentadorCourier13/Project_Streetwatch_Open_Sourced/assets/52705052/d217bb47-6e03-459b-8c3c-79c719f9374d)
+
 
 
 # Example on a completed car template
@@ -174,9 +175,8 @@ If you take a look at the Statistics of the car's model, you can see, that the c
 
 3. Open and take a look at the del. file (Parted Car Import Script (Skyline R34)) inside the Visual Studio Code.
 
-Notice that the Output of this Import Script is different.
-![image](https://github.com/GraczCourier/Project_Streetwatch_Open_Sourced/assets/52705052/67873392-9a1c-419f-9635-9d76ee3f9e85)
-![image](https://github.com/GraczCourier/Project_Streetwatch_Open_Sourced/assets/52705052/96706c19-c655-4aa7-aa97-e24510b2930f)
+Notice that the Output of this Import Script is different. The folder where the Car Importing Script is contains OBJ. files that contain the data of your car's parts.
+![image](https://github.com/RaidVentadorCourier13/Project_Streetwatch_Open_Sourced/assets/52705052/b145bb03-9a86-4dd5-9cc9-d8dfb4fdd30e)
 
 
 4: Go back to Blender and Export the first part of the car model.
@@ -194,11 +194,8 @@ Notice that the Output of this Import Script is different.
 
 9: Go back to Visual Studio Code and check the output.
 
-Notice, that the output has changed in Visual Studio Code for the Import Script inside the A_YOUR_CAR_TEMPLATE.
-![image](https://github.com/GraczCourier/Project_Streetwatch_Open_Sourced/assets/52705052/91b31b1b-15c7-49b0-8045-17700e8d8e04)
-![image](https://github.com/GraczCourier/Project_Streetwatch_Open_Sourced/assets/52705052/5b705d4a-0779-4fc9-becb-50bd01fc6df8)
-
-
+Notice, that the output has changed in Visual Studio Code for the Import Script inside the A_YOUR_CAR_TEMPLATE. Both VAR_VEH_MESH_VRTCS_FRONT_BUMPER, and VAR_VEH_MESH_EDGES_FRONT_BUMPER now contains the model's data, which OSTW has picked off.
+![image](https://github.com/RaidVentadorCourier13/Project_Streetwatch_Open_Sourced/assets/52705052/a1c3db75-8136-40fe-89d0-2c79620ad457)
 
 10: Go back to Blender and export the rest of the respective car parts.
 
@@ -231,21 +228,17 @@ Notice, that the output has changed in Visual Studio Code for the Import Script 
 		Global.VAR_VEH_MESH_EDGES_CARBON_PARTS = Empty Array;
 
 ...by pasting the Workshop Code Output from Visual Studio Code
-![image](https://user-images.githubusercontent.com/52705052/236937812-1130e487-0695-4b56-bb52-725cd8bedafd.png)
-![image](https://user-images.githubusercontent.com/52705052/236937825-47e31553-fb74-4f25-b9d2-11ef5e3f435e.png)
-![image](https://user-images.githubusercontent.com/52705052/236937838-0095b97e-f6a0-45d7-a528-9209bfcb5ef4.png)
-![image](https://user-images.githubusercontent.com/52705052/236937854-61a48ea9-9cf1-43d2-bc52-229b3a05d30e.png)
 
-Optionally, you can change the color value in the following (and highlighted) action to determine the car's default color:
+3a: Optionally, you can change the color value in the following action to determine the car's default color:
 
-![image](https://github.com/GraczCourier/Project_Streetwatch_Open_Sourced/assets/52705052/90ec46a1-1876-4511-a223-bc91847f1a39)
+Global.VAR_PLAYER_RACER.VAR_VEH_COLOR_DEFAULT = Color(Gray);
 
-Copy the entire script and paste it to Overwatch.
+4: Copy the entire script and paste it to Overwatch.
 
-![image](https://user-images.githubusercontent.com/52705052/236937941-576068b3-819e-4a8c-8743-103e4fc2b0da.png)
+![ScreenShot_23-05-08_21-56-21-000](https://github.com/RaidVentadorCourier13/Project_Streetwatch_Open_Sourced/assets/52705052/d3de7109-f138-4e4a-9f0f-22917d84399d)
 
-Launch the game.
+5: Launch the game.
 
-![image](https://user-images.githubusercontent.com/52705052/236937984-370ccb84-17e4-4d2e-8629-357cd1150275.png)
+![ScreenShot_23-05-08_22-00-58-000](https://github.com/RaidVentadorCourier13/Project_Streetwatch_Open_Sourced/assets/52705052/56d0a3bf-84ed-451f-8433-10a0b67be2a9)
 
 You can now drive your own car which you created. Enjoy.
