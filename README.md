@@ -1,4 +1,4 @@
-The future of street racing re-starts here.
+## The future of street racing re-starts here.
 
 This workshop script allows you to "break" the game's original Multiplayer FPS design, and drive real-life car replicas on the maps of Overwatch 2.
 
