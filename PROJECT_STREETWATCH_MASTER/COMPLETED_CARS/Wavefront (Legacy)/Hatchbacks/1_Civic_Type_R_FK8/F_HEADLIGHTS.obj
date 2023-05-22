@@ -1,0 +1,10 @@
+# Blender v3.5.1 OBJ File: '1_Civic_Type_R_FK8.blend'
+# www.blender.org
+mtllib F_HEADLIGHTS.mtl
+o FK8_F_Plane.006
+v 0.551768 0.732934 2.489097
+v 1.001758 0.874102 2.090199
+v -0.551768 0.732934 2.489097
+v -1.001758 0.874102 2.090199
+l 1 2
+l 3 4
