@@ -354,7 +354,7 @@ rule("MAIN MENU: GLOBAL STRING LIST")
 			Custom String("- SWITCH CAMERA"), Custom String("- RESPAWN (WHEN CRASHED)"), Custom String("PRESS"), Custom String("OR"),
 			Custom String("TO EXIT TO MAIN MENU"), Custom String("MOVE LEFT"), Custom String("MOVE RIGHT"));
 		"REFER TO \"VARIABLE_STRING_TABLES.TXT\" FILE"
-		Global.VAR_MENU_ARRAY_STRING_CAR = Array(Custom String("CAR_01_NAME_HERE"), Custom String("CAR_02_NAME_HERE"), Custom String(
+		Global.VAR_MENU_ARRAY_STRING_CAR = Array(Custom String("CAR_01_NAME_HERE "), Custom String("CAR_02_NAME_HERE"), Custom String(
 			"CAR_03_NAME_HERE"), Custom String("CAR_04_NAME_HERE"), Custom String("CAR_05_NAME_HERE"), Custom String("CAR_06_NAME_HERE"),
 			Custom String("CAR_07_NAME_HERE"), Custom String("CAR_08_NAME_HERE"));
 		Global.VAR_MENU_ARRAY_STRING_MODE_NAME = Array(Custom String("FREE DRIVE"), Custom String("RACE"), Custom String(
@@ -417,7 +417,7 @@ disabled rule("Cars / Open-Sourced")
 	}
 }
 
-rule("#1 CAR_01_NAME_HERE (Mesh Array Tables)")
+rule("#1 CAR_01_NAME_HERE  (Mesh Array Tables)")
 {
 	event
 	{
@@ -875,7 +875,7 @@ rule("INITIAL MECHANICS: GLOBAL ARRAY VALUE LIST")
 	{
 		"REFER TO: VARIABLE_STRING_TABLES.TXT / ARRAY TABLE - INTERNAL STORAGE VARIABLE"
 		Global.VAR_GBL_INTRNL_STORED_VALUES = Array(1, Workshop Setting Combo(Custom String("A - START UP SETTINGS"), Custom String(
-			"SELECT CAR BODY"), 0, Array(Custom String("CAR_01_NAME_HERE"), Custom String("CAR_02_NAME_HERE"), Custom String(
+			"SELECT CAR BODY"), 0, Array(Custom String("CAR_01_NAME_HERE "), Custom String("CAR_02_NAME_HERE"), Custom String(
 			"CAR_03_NAME_HERE"), Custom String("CAR_04_NAME_HERE"), Custom String("CAR_05_NAME_HERE"), Custom String("CAR_06_NAME_HERE"),
 			Custom String("CAR_07_NAME_HERE"), Custom String("CAR_08_NAME_HERE")), 0), 1, False, 2, 50, 2, Workshop Setting Combo(
 			Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("SELECT GAME MODE"), 0, Array(Custom String("FREE DRIVE")),
@@ -3445,8 +3445,8 @@ rule("CAR FUNCTIONS MECHANICS: NOTIFY PLAYER TO ENTER VEHICLE")
 	actions
 	{
 		"FOR INDEXES REFER TO: GAME IN PROGRESS \\ GLOBAL \\ ARRAY TABLE - IN-GAME STRINGS"
-		Small Message(Event Player, Custom String("  {0} {1} {2}", Icon String(Warning), Global.VAR_GLB_ARRAY_STRING_IN_GAME[6],
-			Custom String("\"{0}\" {1}", Button(Interact), Global.VAR_GLB_ARRAY_STRING_IN_GAME[7])));
+	Small Message(Event Player, Custom String("  {0} {1} {2}", Icon String(Warning), Global.VAR_GLB_ARRAY_STRING_IN_GAME[6],
+		Custom String("\"{0}\" {1}", Input Binding String(Button(Interact)), Global.VAR_GLB_ARRAY_STRING_IN_GAME[7])));
 	}
 }
 
@@ -3505,6 +3505,7 @@ rule("VEHICLE MECHANICS: PLAYER EXITED VEHICLE")
 	actions
 	{
 		Wait(0.050, Ignore Condition);
+		Event Player.VAR_RACER_VEHICLE_VISIBLE_TO = All Players(All Teams);
 		Stop Camera(Event Player);
 		Stop Forcing Player Position(Event Player);
 		Stop Scaling Player(Event Player);
@@ -5505,6 +5506,7 @@ rule("SAFEGUARD MECHANICS: Vehicle Wrecked - Respawn/Restart")
 		"FOR INDEXES REFER TO: GAME IN PROGRESS \\ VEHICLE \\ ARRAY TABLE - IN-GAME STRINGS"
 		End;
 		Wait(1, Ignore Condition);
+
 		Event Player.VAR_VEH_FUNCTION_COOLDOWN = False;
 		"Resurrect Vehicle"
 		Resurrect(Event Player.VAR_RACER_VEHICLE);
