@@ -95,11 +95,6 @@ settings
 		}
 	}
 
-	workshop
-	{
-		SELECT GAME MODE: [2]
-	}
-
 	extensions
 	{
 		Buff and Debuff Sounds
