@@ -4126,8 +4126,8 @@ rule("CAR FUNCTIONS MECHANICS: NOTIFY PLAYER TO ENTER VEHICLE")
 	actions
 	{
 		"FOR INDEXES REFER TO: GAME IN PROGRESS \\ GLOBAL \\ ARRAY TABLE - IN-GAME STRINGS"
-		Small Message(Event Player, Custom String("  {0} {1} {2}", Icon String(Warning), Global.VAR_GLB_ARRAY_STRING_IN_GAME[6],
-			Custom String("\"{0}\" {1}", Button(Interact), Global.VAR_GLB_ARRAY_STRING_IN_GAME[7])));
+	Small Message(Event Player, Custom String("  {0} {1} {2}", Icon String(Warning), Global.VAR_GLB_ARRAY_STRING_IN_GAME[6],
+		Custom String("\"{0}\" {1}", Input Binding String(Button(Interact)), Global.VAR_GLB_ARRAY_STRING_IN_GAME[7])));
 	}
 }
 
@@ -4186,6 +4186,7 @@ rule("VEHICLE MECHANICS: PLAYER EXITED VEHICLE")
 	actions
 	{
 		Wait(0.050, Ignore Condition);
+		Event Player.VAR_RACER_VEHICLE_VISIBLE_TO = All Players(All Teams);
 		Stop Camera(Event Player);
 		Stop Forcing Player Position(Event Player);
 		Stop Scaling Player(Event Player);
@@ -6185,6 +6186,7 @@ rule("SAFEGUARD MECHANICS: Vehicle Wrecked - Respawn/Restart")
 		"FOR INDEXES REFER TO: GAME IN PROGRESS \\ VEHICLE \\ ARRAY TABLE - IN-GAME STRINGS"
 		End;
 		Wait(1, Ignore Condition);
+
 		Event Player.VAR_VEH_FUNCTION_COOLDOWN = False;
 		"Resurrect Vehicle"
 		Resurrect(Event Player.VAR_RACER_VEHICLE);
