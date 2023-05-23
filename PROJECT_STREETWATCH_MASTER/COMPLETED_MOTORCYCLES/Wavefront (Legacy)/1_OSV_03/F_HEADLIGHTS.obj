@@ -1,0 +1,11 @@
+# Blender v3.5.1 OBJ File: '1_OSV_03.blend'
+# www.blender.org
+mtllib F_HEADLIGHTS.mtl
+o OSV_03_F_Plane.004
+v 0.148062 1.211090 0.993551
+v 0.000000 1.050143 1.231547
+v 0.000000 1.096073 1.179278
+v -0.148062 1.211090 0.993551
+l 2 3
+l 3 1
+l 3 4
