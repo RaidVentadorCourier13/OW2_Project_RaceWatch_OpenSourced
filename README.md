@@ -199,6 +199,9 @@ Notice, that the output has changed in Visual Studio Code for the Import Script 
 
 10: Go back to Blender and export the rest of the respective car parts.
 
+When building your car you can optionally add Drift Points (ID_DRIFT)
+![image](https://github.com/RaidVentadorCourier13/Project_Streetwatch_Open_Sourced/assets/52705052/93761f2e-75fe-4b1a-a147-a1397fa30a32)
+
 # How do I port the cars into the game?
 
 1. Open the "PROJECT_STREETWATCH_OPEN_SOURCED_BUILD.cs" file, placed in C_SCRIPT folder, in Visual Studio Code
