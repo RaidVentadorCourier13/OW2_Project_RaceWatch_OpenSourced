@@ -1,0 +1,7 @@
+# Blender v3.5.1 OBJ File: '1_Skyline_R34.blend'
+# www.blender.org
+mtllib H_NITROUS.mtl
+o SKYLINE_R34_H_Plane.012
+v 0.520503 0.423563 -2.731862
+v 0.520503 0.423563 -2.942735
+l 1 2

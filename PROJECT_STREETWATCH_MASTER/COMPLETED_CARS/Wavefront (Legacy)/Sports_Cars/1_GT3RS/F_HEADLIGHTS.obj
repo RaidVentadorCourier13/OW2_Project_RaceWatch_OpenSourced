@@ -1,0 +1,10 @@
+# Blender v3.5.1 OBJ File: '1_GT3RS.blend'
+# www.blender.org
+mtllib F_HEADLIGHTS.mtl
+o GT3RS_F_Plane.017
+v 0.933765 1.052678 2.200654
+v 0.889040 0.781523 2.542932
+v -0.933765 1.052678 2.200654
+v -0.889040 0.781523 2.542932
+l 1 2
+l 3 4

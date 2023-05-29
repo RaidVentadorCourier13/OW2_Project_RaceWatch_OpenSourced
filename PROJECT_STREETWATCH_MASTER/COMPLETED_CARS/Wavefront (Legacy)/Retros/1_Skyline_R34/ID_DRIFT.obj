@@ -1,0 +1,8 @@
+# Blender v3.5.1 OBJ File: '1_Skyline_R34.blend'
+# www.blender.org
+mtllib ID_DRIFT.mtl
+o SKYLINE_R34_ID_Plane.001
+v 1.181862 0.396238 1.775490
+v 1.160498 0.434560 -1.633047
+v -1.181862 0.396238 1.775490
+v -1.160498 0.434560 -1.633047

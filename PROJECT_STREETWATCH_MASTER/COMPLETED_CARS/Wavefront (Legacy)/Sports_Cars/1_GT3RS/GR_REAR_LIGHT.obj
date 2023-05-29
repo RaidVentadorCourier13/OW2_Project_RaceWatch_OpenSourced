@@ -1,0 +1,7 @@
+# Blender v3.5.1 OBJ File: '1_GT3RS.blend'
+# www.blender.org
+mtllib GR_REAR_LIGHT.mtl
+o GT3RS_GR_Plane.015
+v -1.099354 0.973055 -2.376591
+v -0.628413 1.010857 -2.820778
+l 1 2
