@@ -1,9 +1,0 @@
-# Blender v3.4.1 OBJ File: 'McLarenSenna_OverwatchPort.blend'
-# www.blender.org
-mtllib H_NITROUS.mtl
-o SENNA_H_Plane.007
-v 0.076713 1.003718 -2.897462
-v 0.000792 0.936202 -3.069785
-v -0.075129 1.003718 -2.897462
-l 1 2
-l 3 2

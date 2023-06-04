@@ -1,7 +1,0 @@
-# Blender v3.5.1 OBJ File: '1_Aventador.blend'
-# www.blender.org
-mtllib GR_REAR_LIGHT.mtl
-o AVENTADOR_GR_Plane.008
-v -0.555361 1.048790 -3.107349
-v -1.130831 1.010000 -2.857611
-l 1 2

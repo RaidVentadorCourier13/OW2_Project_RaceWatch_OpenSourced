@@ -1,7 +1,0 @@
-# Blender v3.5.1 OBJ File: '1_Aventador.blend'
-# www.blender.org
-mtllib H_NITROUS.mtl
-o AVENTADOR_H_Plane.009
-v 0.248093 0.412216 -3.064306
-v -0.248093 0.412216 -3.064306
-l 2 1

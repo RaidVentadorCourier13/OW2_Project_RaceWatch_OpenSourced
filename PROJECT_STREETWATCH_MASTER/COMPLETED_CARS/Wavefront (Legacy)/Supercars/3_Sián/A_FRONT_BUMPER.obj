@@ -1,9 +1,0 @@
-# Blender v3.5.1 OBJ File: '3_Sián.blend'
-# www.blender.org
-mtllib A_FRONT_BUMPER.mtl
-o SIÁN_A_V1_Plane.011
-v 0.783348 0.174885 3.051728
-v 0.000631 0.174885 3.213600
-v -0.782086 0.174885 3.051728
-l 2 3
-l 2 1

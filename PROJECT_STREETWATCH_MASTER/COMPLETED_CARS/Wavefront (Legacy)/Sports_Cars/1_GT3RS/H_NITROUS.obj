@@ -1,7 +1,0 @@
-# Blender v3.5.1 OBJ File: '1_GT3RS.blend'
-# www.blender.org
-mtllib H_NITROUS.mtl
-o GT3RS_H_Plane.012
-v 0.080733 0.377005 -3.034557
-v -0.080733 0.377005 -3.034557
-l 1 2
