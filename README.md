@@ -2,10 +2,7 @@
 
 The future of street racing re-starts here.
 
-NOTE: Open-Sourced Build of the Project: Streetwatch workshop script was stripped from the following from the MASTER BUILD:
-
-1. "Race" and "Dynamite Trial" Modes - Only Free Drive is available.
-2. Cars
+NOTE: Open-Sourced Build of the Project: Streetwatch workshop script was stripped from car models.
 
 # Guide to Building Your Own Car for the "Project: Streetwatch" Workshop Script
 
