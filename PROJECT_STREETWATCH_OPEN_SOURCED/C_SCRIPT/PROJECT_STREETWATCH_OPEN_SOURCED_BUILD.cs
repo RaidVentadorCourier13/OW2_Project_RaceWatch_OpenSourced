@@ -2,7 +2,7 @@ settings
 {
 	main
 	{
-		Description: "Project: Streetwatch by GraczCourier (now known as RaidVentador_Courier_13) \n OPEN HORIZONS UPDATE \n (B9P3A - SPORTS CARS PACK) \n \n Gamemode Homepage: \n https://workshop.codes/4XQP4 \n Support the Creator via Ko-Fi:\n https://ko-fi.com/raidventador_courier_13 \n \n Special Thanks to:\n Deltin and Lotto for help and contribution"
+		Description: "Project: Streetwatch by GraczCourier (now known as RaidVentador_Courier_13) \n OPEN HORIZONS UPDATE \n (XXXXX - OPEN SOURCED BUILD) \n \n Gamemode Homepage: \n https://workshop.codes/4XQP4 \n Support the Creator via Ko-Fi:\n https://ko-fi.com/raidventador_courier_13 \n \n Special Thanks to:\n Deltin and Lotto for help and contribution"
 		Mode Name: "Project: Streetwatch"
 	}
 
@@ -362,7 +362,7 @@ rule("MAIN MENU: GLOBAL STRING LIST")
 	{
 		"REFER TO \"VARIABLE_STRING_TABLES.TXT\" FILE"
 		Global.VAR_MENU_ARRAY_STRING_MAIN = Array(Custom String("PROJECT: STREETWATCH"), Custom String(
-			"BY RAIDVENTADOR_COURIER_13 AND DELTIN"), Custom String("B9P3A - SPORTS CARS PACK"), Custom String("VEHICLE CONTROLS"),
+			"BY RAIDVENTADOR_COURIER_13 AND DELTIN"), Custom String("XXXXX - OPEN SOURCED BUILD"), Custom String("VEHICLE CONTROLS"),
 			Custom String("PLAY"), Custom String("SELECT CAR:"), Custom String("TUNE CAR"), Custom String("MODE SETTINGS"), Custom String(
 			"EXIT TO LOBBY"), Custom String("EXIT TO MAIN MENU"), Custom String(
 			">                                                                                 <"), Custom String("SETTINGS SAVED"),
