@@ -198,7 +198,8 @@ variables
 		88: VAR_GPL_RACE_VSL_COUNTDOWN_A
 		89: VAR_GPL_RACE_START_CLOCKS
 		90: THE_RAVEN_CAN_ONLY_WATCH_OMENS
-		91: VAR_CRIT_ARRAY_CORE
+		91: VAR_TIP_TRIVIAS_HERE
+		92: VAR_CRIT_ARRAY_CORE
 
 	player:
 		0: VAR_VEH_ARRAY_BODY_COLOR
@@ -374,16 +375,9 @@ rule("MAIN MENU: GLOBAL STRING LIST")
 			Custom String("- SWITCH CAMERA"), Custom String("- RESPAWN (WHEN CRASHED)"), Custom String("PRESS"), Custom String("OR"),
 			Custom String("TO EXIT TO MAIN MENU"), Custom String("MOVE LEFT"), Custom String("MOVE RIGHT"));
 		"REFER TO \"VARIABLE_STRING_TABLES.TXT\" FILE"
-		Global.VAR_MENU_ARRAY_STRING_CAR = Array(
-		Custom String("CAR_NAME_HERE_01"),
-		Custom String("CAR_NAME_HERE_02"),
-		Custom String("CAR_NAME_HERE_03"),
-		Custom String("CAR_NAME_HERE_04"),
-		Custom String("CAR_NAME_HERE_05"),
-		Custom String("CAR_NAME_HERE_06"),
-		Custom String("CAR_NAME_HERE_07"),
-		Custom String("CAR_NAME_HERE_08")
-			);
+		Global.VAR_MENU_ARRAY_STRING_CAR = Array(Custom String("CAR_NAME_HERE_01"), Custom String("CAR_NAME_HERE_02"), Custom String(
+			"CAR_NAME_HERE_03"), Custom String("CAR_NAME_HERE_04"), Custom String("CAR_NAME_HERE_05"), Custom String("CAR_NAME_HERE_06"),
+			Custom String("CAR_NAME_HERE_07"), Custom String("CAR_NAME_HERE_08"));
 		Global.VAR_MENU_ARRAY_STRING_MODE_NAME = Array(Custom String("FREE DRIVE"), Custom String("RACE"), Custom String(
 			"DYNAMITE TRIAL"));
 		Wait(0.100, Ignore Condition);
@@ -400,13 +394,18 @@ rule("MAIN MENU: GLOBAL STRING LIST")
 			Custom String("RETRO DRIVE FM"), Custom String("BLOCK HOUSE"), Custom String("ROCK/RUSH FM"), Custom String(
 			"MONSTERCAT ALLSTARS"), Custom String("DISTROKID"));
 		Global.VAR_MENU_ARRAY_STRING_DEPLOY = Array(Custom String("Waiting for Car Delivery..."), Custom String(
-			"Ready - Press \"Anything\" to Deploy"), Custom String("TIP/TRIVIA:"), Custom String(
+			"Ready - Press \"Anything\" to Deploy"), Custom String("TIP/TRIVIA:"), Custom String("for next random Tip/Trivia"),
+			Custom String(
 			"Motorsports are dangerous. In real world, hoon responsibly,\n obey the laws of the road, and always wear your seatbelt."),
 			Custom String("Don't be afraid to use the brakes if you're approaching a curve too fast."), Custom String(
 			"The handbrake can help you initiate the drift."), Custom String(
-			"Drift is initiated by turning and using the brakes simultaneously.\n E-Drift is initiated by using the handbrake."),
-			Custom String("When drifting, counter-steer or brake to recover grip."), Custom String(
-			"Having trouble controlling the car?\n Go easy on the accelerator and remember to counter-steer."));
+			"You can initiate the Drift by quickly braking and then \n accelerating while turning simultaneously."), Custom String(
+			"E-Drift is initiated by simply using the handbrake while turning."), Custom String(
+			"When drifting, counter-steer or brake to recover grip."), Custom String(
+			"Having trouble controlling the car?\n Go easy on the accelerator and remember to counter-steer."), Custom String(
+			"PROJECT: Streetwatch originally came to life on 21st January of 2021. \n A month later it was showcased on 2021 BlizzConline."),
+			Custom String(
+			"The creator of the \"PROJECT: Streetwatch\" is from Poland. \n However, they prefer not to represent their country."));
 	}
 }
 
@@ -486,7 +485,6 @@ rule("#1 CAR_NAME_HERE_01 (Mesh Array Tables)")
 		Global.VAR_PLAYER_RACER.VAR_VEH_COLOR_DEFAULT = Color(Gray);
 		Call Subroutine(SUB_VEH_VSL_GET_COLORS);
 	}
-
 }
 
 rule("#2 CAR_NAME_HERE_02  (Mesh Array Tables)")
@@ -531,7 +529,6 @@ rule("#2 CAR_NAME_HERE_02  (Mesh Array Tables)")
 		Global.VAR_PLAYER_RACER.VAR_VEH_COLOR_DEFAULT = Color(Gray);
 		Call Subroutine(SUB_VEH_VSL_GET_COLORS);
 	}
-
 }
 
 rule("#3 CAR_NAME_HERE_03 (Mesh Array Tables)")
@@ -576,7 +573,6 @@ rule("#3 CAR_NAME_HERE_03 (Mesh Array Tables)")
 		Global.VAR_PLAYER_RACER.VAR_VEH_COLOR_DEFAULT = Color(Gray);
 		Call Subroutine(SUB_VEH_VSL_GET_COLORS);
 	}
-
 }
 
 rule("#4 CAR_NAME_HERE_04 (Mesh Array Tables)")
@@ -621,7 +617,6 @@ rule("#4 CAR_NAME_HERE_04 (Mesh Array Tables)")
 		Global.VAR_PLAYER_RACER.VAR_VEH_COLOR_DEFAULT = Color(Gray);
 		Call Subroutine(SUB_VEH_VSL_GET_COLORS);
 	}
-
 }
 
 rule("#5 CAR_NAME_HERE_05 (Mesh Array Tables)")
@@ -666,7 +661,6 @@ rule("#5 CAR_NAME_HERE_05 (Mesh Array Tables)")
 		Global.VAR_PLAYER_RACER.VAR_VEH_COLOR_DEFAULT = Color(Gray);
 		Call Subroutine(SUB_VEH_VSL_GET_COLORS);
 	}
-
 }
 
 rule("#6 CAR_NAME_HERE_06 (Mesh Array Tables)")
@@ -711,7 +705,6 @@ rule("#6 CAR_NAME_HERE_06 (Mesh Array Tables)")
 		Global.VAR_PLAYER_RACER.VAR_VEH_COLOR_DEFAULT = Color(Gray);
 		Call Subroutine(SUB_VEH_VSL_GET_COLORS);
 	}
-
 }
 
 rule("#7 CAR_NAME_HERE_07 (Mesh Array Tables)")
@@ -756,7 +749,6 @@ rule("#7 CAR_NAME_HERE_07 (Mesh Array Tables)")
 		Global.VAR_PLAYER_RACER.VAR_VEH_COLOR_DEFAULT = Color(Gray);
 		Call Subroutine(SUB_VEH_VSL_GET_COLORS);
 	}
-
 }
 
 rule("#8 CAR_NAME_HERE_08 (Mesh Array Tables)")
@@ -801,7 +793,6 @@ rule("#8 CAR_NAME_HERE_08 (Mesh Array Tables)")
 		Global.VAR_PLAYER_RACER.VAR_VEH_COLOR_DEFAULT = Color(Gray);
 		Call Subroutine(SUB_VEH_VSL_GET_COLORS);
 	}
-
 }
 
 disabled rule("")
@@ -919,25 +910,18 @@ rule("INITIAL MECHANICS: GLOBAL ARRAY VALUE LIST")
 	{
 		"REFER TO: VARIABLE_STRING_TABLES.TXT / ARRAY TABLE - INTERNAL STORAGE VARIABLE"
 		Global.VAR_GBL_INTRNL_STORED_VALUES = Array(1, Workshop Setting Combo(Custom String("A - START UP SETTINGS"), Custom String(
-			"SELECT CAR BODY"), 0, Array(
-			Custom String("CAR_NAME_HERE_01"), 
-			Custom String("CAR_NAME_HERE_02"),
-			Custom String("CAR_NAME_HERE_03"),
-			Custom String("CAR_NAME_HERE_04"),
-			Custom String("CAR_NAME_HERE_05"),
-			Custom String("CAR_NAME_HERE_06"),
-			Custom String("CAR_NAME_HERE_07"),
-			Custom String("CAR_NAME_HERE_08")
-			), 0), 1, False, 2, 50, 2, Workshop Setting Combo(Custom String(
-			"A - START UP SETTINGS (GAME MODES)"), Custom String("SELECT GAME MODE"), 0, Array(Custom String("FREE DRIVE"), Custom String(
-			"RACE"), Custom String("DYNAMITE TRIAL")), 0), Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"),
-			Custom String("NUMBER OF LAPS"), 3, 1, 30, 1), Workshop Setting Toggle(Custom String("A - START UP SETTINGS (GAME MODES)"),
-			Custom String("REVERSE VARIANT"), False, 2), Workshop Setting Combo(Custom String("A - START UP SETTINGS (GAME MODES)"),
-			Custom String("SCORE CONDITION"), 0, Array(Custom String("OFF"), Custom String("ON")), 3), Workshop Setting Integer(
-			Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("SCORE THRESHOLD"), 100000, 1000, 1000000, 4),
-			Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("CHECKPOINT RADIUS"), 5, 1, 10, 5),
-			Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String(
-			"DYNAMITE TRIAL - START WITH REMAINING TIME"), 10, 10, 120, 6), Workshop Setting Integer(Custom String(
+			"SELECT CAR BODY"), 0, Array(Custom String("CAR_NAME_HERE_01"), Custom String("CAR_NAME_HERE_02"), Custom String(
+			"CAR_NAME_HERE_03"), Custom String("CAR_NAME_HERE_04"), Custom String("CAR_NAME_HERE_05"), Custom String("CAR_NAME_HERE_06"),
+			Custom String("CAR_NAME_HERE_07"), Custom String("CAR_NAME_HERE_08")), 0), 1, False, 2, 50, 2, Workshop Setting Combo(
+			Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("SELECT GAME MODE"), 0, Array(Custom String("FREE DRIVE"),
+			Custom String("RACE"), Custom String("DYNAMITE TRIAL")), 0), Workshop Setting Integer(Custom String(
+			"A - START UP SETTINGS (GAME MODES)"), Custom String("NUMBER OF LAPS"), 3, 1, 30, 1), Workshop Setting Toggle(Custom String(
+			"A - START UP SETTINGS (GAME MODES)"), Custom String("REVERSE VARIANT"), False, 2), Workshop Setting Combo(Custom String(
+			"A - START UP SETTINGS (GAME MODES)"), Custom String("SCORE CONDITION"), 0, Array(Custom String("OFF"), Custom String("ON")),
+			3), Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("SCORE THRESHOLD"), 100000,
+			1000, 1000000, 4), Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String(
+			"CHECKPOINT RADIUS"), 5, 1, 10, 5), Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"),
+			Custom String("DYNAMITE TRIAL - START WITH REMAINING TIME"), 10, 10, 120, 6), Workshop Setting Integer(Custom String(
 			"A - START UP SETTINGS (GAME MODES)"), Custom String("DYNAMITE TRIAL - TIME EARNED VIA CHECKPOINT"), 5, 0, 20, 7));
 		Global.VAR_MENU_ARRAY_COLOR_CURR_LIST = Array(Null, Null, Null, Null, Null, Null, Null, Null, Null, Null);
 		Global.VAR_MENU_ARRAY_RADIO_COLOR_LIST = Array(Null, Color(Gray), Color(Orange), Color(Rose), Color(Lime Green), Color(Red),
@@ -996,7 +980,7 @@ rule("INITIAL MECHANICS: GET SPAWN POSITIONS AND FACING TABLES")
 		Entity Exists(Global.VAR_PLAYER_RACER) == True;
 		Global.VAR_GLB_VEHICLE_DEPLOY_STATUS != 3;
 	}
-	
+
 	actions
 	{
 		If(Current Map == Map(Circuit royal));
@@ -1646,18 +1630,23 @@ rule("PLAY MENU: SELECTED")
 				Global.VAR_MENU_ARRAY_BTN_Z_VECTOR[4]), 2.500, Clip Against Surfaces, Visible To Position and String, Color(White),
 				Default Visibility);
 			Wait(2, Ignore Condition);
+			Global.VAR_TIP_TRIVIAS_HERE = Global.VAR_MENU_ARRAY_STRING_DEPLOY[Random Integer(4, 12)];
 			Global.VAR_GLB_VEHICLE_DEPLOY_STATUS = 2;
 			Global.VAR_MENU_WAITING_FOR_CAR_STRING = Global.VAR_MENU_ARRAY_STRING_DEPLOY[1];
-			Create In-World Text(All Players(All Teams), Custom String("{0} {1}", Global.VAR_MENU_ARRAY_STRING_DEPLOY[2],
-				Global.VAR_MENU_ARRAY_STRING_DEPLOY[Random Integer(3, 8)]), Vector(0, 150, Global.VAR_MENU_ARRAY_BTN_Z_VECTOR[8]), 2,
-				Clip Against Surfaces, Visible To Position and String, Color(White), Default Visibility);
+			Create In-World Text(Global.VAR_PLAYER_RACER, Custom String("{0} \"{1}\" {2}", Global.VAR_MENU_ARRAY_STRING_CONTROL[12],
+				Input Binding String(Button(Crouch)), Global.VAR_MENU_ARRAY_STRING_DEPLOY[3]), Vector(0, 150,
+				Global.VAR_MENU_ARRAY_BTN_Z_VECTOR[6]), 2, Clip Against Surfaces, Visible To Position and String, Color(White),
+				Default Visibility);
+			Create In-World Text(Global.VAR_PLAYER_RACER, Custom String("{0} {1}", Global.VAR_MENU_ARRAY_STRING_DEPLOY[2],
+				Global.VAR_TIP_TRIVIAS_HERE), Vector(0, 150, Global.VAR_MENU_ARRAY_BTN_Z_VECTOR[8]), 2, Clip Against Surfaces,
+				Visible To Position and String, Color(White), Default Visibility);
 			Wait Until(Array Contains(Array(Is Button Held(Global.VAR_PLAYER_RACER, Button(Primary Fire)), Is Button Held(
 				Global.VAR_PLAYER_RACER, Button(Secondary Fire)), Is Button Held(Global.VAR_PLAYER_RACER, Button(Ability 1)), Is Button Held(
 				Global.VAR_PLAYER_RACER, Button(Ability 2)), Is Button Held(Global.VAR_PLAYER_RACER, Button(Reload)), Is Button Held(
 				Global.VAR_PLAYER_RACER, Button(Melee)), Is Button Held(Global.VAR_PLAYER_RACER, Button(Jump)), Is Button Held(
-				Global.VAR_PLAYER_RACER, Button(Crouch)), Is Button Held(Global.VAR_PLAYER_RACER, Button(Interact)), Is Button Held(
-				Global.VAR_PLAYER_RACER, Button(Ultimate))), True) || Array Contains(Array(X Component Of(Throttle Of(
-				Global.VAR_PLAYER_RACER)), Z Component Of(Throttle Of(Global.VAR_PLAYER_RACER))), Array(1, -1)), 99999);
+				Global.VAR_PLAYER_RACER, Button(Interact)), Is Button Held(Global.VAR_PLAYER_RACER, Button(Ultimate))), True)
+				|| Array Contains(Array(X Component Of(Throttle Of(Global.VAR_PLAYER_RACER)), Z Component Of(Throttle Of(
+				Global.VAR_PLAYER_RACER))), Array(1, -1)), 99999);
 			Wait(0.100, Ignore Condition);
 			Stop Camera(All Players(All Teams));
 			Destroy All In-World Text;
@@ -3720,6 +3709,8 @@ rule("VEHICLE MECHANICS SUBROUTINE: ENGINE OFF")
 		Call Subroutine(SUB_VEH_STEERING_OFF);
 		"FOR INDEXES REFER TO: GAME IN PROGRESS \\ VEHICLE \\ ARRAY TABLE - VEHICLE MECHANICS \n [0] - ACCELERATION - DESTINATION (RECEIVER)"
 		Event Player.VAR_ARRAY_CAR_MECHANICS[0] = 0;
+		"FOR INDEXES REFER TO: GAME IN PROGRESS \\ VEHICLE \\ ARRAY TABLE - VEHICLE MECHANICS \n [1] - ACCELERATION - RATE (RECEIVER)"
+		Event Player.VAR_ARRAY_CAR_MECHANICS[1] = 1;
 		Event Player.VAR_VSL_STUNT_DRIFT_TRIGGER = False;
 		Event Player.VAR_VSL_STUNT_AIR_TRIGGER = False;
 		"FOR INDEXES REFER TO: GAME IN PROGRESS \\ VEHICLE \\ ARRAY TABLE - PLAYER FEEDBACKS \n [4] - HEADLIGHTS CURRENT COLOR"
@@ -5468,6 +5459,53 @@ rule("VISUAL CAR MECHANICS: Stop Blinkers When Speeding Up")
 	}
 }
 
+rule("VISUAL CAR MECHANICS: SHOW DRIFT SMOKE")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		Slot 0;
+	}
+
+	conditions
+	{
+		Event Player.VAR_VEH_DRIFT_TRIGGER == True;
+		Speed Of In Direction(Event Player.VAR_RACER_VEHICLE, World Vector Of(Forward, Event Player.VAR_RACER_VEHICLE, Rotation)) >= 6;
+		Is In Air(Event Player.VAR_RACER_VEHICLE) == False;
+	}
+
+	actions
+	{
+		Call Subroutine(SUB_VEH_VSL_DRIFT_SMOKE);
+		Wait(0.100, Ignore Condition);
+		Loop If Condition Is True;
+	}
+}
+
+rule("VISUAL CAR MECHANICS SUBROUTINE: SHOW DRIFT SMOKE")
+{
+	event
+	{
+		Subroutine;
+		SUB_VEH_VSL_DRIFT_SMOKE;
+	}
+
+	actions
+	{
+		Play Effect(Event Player, Doomfist Rising Uppercut Leap Effect, Color(White), Update Every Frame(Position Of(
+			Event Player.VAR_RACER_VEHICLE) + World Vector Of(
+			Global.VAR_VEH_MESH_VRTCS_DRIFT_POINTS[Event Player.VAR_VEH_VSL_SMOKE_CURRENT], Event Player.VAR_RACER_VEHICLE, Rotation)
+			* Global.VAR_VEH_MESH_Scale), 10 * Event Player.VAR_VEH_ACCELER_THROTTLE);
+		If(Event Player.VAR_VEH_VSL_SMOKE_CURRENT != 3);
+			Event Player.VAR_VEH_VSL_SMOKE_CURRENT += 1;
+			Loop If Condition Is True;
+		Else;
+			Event Player.VAR_VEH_VSL_SMOKE_CURRENT = 0;
+		End;
+	}
+}
+
 disabled rule("SAFEGUARD MECHANICS TAB")
 {
 	event
@@ -5568,11 +5606,11 @@ rule("SAFEGUARD MECHANICS: Keep Notifying Player to Respawn/Restart")
 		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [7] - CURRENT MODE:"
 		If(Global.VAR_GBL_INTRNL_STORED_VALUES[7] != 2);
 			"FOR INDEXES REFER TO: GAME IN PROGRESS \\ GLOBAL \\ ARRAY TABLE - IN-GAME STRINGS \n [6] - PRESS / [8] - TO RESPAWN"
-			Small Message(Event Player, Custom String("  {0} {1} {2}  ", Global.VAR_GLB_ARRAY_STRING_IN_GAME[6], Input Binding String(Button(
+			Small Message(Event Player, Custom String("  {0} {1} {2}", Global.VAR_GLB_ARRAY_STRING_IN_GAME[6], Input Binding String(Button(
 				Reload)), Global.VAR_GLB_ARRAY_STRING_IN_GAME[8]));
 		Else;
 			"FOR INDEXES REFER TO: GAME IN PROGRESS \\ GLOBAL \\ ARRAY TABLE - IN-GAME STRINGS \n [6] - PRESS / [9] - TO RESTART"
-			Small Message(Event Player, Custom String("  {0} {1} {2}  ", Global.VAR_GLB_ARRAY_STRING_IN_GAME[6], Input Binding String(Button(
+			Small Message(Event Player, Custom String("  {0} {1} {2}", Global.VAR_GLB_ARRAY_STRING_IN_GAME[6], Input Binding String(Button(
 				Reload)), Global.VAR_GLB_ARRAY_STRING_IN_GAME[9]));
 		"FOR INDEXES REFER TO: GAME IN PROGRESS \\ VEHICLE \\ ARRAY TABLE - IN-GAME STRINGS"
 		End;
@@ -6582,8 +6620,8 @@ rule("VEHICLE MECHANICS: PLAYER JUMPS OFF THE SLOPE")
 			Eye Position(Event Player.VAR_RACER_VEHICLE) + World Vector Of(Vector(0, -1, 1), Event Player.VAR_RACER_VEHICLE, Rotation)
 			* 20, Event Player.VAR_RACER_VEHICLE, Event Player.VAR_RACER_VEHICLE, True)) > 3;
 		Distance Between(Eye Position(Event Player.VAR_RACER_VEHICLE), Ray Cast Hit Position(Eye Position(Event Player.VAR_RACER_VEHICLE),
-			Eye Position(Event Player.VAR_RACER_VEHICLE) + World Vector Of(Vector(0, -0.250, -1), Event Player.VAR_RACER_VEHICLE, Rotation) * 20,
-			Event Player.VAR_RACER_VEHICLE, Event Player.VAR_RACER_VEHICLE, True)) >= 7;
+			Eye Position(Event Player.VAR_RACER_VEHICLE) + World Vector Of(Vector(0, -0.250, -1), Event Player.VAR_RACER_VEHICLE, Rotation)
+			* 20, Event Player.VAR_RACER_VEHICLE, Event Player.VAR_RACER_VEHICLE, True)) >= 7;
 		Is In Air(Event Player.VAR_RACER_VEHICLE) == False;
 	}
 
@@ -6641,7 +6679,7 @@ rule("INPUT NAVIGATION MECHANICS: / ACCELERATION PRESSED")
 		Event Player.VAR_RACER_VEHICLE_IS_ALIVE == True;
 		Event Player.VAR_PLAYER_RACER_INSIDE_VEHICLE == True;
 		"FOR INDEXES REFER TO: GAME IN PROGRESS \\ VEHICLE \\ ARRAY TABLE - CAR NAVIGATION \n [6] - ENGINE STATUS"
-		Event Player.VAR_ARRAY_CAR_NAVIGATION[6] == True;
+		Event Player.VAR_ARRAY_CAR_NAVIGATION[6] == 1;
 		Z Component Of(Throttle Of(Event Player)) > 0;
 		"FOR INDEXES REFER TO: GAME IN PROGRESS \\ VEHICLE \\ ARRAY TABLE - CAR NAVIGATION \n [3] - HANDBRAKE PULLED"
 		Event Player.VAR_ARRAY_CAR_NAVIGATION[3] == False;
@@ -7051,7 +7089,7 @@ rule("INPUT NAVIGATION MECHANICS SUBROUTINE: FUNCTIONS COOLDOWN")
 	}
 }
 
-rule("VISUAL CAR MECHANICS: SHOW DRIFT SMOKE")
+rule("INPUT NAVIGATION MECHANICS: NEXT TIP/TRIVIA")
 {
 	event
 	{
@@ -7062,38 +7100,12 @@ rule("VISUAL CAR MECHANICS: SHOW DRIFT SMOKE")
 
 	conditions
 	{
-		Event Player.VAR_VEH_DRIFT_TRIGGER == True;
-		Speed Of In Direction(Event Player.VAR_RACER_VEHICLE, World Vector Of(Forward, Event Player.VAR_RACER_VEHICLE, Rotation)) >= 6;
-		Is In Air(Event Player.VAR_RACER_VEHICLE) == False;
+		Global.VAR_GLB_VEHICLE_DEPLOY_STATUS == 2;
+		Is Button Held(Event Player, Button(Crouch)) == True;
 	}
 
 	actions
 	{
-		Call Subroutine(SUB_VEH_VSL_DRIFT_SMOKE);
-		Wait(0.100, Ignore Condition);
-		Loop If Condition Is True;
-	}
-}
-
-rule("VISUAL CAR MECHANICS SUBROUTINE: SHOW DRIFT SMOKE")
-{
-	event
-	{
-		Subroutine;
-		SUB_VEH_VSL_DRIFT_SMOKE;
-	}
-
-	actions
-	{
-		Play Effect(Event Player, Doomfist Rising Uppercut Leap Effect, Color(White), Update Every Frame(Position Of(
-			Event Player.VAR_RACER_VEHICLE) + World Vector Of(
-			Global.VAR_VEH_MESH_VRTCS_DRIFT_POINTS[Event Player.VAR_VEH_VSL_SMOKE_CURRENT], Event Player.VAR_RACER_VEHICLE, Rotation)
-			* Global.VAR_VEH_MESH_Scale), 10 * Event Player.VAR_VEH_ACCELER_THROTTLE);
-		If(Event Player.VAR_VEH_VSL_SMOKE_CURRENT != 3);
-			Event Player.VAR_VEH_VSL_SMOKE_CURRENT += 1;
-			Loop If Condition Is True;
-		Else;
-			Event Player.VAR_VEH_VSL_SMOKE_CURRENT = 0;
-		End;
+		Global.VAR_TIP_TRIVIAS_HERE = Global.VAR_MENU_ARRAY_STRING_DEPLOY[Random Integer(4, 12)];
 	}
 }
