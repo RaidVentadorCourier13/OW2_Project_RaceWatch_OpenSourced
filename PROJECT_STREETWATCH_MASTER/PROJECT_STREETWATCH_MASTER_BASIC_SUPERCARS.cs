@@ -6010,7 +6010,7 @@ rule("VISUAL CAR MECHANICS: Stop Blinkers When Speeding Up")
 		Event Player.VAR_PLAYER_RACER_INSIDE_VEHICLE == True;
 		"FOR INDEXES REFER TO: GAME IN PROGRESS \\ VEHICLE \\ ARRAY TABLE - CAR NAVIGATION \n [8] - BLINKERS ENABLED"
 		Event Player.VAR_ARRAY_CAR_NAVIGATION[8] == True;
-		Speed Of(Event Player.VAR_RACER_VEHICLE) >= 5;
+		Event Player.VAR_ARRAY_CAR_NAVIGATION[0] == Custom String("NAV_ACC_ACCELERATING");
 	}
 
 	actions
@@ -7525,7 +7525,6 @@ rule("INPUT NAVIGATION MECHANICS: / CAR FUNCTIONS - TURN ON BLINKERS")
 		Is Button Held(Event Player, Button(Melee)) == True;
 		(Is Button Held(Event Player, Button(Jump)) == True || X Component Of(Throttle Of(Event Player)) > 0 || X Component Of(Throttle Of(
 			Event Player)) < 0) == True;
-		Speed Of(Event Player.VAR_RACER_VEHICLE) <= 1;
 	}
 
 	actions
@@ -7572,7 +7571,6 @@ rule("INPUT NAVIGATION MECHANICS: / CAR FUNCTIONS - TURN OFF BLINKERS")
 		"FOR INDEXES REFER TO: GAME IN PROGRESS \\ VEHICLE \\ ARRAY TABLE - CAR NAVIGATION \n [8] - BLINKERS ENABLED"
 		Event Player.VAR_ARRAY_CAR_NAVIGATION[8] == True;
 		Is Button Held(Event Player, Button(Melee)) == True;
-		Speed Of(Event Player.VAR_RACER_VEHICLE) <= 1;
 	}
 
 	actions
