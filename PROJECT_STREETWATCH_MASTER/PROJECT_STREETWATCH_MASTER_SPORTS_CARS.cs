@@ -2,7 +2,7 @@ settings
 {
 	main
 	{
-		Description: "Project: Streetwatch by GraczCourier (now known as RaidVentador_Courier_13) \n OPEN HORIZONS UPDATE \n \n Gamemode Homepage: \n https://workshop.codes/4XQP4 \n Support the Creator via Ko-Fi:\n https://ko-fi.com/raidventador_courier_13 \n \n Special Thanks to:\n Deltin and Lotto for help and contribution"
+		Description: "Project: Streetwatch by GraczCourier (now known as RaidVentador_Courier_13) \n OPEN HORIZONS UPDATE \n (B9P3A - SPORTS CARS PACK) \n \n Gamemode Homepage: \n https://workshop.codes/4XQP4 \n Support the Creator via Ko-Fi:\n https://ko-fi.com/raidventador_courier_13 \n \n Special Thanks to:\n Deltin and Lotto for help and contribution"
 		Mode Name: "Project: Streetwatch"
 	}
 
@@ -45,7 +45,13 @@ settings
 		{
 			enabled maps
 			{
-				Workshop Chamber 972777519512064577
+				Blizzard World 972777519512068154 972777519512068194
+				Busan 972777519512068153 972777519512068154
+				Circuit royal 972777519512068153 972777519512068154
+				Colosseo 972777519512068292 972777519512068154
+				King's Row 972777519512068153 972777519512068292
+				New Queen Street 972777519512068197 972777519512068154
+				Paris 972777519512063901
 			}
 		}
 
@@ -59,6 +65,7 @@ settings
 
 			enabled maps
 			{
+				Black Forest 972777519512063901
 			}
 		}
 
@@ -86,11 +93,6 @@ settings
 				Roll Always Active: On
 			}
 		}
-	}
-
-	workshop
-	{
-		SELECT GAME MODE: [2]
 	}
 
 	extensions
@@ -196,7 +198,8 @@ variables
 		88: VAR_GPL_RACE_VSL_COUNTDOWN_A
 		89: VAR_GPL_RACE_START_CLOCKS
 		90: THE_RAVEN_CAN_ONLY_WATCH_OMENS
-		91: VAR_CRIT_ARRAY_CORE
+		91: VAR_TIP_TRIVIAS_HERE
+		92: VAR_CRIT_ARRAY_CORE
 
 	player:
 		0: VAR_VEH_ARRAY_BODY_COLOR
@@ -360,7 +363,7 @@ rule("MAIN MENU: GLOBAL STRING LIST")
 	{
 		"REFER TO \"VARIABLE_STRING_TABLES.TXT\" FILE"
 		Global.VAR_MENU_ARRAY_STRING_MAIN = Array(Custom String("PROJECT: STREETWATCH"), Custom String(
-			"BY RAIDVENTADOR_COURIER_13 AND DELTIN"), Custom String("XXXXX - SPORTS CARS PACK"), Custom String("VEHICLE CONTROLS"),
+			"BY RAIDVENTADOR_COURIER_13 AND DELTIN"), Custom String("B9P3A - SPORTS CARS PACK"), Custom String("VEHICLE CONTROLS"),
 			Custom String("PLAY"), Custom String("SELECT CAR:"), Custom String("TUNE CAR"), Custom String("MODE SETTINGS"), Custom String(
 			"EXIT TO LOBBY"), Custom String("EXIT TO MAIN MENU"), Custom String(
 			">                                                                                 <"), Custom String("SETTINGS SAVED"),
@@ -372,10 +375,9 @@ rule("MAIN MENU: GLOBAL STRING LIST")
 			Custom String("- SWITCH CAMERA"), Custom String("- RESPAWN (WHEN CRASHED)"), Custom String("PRESS"), Custom String("OR"),
 			Custom String("TO EXIT TO MAIN MENU"), Custom String("MOVE LEFT"), Custom String("MOVE RIGHT"));
 		"REFER TO \"VARIABLE_STRING_TABLES.TXT\" FILE"
-		Global.VAR_MENU_ARRAY_STRING_CAR = Array(Custom String("2017's Honda Civic Type-R FK8"), Custom String(
-			"2002's Nissan Skyline GT-R (R34)"), Custom String("2018's Porsche 911 GT3 RS"), Custom String("CAR_NAME_HERE_04"),
-			Custom String("CAR_NAME_HERE_05"), Custom String("CAR_NAME_HERE_06"), Custom String("CAR_NAME_HERE_07"), Custom String(
-			"CAR_NAME_HERE_08"));
+		Global.VAR_MENU_ARRAY_STRING_CAR = Array(Custom String("2018 Porsche 911 GT3 RS"), Custom String("2017 HONDA CIVIC TYPE-R FK8"),
+			Custom String("2013 Nissan GT-R NISMO"), Custom String("2002 Nissan Skyline GT-R (R34)"), Custom String(
+			"1983 Toyota AE86 Trueno"));
 		Global.VAR_MENU_ARRAY_STRING_MODE_NAME = Array(Custom String("FREE DRIVE"), Custom String("RACE"), Custom String(
 			"DYNAMITE TRIAL"));
 		Wait(0.100, Ignore Condition);
@@ -391,14 +393,18 @@ rule("MAIN MENU: GLOBAL STRING LIST")
 		Global.VAR_MENU_ARRAY_STRING_RADIOS = Array(Custom String("RANDOMIZED"), Custom String("RADIO OFF"), Custom String("PULSE FM"),
 			Custom String("RETRO DRIVE FM"), Custom String("BLOCK HOUSE"), Custom String("ROCK/RUSH FM"), Custom String(
 			"MONSTERCAT ALLSTARS"), Custom String("DISTROKID"));
-		Global.VAR_MENU_ARRAY_STRING_DEPLOY = Array(Custom String("Waiting for Car Delivery..."), Custom String(
-			"Ready - Press \"Anything\" to Deploy"), Custom String("TIP/TRIVIA:"), Custom String(
-			"Motorsports are dangerous. In real world, hoon responsibly,\n obey the laws of the road, and always wear your seatbelt."),
-			Custom String("Don't be afraid to use the brakes if you're approaching a curve too fast."), Custom String(
-			"The handbrake can help you initiate the drift."), Custom String(
-			"Drift is initiated by turning and using the brakes simultaneously.\n E-Drift is initiated by using the handbrake."),
-			Custom String("When drifting, counter-steer or brake to recover grip."), Custom String(
-			"Having trouble controlling the car?\n Go easy on the accelerator and remember to counter-steer."));
+	Global.VAR_MENU_ARRAY_STRING_DEPLOY = Array(Custom String("Waiting for Car Delivery..."), Custom String(
+		"Ready - Press \"Anything\" to Deploy"), Custom String("TIP/TRIVIA:"), Custom String("for next random Tip/Trivia"), Custom String(
+		"Motorsports are dangerous. In real world, hoon responsibly,\n obey the laws of the road, and always wear your seatbelt."),
+		Custom String("Don't be afraid to use the brakes if you're approaching a curve too fast."), Custom String(
+		"The handbrake can help you initiate the drift."), Custom String(
+		"You can initiate the Drift by quickly braking and then \n accelerating while turning simultaneously."), Custom String(
+		"E-Drift is initiated by simply using the handbrake while turning."), Custom String(
+		"When drifting, counter-steer or brake to recover grip."), Custom String(
+		"Having trouble controlling the car?\n Go easy on the accelerator and remember to counter-steer."),
+		Custom String("PROJECT: Streetwatch originally came to life on 21st January of 2021. \n A month later it was showcased on 2021 BlizzConline."),
+		Custom String("The creator of the \"PROJECT: Streetwatch\" is from Poland. \n However, they prefer not to represent their country.")
+			);
 	}
 }
 
@@ -428,7 +434,7 @@ rule("IN-GAME GLOBAL MECHANICS: STRING LIST")
 	}
 }
 
-disabled rule("Cars / H Pack")
+disabled rule("Cars / Sports Cars Pack")
 {
 	event
 	{
@@ -436,7 +442,7 @@ disabled rule("Cars / H Pack")
 	}
 }
 
-rule("#1 2017's HONDA CIVIC TYPE-R FK8  (Mesh Array Tables)")
+rule("#1 2018 Porsche 911 GT3 RS (Mesh Array Tables)")
 {
 	event
 	{
@@ -447,6 +453,135 @@ rule("#1 2017's HONDA CIVIC TYPE-R FK8  (Mesh Array Tables)")
 	{
 		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [1] - CURRENT CAR \n Rule Elements Count: 0"
 		Global.VAR_GBL_INTRNL_STORED_VALUES[1] == 0;
+		Entity Exists(Global.VAR_PLAYER_RACER) == True;
+	}
+
+	actions
+	{
+		"VERTICES COUNT: 300 \n EDGE COUNT: 245 \n Car models ported with Deltin's OSTW for Visual Studio Code"
+		Global.VAR_VEH_MESH_VRTCS_FRONT_BUMPER = Array(Vector(0.641, 0.827, 2.575), Vector(1.103, 0.812, 2.347), Vector(1.240, 0.804,
+			2.015), Vector(1.227, 0.673, 2.147), Vector(1.022, 0.614, 2.696), Vector(0.513, 0.587, 2.981), Vector(Empty Array, 0.578,
+			3.056), Vector(1.097, 0.301, 2.574), Vector(1.084, 0.458, 2.605), Vector(0.785, 0.279, 2.763), Vector(0.918, 0.233, 2.759),
+			Vector(0.501, 0.203, 3.011), Vector(0.540, 0.463, 2.969), Vector(0.644, 0.282, 2.885), Vector(Empty Array, 0.469, 3.047),
+			Vector(0.642, 0.519, 2.867), Vector(0.596, 0.844, 2.555), Vector(0.758, 0.840, 2.481), Vector(-0.641, 0.827, 2.575), Vector(
+			-1.103, 0.812, 2.347), Vector(-1.240, 0.804, 2.015), Vector(-1.227, 0.673, 2.147), Vector(-1.022, 0.614, 2.696), Vector(-0.513,
+			0.587, 2.981), Vector(-1.097, 0.301, 2.574), Vector(-1.084, 0.458, 2.605), Vector(-0.918, 0.233, 2.759), Vector(-0.501, 0.203,
+			3.011), Vector(-0.540, 0.463, 2.969), Vector(-0.644, 0.282, 2.885), Vector(-0.758, 0.840, 2.481), Vector(-0.596, 0.844, 2.555),
+			Vector(0.416, 0.456, 2.981), Vector(0.489, 0.257, 2.912), Vector(-0.785, 0.279, 2.763), Vector(-0.416, 0.456, 2.981), Vector(
+			-0.489, 0.257, 2.912), Vector(-0.642, 0.519, 2.867));
+		Global.VAR_VEH_MESH_VRTCS_FRONT_HOOD = Array(Vector(Empty Array, 0.770, 2.793), Vector(0.231, 1.177, 1.378), Vector(0.218, 1.054,
+			2.055), Vector(0.202, 0.899, 2.535), Vector(0.663, 1.073, 1.855), Vector(0.516, 0.895, 2.476), Vector(0.470, 1.073, 1.899),
+			Vector(0.357, 0.828, 2.661), Vector(0.830, 1.107, 1.708), Vector(0.957, 1.139, 0.916), Vector(0.552, 0.812, 2.639), Vector(
+			-0.231, 1.177, 1.378), Vector(-0.218, 1.054, 2.055), Vector(-0.202, 0.899, 2.535), Vector(-0.663, 1.073, 1.855), Vector(-0.516,
+			0.895, 2.476), Vector(-0.357, 0.828, 2.661), Vector(-0.830, 1.107, 1.708), Vector(-0.552, 0.812, 2.639), Vector(-0.957, 1.139,
+			0.916), Vector(-0.355, 0.781, 2.757), Vector(0.355, 0.781, 2.757), Vector(-0.470, 1.073, 1.899));
+		Global.VAR_VEH_MESH_VRTCS_BODY = Array(Vector(1.269, 0.938, -1.439), Vector(1.269, 0.700, -1.171), Vector(1.213, 0.186, -1.145),
+			Vector(1.269, 0.938, -1.642), Vector(0.724, 1.062, -2.740), Vector(0.932, 1.043, -2.588), Vector(0.770, 1.143, -2.472), Vector(
+			1.151, 1.139, -1.249), Vector(1.166, 1.184, -1.624), Vector(1.098, 1.167, -2.067), Vector(1.130, 1.052, -0.757), Vector(0.977,
+			1.194, -0.690), Vector(1.010, 1.139, 0.848), Vector(1.159, 0.995, 0.963), Vector(1.130, 0.343, 0.937), Vector(1.165, 0.271,
+			1.113), Vector(1.148, 0.321, -0.509), Vector(1.255, 0.354, -1.107), Vector(1.169, 0.392, -0.349), Vector(1.159, 1.018, 1.458),
+			Vector(0.853, 1.283, -1.588), Vector(0.768, 1.207, -2.294), Vector(0.624, 1.337, -2.097), Vector(0.694, 1.588, -1.172), Vector(
+			0.736, 1.669, -0.478), Vector(0.806, 1.575, 0.207), Vector(1, 1.125, 1.715), Vector(0.949, 1.077, 2.072), Vector(1.227, 0.673,
+			2.147), Vector(1.238, 0.963, 1.697), Vector(1.238, 0.685, 1.179), Vector(1.269, 0.938, -1.823), Vector(-1.269, 0.938, -1.439),
+			Vector(-1.269, 0.700, -1.171), Vector(-1.213, 0.186, -1.145), Vector(-1.269, 0.938, -1.642), Vector(-0.724, 1.062, -2.740),
+			Vector(-0.932, 1.043, -2.588), Vector(-0.770, 1.143, -2.472), Vector(-1.151, 1.139, -1.249), Vector(-1.166, 1.184, -1.624),
+			Vector(-1.098, 1.167, -2.067), Vector(-1.130, 1.052, -0.757), Vector(-0.977, 1.194, -0.690), Vector(-1.010, 1.139, 0.848),
+			Vector(-1.159, 0.995, 0.963), Vector(-1.130, 0.343, 0.937), Vector(-1.165, 0.271, 1.113), Vector(-1.148, 0.321, -0.509),
+			Vector(-1.255, 0.354, -1.107), Vector(-1.169, 0.392, -0.349), Vector(-1.159, 1.018, 1.458), Vector(-0.853, 1.283, -1.588),
+			Vector(-0.768, 1.207, -2.294), Vector(-0.624, 1.337, -2.097), Vector(-0.694, 1.588, -1.172), Vector(-0.736, 1.669, -0.478),
+			Vector(-0.806, 1.575, 0.207), Vector(-1, 1.125, 1.715), Vector(-0.949, 1.077, 2.072), Vector(-1.227, 0.673, 2.147), Vector(
+			-1.238, 0.963, 1.697), Vector(-1.238, 0.685, 1.179), Vector(-1.269, 0.938, -1.823), Vector(1.152, 0.186, 1.109), Vector(-1.152,
+			0.186, 1.109));
+		Global.VAR_VEH_MESH_VRTCS_ENGINE_HOOD = Array(Vector(-0.559, 1.203, -2.520), Vector(Empty Array, 1.074, -2.851), Vector(0.724,
+			1.062, -2.740), Vector(0.730, 1.207, -2.812), Vector(Empty Array, 1.229, -2.912), Vector(0.770, 1.143, -2.472), Vector(0.559,
+			1.203, -2.520), Vector(0.768, 1.207, -2.294), Vector(0.624, 1.337, -2.097), Vector(-0.724, 1.062, -2.740), Vector(-0.730,
+			1.207, -2.812), Vector(-0.770, 1.143, -2.472), Vector(-0.768, 1.207, -2.294), Vector(-0.624, 1.337, -2.097), Vector(
+			Empty Array, 1.230, -2.608), Vector(1.076, 1.516, -2.421), Vector(0.763, 1.574, -2.506), Vector(Empty Array, 1.585, -2.544),
+			Vector(1.053, 1.572, -2.848), Vector(0.762, 1.573, -2.915), Vector(Empty Array, 1.576, -2.956), Vector(-1.076, 1.516, -2.421),
+			Vector(-0.763, 1.574, -2.506), Vector(-1.053, 1.572, -2.848), Vector(-0.762, 1.573, -2.915));
+		Global.VAR_VEH_MESH_VRTCS_REAR_BUMPER = Array(Vector(1.257, 0.700, -2.103), Vector(1.223, 0.301, -2.204), Vector(1.127, 0.431,
+			-2.495), Vector(0.951, 0.415, -2.804), Vector(0.848, 0.502, -2.891), Vector(0.322, 0.517, -3.017), Vector(0.312, 0.565,
+			-2.996), Vector(0.233, 0.787, -3.032), Vector(1.056, 0.730, -2.682), Vector(0.678, 0.746, -2.963), Vector(1.133, 0.999,
+			-2.272), Vector(0.572, 1.065, -2.797), Vector(0.724, 1.062, -2.740), Vector(0.612, 0.962, -2.902), Vector(0.932, 1.043,
+			-2.588), Vector(0.544, 0.869, -2.996), Vector(0.940, 0.860, -2.810), Vector(1.094, 0.846, -2.569), Vector(0.928, 0.935,
+			-2.736), Vector(1.120, 0.943, -2.395), Vector(1.269, 0.938, -1.823), Vector(-1.257, 0.700, -2.103), Vector(-1.223, 0.301,
+			-2.204), Vector(-1.127, 0.431, -2.495), Vector(-0.951, 0.415, -2.804), Vector(-0.848, 0.502, -2.891), Vector(-0.322, 0.517,
+			-3.017), Vector(-0.312, 0.565, -2.996), Vector(-0.233, 0.787, -3.032), Vector(-1.056, 0.730, -2.682), Vector(-0.678, 0.746,
+			-2.963), Vector(-1.133, 0.999, -2.272), Vector(-0.572, 1.065, -2.797), Vector(-0.724, 1.062, -2.740), Vector(-0.612, 0.962,
+			-2.902), Vector(-0.932, 1.043, -2.588), Vector(-0.544, 0.869, -2.996), Vector(-0.940, 0.860, -2.810), Vector(-1.094, 0.846,
+			-2.569), Vector(-0.928, 0.935, -2.736), Vector(-1.120, 0.943, -2.395), Vector(-1.269, 0.938, -1.823), Vector(1.185, 0.715,
+			-2.340), Vector(-1.185, 0.715, -2.340));
+		Global.VAR_VEH_MESH_VRTCS_HEADLIGHTS = Array(Vector(0.934, 1.053, 2.201), Vector(0.889, 0.782, 2.543), Vector(-0.934, 1.053,
+			2.201), Vector(-0.889, 0.782, 2.543));
+		Global.VAR_VEH_MESH_VRTCS_L_R_LIGHTS = Array(Vector(1.099, 0.978, -2.427), Vector(0.628, 1.016, -2.871));
+		Global.VAR_VEH_MESH_VRTCS_R_R_LIGHTS = Array(Vector(-1.099, 0.978, -2.427), Vector(-0.628, 1.016, -2.871));
+		Global.VAR_VEH_MESH_VRTCS_NITROUS = Array(Vector(0.081, 0.377, -3.035), Vector(-0.081, 0.377, -3.035));
+		Global.VAR_VEH_MESH_VRTCS_CARBON_PARTS = Array(Vector(1.152, 0.186, 1.109), Vector(1.213, 0.186, -1.145), Vector(-1.152, 0.186,
+			1.109), Vector(-1.213, 0.186, -1.145), Vector(1.223, 0.301, -2.204), Vector(1.018, 0.354, -2.772), Vector(0.876, 0.356,
+			-2.895), Vector(0.245, 0.364, -3.035), Vector(0.164, 0.490, -3.035), Vector(0.724, 1.062, -2.740), Vector(0.730, 1.207,
+			-2.812), Vector(0.770, 1.143, -2.472), Vector(0.762, 1.432, -2.648), Vector(0.755, 1.472, -2.828), Vector(0.762, 1.513,
+			-2.610), Vector(0.755, 1.534, -2.799), Vector(1.038, 1.653, -2.881), Vector(1.064, 1.442, -2.759), Vector(1.090, 1.516,
+			-2.387), Vector(1.075, 1.582, -2.460), Vector(1.010, 1.139, 0.848), Vector(0.624, 1.337, -2.097), Vector(0.806, 1.575, 0.207),
+			Vector(0.226, 1.664, 0.253), Vector(0.213, 1.727, -0.476), Vector(0.212, 1.633, -1.175), Vector(0.619, 1.588, -1.188), Vector(
+			1.227, 0.673, 2.147), Vector(0.627, 0.511, 2.906), Vector(0.983, 0.515, 2.727), Vector(1.035, 0.268, 2.656), Vector(0.479,
+			0.167, 3.050), Vector(0.547, 0.140, 3.031), Vector(1.060, 0.150, 2.723), Vector(1.222, 0.152, 2.164), Vector(0.691, 1.139,
+			1.153), Vector(0.231, 1.177, 1.378), Vector(0.359, 1.337, -2.180), Vector(1.090, 1.103, 0.568), Vector(1.334, 1.212, 0.322),
+			Vector(-1.223, 0.301, -2.204), Vector(-1.018, 0.354, -2.772), Vector(-0.876, 0.356, -2.895), Vector(-0.245, 0.364, -3.035),
+			Vector(-0.164, 0.490, -3.035), Vector(-0.724, 1.062, -2.740), Vector(-0.730, 1.207, -2.812), Vector(-0.770, 1.143, -2.472),
+			Vector(-0.762, 1.432, -2.648), Vector(-0.755, 1.472, -2.828), Vector(-0.762, 1.513, -2.610), Vector(-0.755, 1.534, -2.799),
+			Vector(-1.038, 1.653, -2.881), Vector(-1.064, 1.442, -2.759), Vector(-1.090, 1.516, -2.387), Vector(-1.075, 1.582, -2.460),
+			Vector(-1.010, 1.139, 0.848), Vector(-0.624, 1.337, -2.097), Vector(-0.806, 1.575, 0.207), Vector(-0.226, 1.664, 0.253),
+			Vector(-0.213, 1.727, -0.476), Vector(-0.212, 1.633, -1.175), Vector(-0.619, 1.588, -1.188), Vector(-1.227, 0.673, 2.147),
+			Vector(-0.627, 0.511, 2.906), Vector(-0.983, 0.515, 2.727), Vector(-1.035, 0.268, 2.656), Vector(-0.479, 0.167, 3.050), Vector(
+			-0.547, 0.140, 3.031), Vector(-1.060, 0.150, 2.723), Vector(-1.222, 0.152, 2.164), Vector(-0.691, 1.139, 1.153), Vector(-0.231,
+			1.177, 1.378), Vector(-0.359, 1.337, -2.180), Vector(-1.090, 1.103, 0.568), Vector(-1.334, 1.212, 0.322), Vector(1.193, 1.018,
+			1.539), Vector(-1.193, 0.707, 1.117), Vector(1.193, 0.707, 1.117), Vector(-1.193, 1.018, 1.539), Vector(1.124, 1.075, -1.198),
+			Vector(1.160, 0.765, -0.856), Vector(-1.124, 1.075, -1.198), Vector(-1.160, 0.765, -0.856), Vector(0.977, 1.194, -0.690),
+			Vector(0.853, 1.283, -1.588), Vector(0.783, 1.572, -0.826), Vector(-0.977, 1.194, -0.690), Vector(-0.853, 1.283, -1.588),
+			Vector(-0.783, 1.572, -0.826));
+		Global.VAR_VEH_MESH_VRTCS_DRIFT_POINTS = Array(Vector(1.269, 0.425, -1.642), Vector(1.238, 0.450, 1.697), Vector(-1.269, 0.425,
+			-1.642), Vector(-1.238, 0.450, 1.697));
+		Global.VAR_VEH_MESH_EDGES_FRONT_BUMPER = Array(1, 2, 9, 15, 4, 5, 5, 6, 3, 4, 7, 10, 10, 11, 12, 13, 4, 8, 8, 7, 5, 0, 16, 17, 14,
+			12, 19, 20, 22, 23, 23, 6, 21, 22, 24, 26, 26, 27, 28, 29, 22, 25, 25, 24, 23, 18, 31, 30, 14, 28, 11, 27, 32, 33, 34, 37, 35,
+			36);
+		Global.VAR_VEH_MESH_EDGES_FRONT_HOOD = Array(1, 2, 2, 3, 4, 5, 6, 4, 7, 6, 9, 8, 21, 0, 11, 12, 12, 13, 14, 15, 19, 17, 17, 18, 8,
+			10, 20, 0, 18, 20, 10, 21, 16, 22, 22, 14);
+		Global.VAR_VEH_MESH_EDGES_BODY = Array(1, 0, 2, 1, 4, 6, 7, 8, 8, 9, 3, 8, 14, 18, 0, 31, 10, 11, 11, 12, 12, 13, 13, 14, 26, 29,
+			15, 16, 16, 17, 10, 18, 13, 19, 10, 13, 11, 20, 20, 21, 22, 23, 24, 25, 12, 25, 23, 24, 12, 26, 26, 27, 28, 29, 29, 30, 5, 9,
+			7, 10, 33, 32, 34, 33, 36, 38, 39, 40, 40, 41, 35, 40, 46, 50, 32, 63, 42, 43, 43, 44, 44, 45, 45, 46, 58, 61, 47, 48, 48, 49,
+			42, 50, 45, 51, 42, 45, 43, 52, 52, 53, 54, 55, 56, 57, 44, 57, 55, 56, 44, 58, 58, 59, 60, 61, 61, 62, 37, 41, 39, 42, 15, 30,
+			47, 62, 15, 64, 47, 65);
+		Global.VAR_VEH_MESH_EDGES_ENGINE_HOOD = Array(2, 1, 3, 4, 5, 7, 7, 8, 9, 1, 10, 4, 11, 12, 12, 13, 6, 14, 8, 6, 13, 0, 14, 0, 15,
+			16, 16, 17, 18, 19, 19, 20, 21, 22, 22, 17, 23, 24, 24, 20);
+		Global.VAR_VEH_MESH_EDGES_REAR_BUMPER = Array(0, 1, 42, 2, 2, 3, 3, 4, 4, 5, 6, 7, 8, 9, 20, 10, 14, 12, 11, 13, 15, 16, 10, 14,
+			16, 17, 34, 39, 19, 18, 20, 0, 21, 22, 43, 23, 23, 24, 24, 25, 25, 26, 27, 28, 29, 30, 41, 31, 35, 33, 32, 34, 36, 37, 31, 35,
+			37, 38, 40, 39, 41, 21, 15, 36, 5, 26, 7, 28, 13, 18, 0, 8, 21, 29);
+		Global.VAR_VEH_MESH_EDGES_HEADLIGHTS = Array(0, 1, 2, 3);
+		Global.VAR_VEH_MESH_EDGES_L_R_LIGHTS = Array(0, 1);
+		Global.VAR_VEH_MESH_EDGES_R_R_LIGHTS = Array(0, 1);
+		Global.VAR_VEH_MESH_EDGES_NITROUS = Array(0, 1);
+		Global.VAR_VEH_MESH_EDGES_CARBON_PARTS = Array(0, 1, 2, 3, 4, 5, 5, 6, 6, 7, 7, 8, 9, 10, 13, 12, 12, 14, 10, 13, 16, 17, 18, 19,
+			16, 19, 35, 36, 22, 23, 23, 24, 25, 26, 28, 29, 29, 30, 31, 32, 32, 33, 27, 34, 24, 25, 12, 11, 13, 15, 21, 37, 17, 18, 38, 39,
+			20, 35, 40, 41, 41, 42, 42, 43, 43, 44, 45, 46, 49, 48, 48, 50, 46, 49, 52, 53, 54, 55, 52, 55, 69, 70, 71, 72, 58, 59, 59, 60,
+			61, 62, 64, 65, 65, 66, 67, 68, 68, 69, 63, 70, 33, 34, 60, 61, 48, 47, 49, 51, 57, 73, 53, 54, 74, 75, 56, 71, 8, 44, 25, 61,
+			37, 73, 23, 59, 36, 72, 31, 67, 76, 78, 79, 77, 80, 81, 82, 83, 86, 85, 84, 86, 87, 89, 89, 88);
+		"PASTE YOUR CAR HERE - Original Gamemode Creator: GraczCourier (now known as RaidVentador_Courier_13)"
+		Global.VAR_PLAYER_RACER.VAR_VEH_COLOR_DEFAULT = Color(Green);
+		Call Subroutine(SUB_VEH_VSL_GET_COLORS);
+	}
+}
+
+rule("#2 2017 HONDA CIVIC TYPE-R FK8  (Mesh Array Tables)")
+{
+	event
+	{
+		Ongoing - Global;
+	}
+
+	conditions
+	{
+		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [1] - CURRENT CAR \n Rule Elements Count: 0"
+		Global.VAR_GBL_INTRNL_STORED_VALUES[1] == 1;
 		Entity Exists(Global.VAR_PLAYER_RACER) == True;
 	}
 
@@ -561,7 +696,7 @@ rule("#1 2017's HONDA CIVIC TYPE-R FK8  (Mesh Array Tables)")
 	}
 }
 
-rule("#2 2002's Nissan Skyline GT-R (R34) (Mesh Array Tables)")
+rule("#3 2013 Nissan GT-R NISMO (Mesh Array Tables)")
 {
 	event
 	{
@@ -571,7 +706,134 @@ rule("#2 2002's Nissan Skyline GT-R (R34) (Mesh Array Tables)")
 	conditions
 	{
 		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [1] - CURRENT CAR \n Rule Elements Count: 0"
-		Global.VAR_GBL_INTRNL_STORED_VALUES[1] == 1;
+		Global.VAR_GBL_INTRNL_STORED_VALUES[1] == 2;
+		Entity Exists(Global.VAR_PLAYER_RACER) == True;
+	}
+
+	actions
+	{
+		"VERTICES COUNT: 294 \n EDGE COUNT: 240 \n Car models ported with Deltin's OSTW for Visual Studio Code"
+		Global.VAR_VEH_MESH_VRTCS_FRONT_BUMPER = Array(Vector(1.183, 0.765, 2.215), Vector(1.160, 0.343, 2.343), Vector(0.684, 0.279,
+			2.903), Vector(0.636, 0.652, 2.903), Vector(0.457, 0.804, 2.858), Vector(1.082, 0.711, 2.635), Vector(1.180, 0.737, 2.295),
+			Vector(0.671, 0.513, 2.909), Vector(0.629, 0.650, 2.892), Vector(0.549, 0.896, 2.691), Vector(1.076, 0.543, 2.647), Vector(
+			1.106, 0.232, 2.620), Vector(0.734, 0.856, 2.645), Vector(1.024, 0.766, 2.580), Vector(0.747, 0.720, 2.768), Vector(-1.183,
+			0.765, 2.215), Vector(-1.160, 0.343, 2.343), Vector(-0.684, 0.279, 2.903), Vector(-0.636, 0.652, 2.903), Vector(-0.457, 0.804,
+			2.858), Vector(-1.082, 0.711, 2.635), Vector(-1.180, 0.737, 2.295), Vector(-0.671, 0.513, 2.909), Vector(-0.629, 0.650, 2.892),
+			Vector(-0.549, 0.896, 2.691), Vector(-1.076, 0.543, 2.647), Vector(-1.106, 0.232, 2.620), Vector(-0.734, 0.856, 2.645), Vector(
+			-1.024, 0.766, 2.580), Vector(-0.747, 0.720, 2.768));
+		Global.VAR_VEH_MESH_VRTCS_FRONT_HOOD = Array(Vector(0.919, 1.190, 1.002), Vector(0.549, 0.896, 2.691), Vector(0.816, 1.104, 1.942),
+			Vector(-0.919, 1.190, 1.002), Vector(0.997, 1.136, 1.170), Vector(0.952, 1.029, 2.025), Vector(0.734, 0.856, 2.645), Vector(
+			0.760, 1.219, 1.119), Vector(-0.549, 0.896, 2.691), Vector(-0.816, 1.104, 1.942), Vector(-0.969, 1.171, 1.096), Vector(
+			Empty Array, 1.219, 1.274), Vector(-0.997, 1.136, 1.170), Vector(-0.952, 1.029, 2.025), Vector(-0.734, 0.856, 2.645), Vector(
+			-0.760, 1.219, 1.119), Vector(0.969, 1.171, 1.096));
+		Global.VAR_VEH_MESH_VRTCS_BODY = Array(Vector(1.204, 0.271, -1.231), Vector(1.183, 0.283, 1.266), Vector(1.212, 0.693, -1.300),
+			Vector(1.218, 0.910, -1.770), Vector(1.212, 0.756, -2.163), Vector(0.704, 1.241, -2.561), Vector(1.145, 0.390, 0.797), Vector(
+			0.737, 1.314, -2.041), Vector(1.051, 1.148, -2.448), Vector(1.138, 1.102, -0.836), Vector(1.111, 0.974, 0.862), Vector(0.996,
+			1.176, 0.893), Vector(0.991, 1.225, -0.732), Vector(0.839, 1.549, -0.811), Vector(1.161, 0.289, -0.483), Vector(1.161, 0.390,
+			-0.661), Vector(1.136, 0.941, 1.176), Vector(1.183, 0.765, 1.374), Vector(1.183, 0.941, 1.790), Vector(1.183, 0.765, 2.215),
+			Vector(0.645, 1.592, -1.121), Vector(0.638, 1.641, -0.836), Vector(0.752, 1.622, 0.101), Vector(0.659, 1.672, -0.373), Vector(
+			Empty Array, 1.645, 0.259), Vector(0.815, 1.624, -0.127), Vector(0.933, 1.257, -1.717), Vector(0.952, 1.029, 2.025), Vector(
+			1.046, 0.821, 2.509), Vector(1.100, 1.045, 1.878), Vector(1.114, 1.062, 1.350), Vector(0.877, 1.455, -1.224), Vector(0.966,
+			1.250, -1.392), Vector(1.078, 1.127, -1.721), Vector(-1.204, 0.271, -1.231), Vector(-1.183, 0.283, 1.266), Vector(-1.212,
+			0.693, -1.300), Vector(-1.218, 0.910, -1.770), Vector(-1.212, 0.756, -2.163), Vector(-0.659, 1.672, -0.373), Vector(-0.704,
+			1.241, -2.561), Vector(-1.145, 0.390, 0.797), Vector(-0.737, 1.314, -2.041), Vector(-1.051, 1.148, -2.448), Vector(-1.138,
+			1.102, -0.836), Vector(-1.111, 0.974, 0.862), Vector(-0.996, 1.176, 0.893), Vector(-0.991, 1.225, -0.732), Vector(-0.839,
+			1.549, -0.811), Vector(-1.161, 0.289, -0.483), Vector(-1.161, 0.390, -0.661), Vector(-1.136, 0.941, 1.176), Vector(-1.183,
+			0.765, 1.374), Vector(-1.183, 0.941, 1.790), Vector(-1.183, 0.765, 2.215), Vector(-0.645, 1.592, -1.121), Vector(-0.638, 1.641,
+			-0.836), Vector(-0.752, 1.622, 0.101), Vector(-0.815, 1.624, -0.127), Vector(-0.933, 1.257, -1.717), Vector(-0.952, 1.029,
+			2.025), Vector(-1.046, 0.821, 2.509), Vector(-1.100, 1.045, 1.878), Vector(-1.114, 1.062, 1.350), Vector(-0.877, 1.455,
+			-1.224), Vector(-0.966, 1.250, -1.392), Vector(-1.078, 1.127, -1.721));
+		Global.VAR_VEH_MESH_VRTCS_ENGINE_HOOD = Array(Vector(0.681, 1.227, -2.709), Vector(0.737, 1.314, -2.041), Vector(0.631, 1.130,
+			-2.768), Vector(0.503, 1.068, -2.824), Vector(-0.681, 1.227, -2.709), Vector(-0.737, 1.314, -2.041), Vector(-0.631, 1.130,
+			-2.768), Vector(-0.503, 1.068, -2.824));
+		Global.VAR_VEH_MESH_VRTCS_REAR_BUMPER = Array(Vector(1.212, 0.756, -2.163), Vector(1.204, 0.482, -2.280), Vector(1.084, 0.542,
+			-2.795), Vector(1.143, 0.827, -2.543), Vector(1.060, 1.148, -2.449), Vector(0.967, 1.223, -2.455), Vector(0.700, 1.244,
+			-2.573), Vector(0.681, 1.227, -2.709), Vector(1.084, 0.848, -2.755), Vector(1.018, 1.153, -2.607), Vector(0.909, 1.221,
+			-2.609), Vector(0.488, 0.845, -2.927), Vector(0.434, 0.608, -2.962), Vector(-1.212, 0.756, -2.163), Vector(-1.204, 0.482,
+			-2.280), Vector(-1.084, 0.542, -2.795), Vector(-1.143, 0.827, -2.543), Vector(-1.060, 1.148, -2.449), Vector(-0.967, 1.223,
+			-2.455), Vector(-0.700, 1.244, -2.573), Vector(-0.681, 1.227, -2.709), Vector(-1.084, 0.848, -2.755), Vector(-1.018, 1.153,
+			-2.607), Vector(-0.909, 1.221, -2.609), Vector(-0.488, 0.845, -2.927), Vector(-0.434, 0.608, -2.962));
+		Global.VAR_VEH_MESH_VRTCS_HEADLIGHTS = Array(Vector(1.027, 1.029, 2.035), Vector(0.815, 0.817, 2.669), Vector(1.053, 0.472, 2.657),
+			Vector(0.832, 0.456, 2.796), Vector(-1.027, 1.029, 2.035), Vector(-0.815, 0.817, 2.669), Vector(-1.053, 0.472, 2.657), Vector(
+			-0.832, 0.456, 2.796));
+		Global.VAR_VEH_MESH_VRTCS_L_R_LIGHTS = Array(Vector(0.966, 0.971, -2.724), Vector(0.800, 0.977, -2.785), Vector(0.799, 1.148,
+			-2.716), Vector(0.962, 1.140, -2.657), Vector(0.682, 1.097, -2.793), Vector(0.552, 1.103, -2.828), Vector(0.550, 0.967,
+			-2.878), Vector(0.681, 0.959, -2.848));
+		Global.VAR_VEH_MESH_VRTCS_R_R_LIGHTS = Array(Vector(-0.966, 0.971, -2.724), Vector(-0.800, 0.977, -2.785), Vector(-0.799, 1.148,
+			-2.716), Vector(-0.962, 1.140, -2.657), Vector(-0.682, 1.097, -2.793), Vector(-0.552, 1.103, -2.828), Vector(-0.550, 0.967,
+			-2.878), Vector(-0.681, 0.959, -2.848));
+		Global.VAR_VEH_MESH_VRTCS_NITROUS = Array(Vector(0.731, 0.378, -2.848), Vector(0.901, 0.386, -2.769), Vector(-0.731, 0.378,
+			-2.848), Vector(-0.901, 0.386, -2.769));
+		Global.VAR_VEH_MESH_VRTCS_CARBON_PARTS = Array(Vector(1.204, 0.271, -1.231), Vector(1.183, 0.283, 1.266), Vector(1.204, 0.482,
+			-2.280), Vector(1.204, 0.146, -2.240), Vector(1.224, 0.143, -1.246), Vector(1.173, 0.154, 1.286), Vector(1.163, 0.234, -2.744),
+			Vector(1.084, 0.542, -2.795), Vector(1.024, 0.263, -2.776), Vector(0.688, 0.259, -2.892), Vector(0.473, 0.494, -2.973), Vector(
+			1.060, 0.712, -2.769), Vector(0.484, 0.567, -2.961), Vector(-1.261, 1.225, 0.279), Vector(0.485, 0.309, -2.912), Vector(0.996,
+			1.176, 0.893), Vector(0.991, 1.225, -0.732), Vector(0.839, 1.549, -0.811), Vector(1.145, 0.433, 0.823), Vector(1.136, 0.941,
+			1.176), Vector(0.752, 1.622, 0.101), Vector(1.195, 0.337, 2.330), Vector(1.155, 0.179, 2.664), Vector(1.195, 0.176, 2.291),
+			Vector(0.640, 0.173, 2.989), Vector(0.474, 0.493, 2.944), Vector(0.563, 0.254, 2.954), Vector(0.703, 0.254, 2.921), Vector(
+			1.072, 0.271, 2.687), Vector(0.469, 0.499, 2.951), Vector(0.629, 0.650, 2.892), Vector(0.440, 0.629, 2.952), Vector(0.658,
+			0.508, 2.896), Vector(0.451, 0.793, 2.826), Vector(0.301, 0.657, 2.941), Vector(0.348, 1.287, -2.580), Vector(0.348, 1.419,
+			-2.596), Vector(0.348, 1.216, -2.817), Vector(0.348, 1.434, -2.873), Vector(0.353, 1.444, -2.496), Vector(0.952, 1.436,
+			-2.375), Vector(0.958, 1.437, -2.772), Vector(0.349, 1.443, -2.884), Vector(0.970, 1.473, -2.776), Vector(0.968, 1.460,
+			-2.325), Vector(0.970, 1.354, -2.404), Vector(0.968, 1.284, -2.628), Vector(0.970, 1.281, -2.755), Vector(0.465, 1.118, 2.075),
+			Vector(0.431, 1.160, 1.809), Vector(0.539, 1.154, 1.813), Vector(0.337, 1.289, -2.829), Vector(-1.204, 0.271, -1.231), Vector(
+			-1.183, 0.283, 1.266), Vector(-1.204, 0.482, -2.280), Vector(-1.204, 0.146, -2.240), Vector(-1.224, 0.143, -1.246), Vector(
+			-1.173, 0.154, 1.286), Vector(-1.163, 0.234, -2.744), Vector(-1.084, 0.542, -2.795), Vector(-1.024, 0.263, -2.776), Vector(
+			-0.688, 0.259, -2.892), Vector(-0.473, 0.494, -2.973), Vector(-1.060, 0.712, -2.769), Vector(-0.484, 0.567, -2.961), Vector(
+			-0.485, 0.309, -2.912), Vector(-0.996, 1.176, 0.893), Vector(-0.991, 1.225, -0.732), Vector(-0.839, 1.549, -0.811), Vector(
+			-1.145, 0.433, 0.823), Vector(-1.136, 0.941, 1.176), Vector(1.059, 1.094, 0.491), Vector(-0.752, 1.622, 0.101), Vector(1.261,
+			1.225, 0.279), Vector(-1.059, 1.094, 0.491), Vector(-1.195, 0.337, 2.330), Vector(-1.155, 0.179, 2.664), Vector(-1.195, 0.176,
+			2.291), Vector(-0.640, 0.173, 2.989), Vector(-0.474, 0.493, 2.944), Vector(-0.563, 0.254, 2.954), Vector(-0.703, 0.254, 2.921),
+			Vector(-1.072, 0.271, 2.687), Vector(-0.469, 0.499, 2.951), Vector(-0.629, 0.650, 2.892), Vector(-0.440, 0.629, 2.952), Vector(
+			-0.658, 0.508, 2.896), Vector(-0.451, 0.793, 2.826), Vector(-0.300, 0.657, 2.941), Vector(-0.348, 1.287, -2.580), Vector(
+			-0.348, 1.419, -2.596), Vector(-0.348, 1.216, -2.817), Vector(-0.348, 1.434, -2.873), Vector(-0.353, 1.444, -2.496), Vector(
+			-0.952, 1.436, -2.375), Vector(-0.958, 1.437, -2.772), Vector(-0.349, 1.443, -2.884), Vector(-0.970, 1.473, -2.776), Vector(
+			-0.968, 1.460, -2.325), Vector(-0.970, 1.354, -2.404), Vector(-0.968, 1.284, -2.628), Vector(-0.970, 1.281, -2.755), Vector(
+			-0.465, 1.118, 2.075), Vector(-0.431, 1.160, 1.809), Vector(-0.539, 1.154, 1.813), Vector(-0.337, 1.289, -2.829), Vector(1.099,
+			0.293, -2.789), Vector(-1.099, 0.293, -2.789), Vector(0, 1.330, -2.176), Vector(0.737, 1.314, -2.041), Vector(-0.737, 1.314,
+			-2.041), Vector(0.645, 1.592, -1.121), Vector(Empty Array, 1.625, -1.215), Vector(-0.645, 1.592, -1.121));
+		Global.VAR_VEH_MESH_VRTCS_DRIFT_POINTS = Array(Vector(1.218, 0.467, -1.770), Vector(1.183, 0.498, 1.790), Vector(-1.218, 0.467,
+			-1.770), Vector(-1.183, 0.498, 1.790));
+		Global.VAR_VEH_MESH_EDGES_FRONT_BUMPER = Array(0, 1, 2, 3, 3, 4, 3, 5, 5, 6, 4, 9, 10, 7, 11, 10, 8, 12, 13, 14, 15, 16, 17, 18,
+			18, 19, 18, 20, 20, 21, 19, 24, 25, 22, 26, 25, 23, 27, 28, 29, 4, 19, 5, 10, 20, 25);
+		Global.VAR_VEH_MESH_EDGES_FRONT_HOOD = Array(1, 2, 2, 16, 3, 15, 4, 5, 1, 6, 5, 6, 8, 9, 9, 10, 3, 12, 12, 13, 8, 14, 7, 11, 13,
+			14, 11, 15, 1, 8, 0, 4, 0, 7);
+		Global.VAR_VEH_MESH_EDGES_BODY = Array(0, 2, 2, 3, 3, 4, 6, 10, 9, 10, 10, 11, 11, 12, 9, 12, 9, 14, 15, 6, 1, 17, 17, 18, 18, 19,
+			20, 21, 23, 22, 21, 23, 22, 24, 22, 25, 13, 25, 12, 26, 5, 26, 7, 20, 27, 29, 28, 29, 18, 29, 29, 30, 32, 31, 13, 31, 11, 30,
+			3, 33, 8, 9, 16, 30, 21, 13, 34, 36, 36, 37, 37, 38, 41, 45, 44, 45, 45, 46, 46, 47, 44, 47, 44, 49, 50, 41, 35, 52, 52, 53,
+			53, 54, 23, 39, 55, 56, 57, 24, 57, 58, 48, 58, 47, 59, 40, 59, 42, 55, 60, 62, 61, 62, 53, 62, 62, 63, 65, 64, 48, 64, 46, 63,
+			37, 66, 43, 44, 51, 63, 56, 48, 39, 57, 56, 39);
+		Global.VAR_VEH_MESH_EDGES_ENGINE_HOOD = Array(0, 1, 2, 0, 3, 2, 4, 5, 6, 4, 7, 6, 3, 7, 0, 4);
+		Global.VAR_VEH_MESH_EDGES_REAR_BUMPER = Array(0, 1, 0, 3, 3, 4, 4, 5, 5, 6, 2, 8, 8, 9, 9, 10, 7, 10, 13, 14, 13, 16, 16, 17, 17,
+			18, 18, 19, 15, 21, 21, 22, 22, 23, 20, 23, 11, 24, 12, 25);
+		Global.VAR_VEH_MESH_EDGES_HEADLIGHTS = Array(0, 1, 2, 3, 4, 5, 6, 7);
+		Global.VAR_VEH_MESH_EDGES_L_R_LIGHTS = Array(1, 3, 0, 2, 4, 6, 5, 7);
+		Global.VAR_VEH_MESH_EDGES_R_R_LIGHTS = Array(1, 3, 0, 2, 4, 6, 5, 7);
+		Global.VAR_VEH_MESH_EDGES_NITROUS = Array(0, 1, 2, 3);
+		Global.VAR_VEH_MESH_EDGES_CARBON_PARTS = Array(1, 0, 2, 3, 5, 4, 0, 4, 1, 5, 3, 6, 106, 7, 2, 7, 8, 9, 9, 10, 89, 105, 23, 21, 16,
+			17, 18, 19, 21, 22, 20, 15, 22, 23, 25, 26, 26, 27, 27, 28, 32, 29, 30, 31, 33, 34, 39, 40, 41, 42, 43, 44, 44, 45, 46, 47, 43,
+			47, 48, 49, 48, 50, 35, 36, 37, 38, 45, 46, 53, 52, 54, 55, 57, 56, 52, 56, 53, 57, 55, 58, 107, 59, 54, 59, 60, 61, 61, 62,
+			35, 51, 63, 64, 12, 64, 77, 75, 67, 68, 69, 70, 75, 76, 72, 66, 76, 77, 76, 78, 79, 80, 80, 81, 81, 82, 86, 83, 84, 85, 87, 88,
+			93, 94, 95, 96, 97, 98, 98, 99, 100, 101, 97, 101, 102, 103, 11, 12, 102, 104, 89, 90, 91, 92, 99, 100, 51, 105, 35, 89, 42,
+			96, 39, 93, 74, 13, 34, 88, 31, 85, 29, 83, 10, 62, 14, 65, 71, 73, 22, 24, 24, 78, 6, 106, 58, 107, 109, 108, 110, 108, 111,
+			112, 113, 112);
+		"PASTE YOUR CAR HERE - Original Gamemode Creator: GraczCourier (now known as RaidVentador_Courier_13)"
+		Global.VAR_PLAYER_RACER.VAR_VEH_COLOR_DEFAULT = Color(Gray);
+		Call Subroutine(SUB_VEH_VSL_GET_COLORS);
+	}
+}
+
+rule("#4 2002 Nissan Skyline GT-R (R34) (Mesh Array Tables)")
+{
+	event
+	{
+		Ongoing - Global;
+	}
+
+	conditions
+	{
+		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [1] - CURRENT CAR \n Rule Elements Count: 0"
+		Global.VAR_GBL_INTRNL_STORED_VALUES[1] == 3;
 		Entity Exists(Global.VAR_PLAYER_RACER) == True;
 	}
 
@@ -680,180 +942,7 @@ rule("#2 2002's Nissan Skyline GT-R (R34) (Mesh Array Tables)")
 	}
 }
 
-rule("#3 2018's Porsche 911 GT3 RS (Mesh Array Tables)")
-{
-	event
-	{
-		Ongoing - Global;
-	}
-
-	conditions
-	{
-		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [1] - CURRENT CAR \n Rule Elements Count: 0"
-		Global.VAR_GBL_INTRNL_STORED_VALUES[1] == 2;
-		Entity Exists(Global.VAR_PLAYER_RACER) == True;
-	}
-
-	actions
-	{
-		"VERTICES COUNT: 0 \n EDGE COUNT: 0 \n Car models ported with Deltin's OSTW for Visual Studio Code"
-		Global.VAR_VEH_MESH_VRTCS_FRONT_BUMPER = Array(Vector(0.641, 0.827, 2.575), Vector(1.103, 0.812, 2.347), Vector(1.240, 0.804,
-			2.015), Vector(1.227, 0.673, 2.147), Vector(1.022, 0.614, 2.696), Vector(0.513, 0.587, 2.981), Vector(Empty Array, 0.578,
-			3.056), Vector(1.097, 0.301, 2.574), Vector(1.084, 0.458, 2.605), Vector(0.785, 0.279, 2.763), Vector(0.918, 0.233, 2.759),
-			Vector(0.501, 0.203, 3.011), Vector(0.540, 0.463, 2.969), Vector(0.644, 0.282, 2.885), Vector(Empty Array, 0.469, 3.047),
-			Vector(0.642, 0.519, 2.867), Vector(0.596, 0.844, 2.555), Vector(0.758, 0.840, 2.481), Vector(-0.641, 0.827, 2.575), Vector(
-			-1.103, 0.812, 2.347), Vector(-1.240, 0.804, 2.015), Vector(-1.227, 0.673, 2.147), Vector(-1.022, 0.614, 2.696), Vector(-0.513,
-			0.587, 2.981), Vector(-1.097, 0.301, 2.574), Vector(-1.084, 0.458, 2.605), Vector(-0.918, 0.233, 2.759), Vector(-0.501, 0.203,
-			3.011), Vector(-0.540, 0.463, 2.969), Vector(-0.644, 0.282, 2.885), Vector(-0.758, 0.840, 2.481), Vector(-0.596, 0.844, 2.555),
-			Vector(0.416, 0.456, 2.981), Vector(0.489, 0.257, 2.912), Vector(-0.785, 0.279, 2.763), Vector(-0.416, 0.456, 2.981), Vector(
-			-0.489, 0.257, 2.912), Vector(-0.642, 0.519, 2.867));
-		Global.VAR_VEH_MESH_VRTCS_FRONT_HOOD = Array(Vector(Empty Array, 0.770, 2.793), Vector(0.231, 1.177, 1.378), Vector(0.218, 1.054,
-			2.055), Vector(0.202, 0.899, 2.535), Vector(0.663, 1.073, 1.855), Vector(0.516, 0.895, 2.476), Vector(0.470, 1.073, 1.899),
-			Vector(0.357, 0.828, 2.661), Vector(0.830, 1.107, 1.708), Vector(0.957, 1.139, 0.916), Vector(0.552, 0.812, 2.639), Vector(
-			-0.231, 1.177, 1.378), Vector(-0.218, 1.054, 2.055), Vector(-0.202, 0.899, 2.535), Vector(-0.663, 1.073, 1.855), Vector(-0.516,
-			0.895, 2.476), Vector(-0.357, 0.828, 2.661), Vector(-0.830, 1.107, 1.708), Vector(-0.552, 0.812, 2.639), Vector(-0.957, 1.139,
-			0.916), Vector(-0.355, 0.781, 2.757), Vector(0.355, 0.781, 2.757), Vector(-0.470, 1.073, 1.899));
-		Global.VAR_VEH_MESH_VRTCS_BODY = Array(Vector(1.269, 0.938, -1.439), Vector(1.269, 0.700, -1.171), Vector(1.213, 0.186, -1.145),
-			Vector(1.269, 0.938, -1.642), Vector(0.724, 1.062, -2.740), Vector(0.932, 1.043, -2.588), Vector(0.770, 1.143, -2.472), Vector(
-			1.151, 1.139, -1.249), Vector(1.166, 1.184, -1.624), Vector(1.098, 1.167, -2.067), Vector(1.130, 1.052, -0.757), Vector(0.977,
-			1.194, -0.690), Vector(1.010, 1.139, 0.848), Vector(1.159, 0.995, 0.963), Vector(1.130, 0.343, 0.937), Vector(1.165, 0.271,
-			1.113), Vector(1.148, 0.321, -0.509), Vector(1.255, 0.354, -1.107), Vector(1.169, 0.392, -0.349), Vector(1.159, 1.018, 1.458),
-			Vector(0.853, 1.283, -1.588), Vector(0.768, 1.207, -2.294), Vector(0.624, 1.337, -2.097), Vector(0.694, 1.588, -1.172), Vector(
-			0.736, 1.669, -0.478), Vector(0.806, 1.575, 0.207), Vector(1.000, 1.125, 1.715), Vector(0.949, 1.077, 2.072), Vector(1.227,
-			0.673, 2.147), Vector(1.238, 0.963, 1.697), Vector(1.238, 0.685, 1.179), Vector(1.269, 0.938, -1.823), Vector(-1.269, 0.938,
-			-1.439), Vector(-1.269, 0.700, -1.171), Vector(-1.213, 0.186, -1.145), Vector(-1.269, 0.938, -1.642), Vector(-0.724, 1.062,
-			-2.740), Vector(-0.932, 1.043, -2.588), Vector(-0.770, 1.143, -2.472), Vector(-1.151, 1.139, -1.249), Vector(-1.166, 1.184,
-			-1.624), Vector(-1.098, 1.167, -2.067), Vector(-1.130, 1.052, -0.757), Vector(-0.977, 1.194, -0.690), Vector(-1.010, 1.139,
-			0.848), Vector(-1.159, 0.995, 0.963), Vector(-1.130, 0.343, 0.937), Vector(-1.165, 0.271, 1.113), Vector(-1.148, 0.321,
-			-0.509), Vector(-1.255, 0.354, -1.107), Vector(-1.169, 0.392, -0.349), Vector(-1.159, 1.018, 1.458), Vector(-0.853, 1.283,
-			-1.588), Vector(-0.768, 1.207, -2.294), Vector(-0.624, 1.337, -2.097), Vector(-0.694, 1.588, -1.172), Vector(-0.736, 1.669,
-			-0.478), Vector(-0.806, 1.575, 0.207), Vector(-1.000, 1.125, 1.715), Vector(-0.949, 1.077, 2.072), Vector(-1.227, 0.673,
-			2.147), Vector(-1.238, 0.963, 1.697), Vector(-1.238, 0.685, 1.179), Vector(-1.269, 0.938, -1.823), Vector(1.152, 0.186, 1.109),
-			Vector(-1.152, 0.186, 1.109));
-		Global.VAR_VEH_MESH_VRTCS_ENGINE_HOOD = Array(Vector(-0.559, 1.203, -2.520), Vector(Empty Array, 1.074, -2.851), Vector(0.724,
-			1.062, -2.740), Vector(0.730, 1.207, -2.812), Vector(Empty Array, 1.229, -2.912), Vector(0.770, 1.143, -2.472), Vector(0.559,
-			1.203, -2.520), Vector(0.768, 1.207, -2.294), Vector(0.624, 1.337, -2.097), Vector(-0.724, 1.062, -2.740), Vector(-0.730,
-			1.207, -2.812), Vector(-0.770, 1.143, -2.472), Vector(-0.768, 1.207, -2.294), Vector(-0.624, 1.337, -2.097), Vector(
-			Empty Array, 1.230, -2.608), Vector(1.076, 1.516, -2.421), Vector(0.763, 1.574, -2.506), Vector(Empty Array, 1.585, -2.544),
-			Vector(1.053, 1.572, -2.848), Vector(0.762, 1.573, -2.915), Vector(Empty Array, 1.576, -2.956), Vector(-1.076, 1.516, -2.421),
-			Vector(-0.763, 1.574, -2.506), Vector(-1.053, 1.572, -2.848), Vector(-0.762, 1.573, -2.915));
-		Global.VAR_VEH_MESH_VRTCS_REAR_BUMPER = Array(Vector(1.257, 0.700, -2.103), Vector(1.223, 0.301, -2.204), Vector(1.127, 0.431,
-			-2.495), Vector(0.951, 0.415, -2.804), Vector(0.848, 0.502, -2.891), Vector(0.322, 0.517, -3.017), Vector(0.312, 0.565,
-			-2.996), Vector(0.233, 0.787, -3.032), Vector(1.056, 0.730, -2.682), Vector(0.678, 0.746, -2.963), Vector(1.133, 0.999,
-			-2.272), Vector(0.572, 1.065, -2.797), Vector(0.724, 1.062, -2.740), Vector(0.612, 0.962, -2.902), Vector(0.932, 1.043,
-			-2.588), Vector(0.544, 0.869, -2.996), Vector(0.940, 0.860, -2.810), Vector(1.094, 0.846, -2.569), Vector(0.928, 0.935,
-			-2.736), Vector(1.120, 0.943, -2.395), Vector(1.269, 0.938, -1.823), Vector(-1.257, 0.700, -2.103), Vector(-1.223, 0.301,
-			-2.204), Vector(-1.127, 0.431, -2.495), Vector(-0.951, 0.415, -2.804), Vector(-0.848, 0.502, -2.891), Vector(-0.322, 0.517,
-			-3.017), Vector(-0.312, 0.565, -2.996), Vector(-0.233, 0.787, -3.032), Vector(-1.056, 0.730, -2.682), Vector(-0.678, 0.746,
-			-2.963), Vector(-1.133, 0.999, -2.272), Vector(-0.572, 1.065, -2.797), Vector(-0.724, 1.062, -2.740), Vector(-0.612, 0.962,
-			-2.902), Vector(-0.932, 1.043, -2.588), Vector(-0.544, 0.869, -2.996), Vector(-0.940, 0.860, -2.810), Vector(-1.094, 0.846,
-			-2.569), Vector(-0.928, 0.935, -2.736), Vector(-1.120, 0.943, -2.395), Vector(-1.269, 0.938, -1.823), Vector(1.185, 0.715,
-			-2.340), Vector(-1.185, 0.715, -2.340));
-		Global.VAR_VEH_MESH_VRTCS_HEADLIGHTS = Array(Vector(0.934, 1.053, 2.201), Vector(0.889, 0.782, 2.543), Vector(-0.934, 1.053,
-			2.201), Vector(-0.889, 0.782, 2.543));
-		Global.VAR_VEH_MESH_VRTCS_L_R_LIGHTS = Array(Vector(1.099, 0.973, -2.377), Vector(0.628, 1.011, -2.821));
-		Global.VAR_VEH_MESH_VRTCS_R_R_LIGHTS = Array(Vector(-1.099, 0.973, -2.377), Vector(-0.628, 1.011, -2.821));
-		Global.VAR_VEH_MESH_VRTCS_NITROUS = Array(Vector(0.081, 0.377, -3.035), Vector(-0.081, 0.377, -3.035));
-		Global.VAR_VEH_MESH_VRTCS_CARBON_PARTS = Array(Vector(1.152, 0.186, 1.109), Vector(1.213, 0.186, -1.145), Vector(-1.152, 0.186,
-			1.109), Vector(-1.213, 0.186, -1.145), Vector(1.223, 0.301, -2.204), Vector(1.018, 0.354, -2.772), Vector(0.876, 0.356,
-			-2.895), Vector(0.245, 0.364, -3.035), Vector(0.164, 0.490, -3.035), Vector(0.724, 1.062, -2.740), Vector(0.730, 1.207,
-			-2.812), Vector(0.770, 1.143, -2.472), Vector(0.762, 1.432, -2.648), Vector(0.755, 1.472, -2.828), Vector(0.762, 1.513,
-			-2.610), Vector(0.755, 1.534, -2.799), Vector(1.038, 1.653, -2.881), Vector(1.064, 1.442, -2.759), Vector(1.090, 1.516,
-			-2.387), Vector(1.075, 1.582, -2.460), Vector(1.010, 1.139, 0.848), Vector(0.624, 1.337, -2.097), Vector(0.806, 1.575, 0.207),
-			Vector(0.226, 1.664, 0.253), Vector(0.213, 1.727, -0.476), Vector(0.212, 1.633, -1.175), Vector(0.619, 1.588, -1.188), Vector(
-			1.227, 0.673, 2.147), Vector(0.627, 0.511, 2.906), Vector(0.983, 0.515, 2.727), Vector(1.035, 0.268, 2.656), Vector(0.479,
-			0.167, 3.050), Vector(0.547, 0.140, 3.031), Vector(1.060, 0.150, 2.723), Vector(1.222, 0.152, 2.164), Vector(0.691, 1.139,
-			1.153), Vector(0.231, 1.177, 1.378), Vector(0.359, 1.337, -2.180), Vector(1.090, 1.103, 0.568), Vector(1.334, 1.212, 0.322),
-			Vector(-1.223, 0.301, -2.204), Vector(-1.018, 0.354, -2.772), Vector(-0.876, 0.356, -2.895), Vector(-0.245, 0.364, -3.035),
-			Vector(-0.164, 0.490, -3.035), Vector(-0.724, 1.062, -2.740), Vector(-0.730, 1.207, -2.812), Vector(-0.770, 1.143, -2.472),
-			Vector(-0.762, 1.432, -2.648), Vector(-0.755, 1.472, -2.828), Vector(-0.762, 1.513, -2.610), Vector(-0.755, 1.534, -2.799),
-			Vector(-1.038, 1.653, -2.881), Vector(-1.064, 1.442, -2.759), Vector(-1.090, 1.516, -2.387), Vector(-1.075, 1.582, -2.460),
-			Vector(-1.010, 1.139, 0.848), Vector(-0.624, 1.337, -2.097), Vector(-0.806, 1.575, 0.207), Vector(-0.226, 1.664, 0.253),
-			Vector(-0.213, 1.727, -0.476), Vector(-0.212, 1.633, -1.175), Vector(-0.619, 1.588, -1.188), Vector(-1.227, 0.673, 2.147),
-			Vector(-0.627, 0.511, 2.906), Vector(-0.983, 0.515, 2.727), Vector(-1.035, 0.268, 2.656), Vector(-0.479, 0.167, 3.050), Vector(
-			-0.547, 0.140, 3.031), Vector(-1.060, 0.150, 2.723), Vector(-1.222, 0.152, 2.164), Vector(-0.691, 1.139, 1.153), Vector(-0.231,
-			1.177, 1.378), Vector(-0.359, 1.337, -2.180), Vector(-1.090, 1.103, 0.568), Vector(-1.334, 1.212, 0.322), Vector(1.193, 1.018,
-			1.539), Vector(-1.193, 0.707, 1.117), Vector(1.193, 0.707, 1.117), Vector(-1.193, 1.018, 1.539), Vector(1.124, 1.075, -1.198),
-			Vector(1.160, 0.765, -0.856), Vector(-1.124, 1.075, -1.198), Vector(-1.160, 0.765, -0.856), Vector(0.977, 1.194, -0.690),
-			Vector(0.853, 1.283, -1.588), Vector(0.783, 1.572, -0.826), Vector(-0.977, 1.194, -0.690), Vector(-0.853, 1.283, -1.588),
-			Vector(-0.783, 1.572, -0.826));
-		Global.VAR_VEH_MESH_VRTCS_DRIFT_POINTS = Array(Vector(1.269, 0.425, -1.642), Vector(1.238, 0.450, 1.697), Vector(-1.269, 0.425,
-			-1.642), Vector(-1.238, 0.450, 1.697));
-		Global.VAR_VEH_MESH_EDGES_FRONT_BUMPER = Array(1, 2, 9, 15, 4, 5, 5, 6, 3, 4, 7, 10, 10, 11, 12, 13, 4, 8, 8, 7, 5, 0, 16, 17, 14,
-			12, 19, 20, 22, 23, 23, 6, 21, 22, 24, 26, 26, 27, 28, 29, 22, 25, 25, 24, 23, 18, 31, 30, 14, 28, 11, 27, 32, 33, 34, 37, 35,
-			36);
-		Global.VAR_VEH_MESH_EDGES_FRONT_HOOD = Array(1, 2, 2, 3, 4, 5, 6, 4, 7, 6, 9, 8, 21, 0, 11, 12, 12, 13, 14, 15, 19, 17, 17, 18, 8,
-			10, 20, 0, 18, 20, 10, 21, 16, 22, 22, 14);
-		Global.VAR_VEH_MESH_EDGES_BODY = Array(1, 0, 2, 1, 4, 6, 7, 8, 8, 9, 3, 8, 14, 18, 0, 31, 10, 11, 11, 12, 12, 13, 13, 14, 26, 29,
-			15, 16, 16, 17, 10, 18, 13, 19, 10, 13, 11, 20, 20, 21, 22, 23, 24, 25, 12, 25, 23, 24, 12, 26, 26, 27, 28, 29, 29, 30, 5, 9,
-			7, 10, 33, 32, 34, 33, 36, 38, 39, 40, 40, 41, 35, 40, 46, 50, 32, 63, 42, 43, 43, 44, 44, 45, 45, 46, 58, 61, 47, 48, 48, 49,
-			42, 50, 45, 51, 42, 45, 43, 52, 52, 53, 54, 55, 56, 57, 44, 57, 55, 56, 44, 58, 58, 59, 60, 61, 61, 62, 37, 41, 39, 42, 15, 30,
-			47, 62, 15, 64, 47, 65);
-		Global.VAR_VEH_MESH_EDGES_ENGINE_HOOD = Array(2, 1, 3, 4, 5, 7, 7, 8, 9, 1, 10, 4, 11, 12, 12, 13, 6, 14, 8, 6, 13, 0, 14, 0, 15,
-			16, 16, 17, 18, 19, 19, 20, 21, 22, 22, 17, 23, 24, 24, 20);
-		Global.VAR_VEH_MESH_EDGES_REAR_BUMPER = Array(0, 1, 42, 2, 2, 3, 3, 4, 4, 5, 6, 7, 8, 9, 20, 10, 14, 12, 11, 13, 15, 16, 10, 14,
-			16, 17, 34, 39, 19, 18, 20, 0, 21, 22, 43, 23, 23, 24, 24, 25, 25, 26, 27, 28, 29, 30, 41, 31, 35, 33, 32, 34, 36, 37, 31, 35,
-			37, 38, 40, 39, 41, 21, 15, 36, 5, 26, 7, 28, 13, 18, 0, 8, 21, 29);
-		Global.VAR_VEH_MESH_EDGES_HEADLIGHTS = Array(0, 1, 2, 3);
-		Global.VAR_VEH_MESH_EDGES_L_R_LIGHTS = Array(0, 1);
-		Global.VAR_VEH_MESH_EDGES_R_R_LIGHTS = Array(0, 1);
-		Global.VAR_VEH_MESH_EDGES_NITROUS = Array(0, 1);
-		Global.VAR_VEH_MESH_EDGES_CARBON_PARTS = Array(0, 1, 2, 3, 4, 5, 5, 6, 6, 7, 7, 8, 9, 10, 13, 12, 12, 14, 10, 13, 16, 17, 18, 19,
-			16, 19, 35, 36, 22, 23, 23, 24, 25, 26, 28, 29, 29, 30, 31, 32, 32, 33, 27, 34, 24, 25, 12, 11, 13, 15, 21, 37, 17, 18, 38, 39,
-			20, 35, 40, 41, 41, 42, 42, 43, 43, 44, 45, 46, 49, 48, 48, 50, 46, 49, 52, 53, 54, 55, 52, 55, 69, 70, 71, 72, 58, 59, 59, 60,
-			61, 62, 64, 65, 65, 66, 67, 68, 68, 69, 63, 70, 33, 34, 60, 61, 48, 47, 49, 51, 57, 73, 53, 54, 74, 75, 56, 71, 8, 44, 25, 61,
-			37, 73, 23, 59, 36, 72, 31, 67, 76, 78, 79, 77, 80, 81, 82, 83, 86, 85, 84, 86, 87, 89, 89, 88);
-		"PASTE YOUR CAR HERE - Original Gamemode Creator: GraczCourier (now known as RaidVentador_Courier_13)"
-		Global.VAR_PLAYER_RACER.VAR_VEH_COLOR_DEFAULT = Color(Green);
-		Call Subroutine(SUB_VEH_VSL_GET_COLORS);
-	}
-}
-
-rule("#4 CAR_04_NAME_HERE (Mesh Array Tables)")
-{
-	event
-	{
-		Ongoing - Global;
-	}
-
-	conditions
-	{
-		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [1] - CURRENT CAR \n Rule Elements Count: 0"
-		Global.VAR_GBL_INTRNL_STORED_VALUES[1] == 3;
-		Entity Exists(Global.VAR_PLAYER_RACER) == True;
-	}
-
-	actions
-	{
-		"VERTICES COUNT: 0 \n EDGE COUNT: 0 \n Car models ported with Deltin's OSTW for Visual Studio Code"
-		Global.VAR_VEH_MESH_VRTCS_FRONT_BUMPER = Empty Array;
-		Global.VAR_VEH_MESH_VRTCS_FRONT_HOOD = Empty Array;
-		Global.VAR_VEH_MESH_VRTCS_BODY = Empty Array;
-		Global.VAR_VEH_MESH_VRTCS_ENGINE_HOOD = Empty Array;
-		Global.VAR_VEH_MESH_VRTCS_REAR_BUMPER = Empty Array;
-		Global.VAR_VEH_MESH_VRTCS_HEADLIGHTS = Empty Array;
-		Global.VAR_VEH_MESH_VRTCS_L_R_LIGHTS = Empty Array;
-		Global.VAR_VEH_MESH_VRTCS_R_R_LIGHTS = Empty Array;
-		Global.VAR_VEH_MESH_VRTCS_NITROUS = Empty Array;
-		Global.VAR_VEH_MESH_VRTCS_CARBON_PARTS = Empty Array;
-		Global.VAR_VEH_MESH_VRTCS_DRIFT_POINTS = Empty Array;
-		Global.VAR_VEH_MESH_EDGES_FRONT_BUMPER = Empty Array;
-		Global.VAR_VEH_MESH_EDGES_FRONT_HOOD = Empty Array;
-		Global.VAR_VEH_MESH_EDGES_BODY = Empty Array;
-		Global.VAR_VEH_MESH_EDGES_ENGINE_HOOD = Empty Array;
-		Global.VAR_VEH_MESH_EDGES_REAR_BUMPER = Empty Array;
-		Global.VAR_VEH_MESH_EDGES_HEADLIGHTS = Empty Array;
-		Global.VAR_VEH_MESH_EDGES_L_R_LIGHTS = Empty Array;
-		Global.VAR_VEH_MESH_EDGES_R_R_LIGHTS = Empty Array;
-		Global.VAR_VEH_MESH_EDGES_NITROUS = Empty Array;
-		Global.VAR_VEH_MESH_EDGES_CARBON_PARTS = Empty Array;
-		"PASTE YOUR CAR HERE - Original Gamemode Creator: GraczCourier (now known as RaidVentador_Courier_13)"
-		Global.VAR_PLAYER_RACER.VAR_VEH_COLOR_DEFAULT = Color(Blue);
-		Call Subroutine(SUB_VEH_VSL_GET_COLORS);
-	}
-}
-
-rule("#5 CAR_05_NAME_HERE (Mesh Array Tables)")
+rule("#5 1983 Toyota AE86 Trueno (Mesh Array Tables)")
 {
 	event
 	{
@@ -869,29 +958,112 @@ rule("#5 CAR_05_NAME_HERE (Mesh Array Tables)")
 
 	actions
 	{
-		"VERTICES COUNT: 0 \n EDGE COUNT: 0 \n Car models ported with Deltin's OSTW for Visual Studio Code"
-		Global.VAR_VEH_MESH_VRTCS_FRONT_BUMPER = Empty Array;
-		Global.VAR_VEH_MESH_VRTCS_FRONT_HOOD = Empty Array;
-		Global.VAR_VEH_MESH_VRTCS_BODY = Empty Array;
-		Global.VAR_VEH_MESH_VRTCS_ENGINE_HOOD = Empty Array;
-		Global.VAR_VEH_MESH_VRTCS_REAR_BUMPER = Empty Array;
-		Global.VAR_VEH_MESH_VRTCS_HEADLIGHTS = Empty Array;
-		Global.VAR_VEH_MESH_VRTCS_L_R_LIGHTS = Empty Array;
-		Global.VAR_VEH_MESH_VRTCS_R_R_LIGHTS = Empty Array;
-		Global.VAR_VEH_MESH_VRTCS_NITROUS = Empty Array;
-		Global.VAR_VEH_MESH_VRTCS_CARBON_PARTS = Empty Array;
-		Global.VAR_VEH_MESH_EDGES_FRONT_BUMPER = Empty Array;
-		Global.VAR_VEH_MESH_EDGES_FRONT_HOOD = Empty Array;
-		Global.VAR_VEH_MESH_EDGES_BODY = Empty Array;
-		Global.VAR_VEH_MESH_EDGES_ENGINE_HOOD = Empty Array;
-		Global.VAR_VEH_MESH_EDGES_REAR_BUMPER = Empty Array;
-		Global.VAR_VEH_MESH_EDGES_HEADLIGHTS = Empty Array;
-		Global.VAR_VEH_MESH_EDGES_L_R_LIGHTS = Empty Array;
-		Global.VAR_VEH_MESH_EDGES_R_R_LIGHTS = Empty Array;
-		Global.VAR_VEH_MESH_EDGES_NITROUS = Empty Array;
-		Global.VAR_VEH_MESH_EDGES_CARBON_PARTS = Empty Array;
+		"VERTICES COUNT: 295 \n EDGE COUNT: 243 \n Car models ported with Deltin's OSTW for Visual Studio Code"
+		Global.VAR_VEH_MESH_VRTCS_FRONT_BUMPER = Array(Vector(1.087, 0.599, 2.163), Vector(0.955, 0.597, 2.793), Vector(1.110, 0.622,
+			1.269), Vector(1.028, 1.171, 0.934), Vector(1.123, 0.810, 0.986), Vector(1.123, 0.795, 1.426), Vector(0.997, 1.072, 1.851),
+			Vector(0.951, 0.922, 2.494), Vector(0.939, 0.817, 2.682), Vector(1.011, 0.766, 2.431), Vector(1.070, 0.768, 2.049), Vector(
+			1.087, 0.862, 1.727), Vector(1.121, 0.622, 0.986), Vector(-1.087, 0.599, 2.163), Vector(-0.955, 0.597, 2.793), Vector(-1.110,
+			0.622, 1.269), Vector(-1.028, 1.171, 0.934), Vector(-1.123, 0.810, 0.986), Vector(-0.997, 1.072, 1.851), Vector(-0.951, 0.922,
+			2.494), Vector(-0.939, 0.817, 2.682), Vector(-1.011, 0.766, 2.431), Vector(-1.070, 0.768, 2.049), Vector(-1.121, 0.622, 0.986),
+			Vector(0.859, 0.594, 2.850), Vector(-0.859, 0.594, 2.850), Vector(-1.123, 0.795, 1.426), Vector(-1.087, 0.862, 1.727));
+		Global.VAR_VEH_MESH_VRTCS_FRONT_HOOD = Array(Vector(0.911, 0.941, 2.484), Vector(0.895, 1.076, 2.709), Vector(0.511, 1.113, 2.720),
+			Vector(0.895, 0.946, 2.502), Vector(0.511, 0.954, 2.492), Vector(0.931, 1.086, 1.840), Vector(0.943, 1.176, 1.052), Vector(
+			0.668, 1.174, 1.247), Vector(0.516, 1.174, 1.268), Vector(0.512, 1.091, 1.842), Vector(0.507, 0.823, 2.731), Vector(-0.911,
+			0.941, 2.484), Vector(-0.895, 1.076, 2.709), Vector(-0.511, 1.113, 2.720), Vector(-0.895, 0.946, 2.502), Vector(-0.511, 0.954,
+			2.492), Vector(-0.931, 1.086, 1.840), Vector(-0.943, 1.176, 1.052), Vector(-0.668, 1.174, 1.247), Vector(-0.516, 1.174, 1.268),
+			Vector(-0.512, 1.091, 1.842), Vector(-0.507, 0.823, 2.731));
+		Global.VAR_VEH_MESH_VRTCS_BODY = Array(Vector(1.121, 0.622, -0.831), Vector(1.121, 0.816, -0.831), Vector(1.028, 1.171, 0.934),
+			Vector(1.123, 0.810, 0.986), Vector(0.741, 1.622, 0.199), Vector(Empty Array, 1.635, 0.253), Vector(0.709, 1.671, -0.633),
+			Vector(1.067, 1.104, 0.960), Vector(1.107, 0.570, 0.981), Vector(1.121, 0.622, 0.986), Vector(-0.943, 1.176, 1.052), Vector(
+			-1.028, 1.171, 0.934), Vector(-1.123, 0.810, 0.986), Vector(-0.741, 1.622, 0.199), Vector(-0.709, 1.671, -0.633), Vector(
+			-1.067, 1.104, 0.960), Vector(-1.107, 0.570, 0.981), Vector(-1.121, 0.622, 0.986), Vector(-1.121, 0.622, -0.831), Vector(0.943,
+			1.176, 1.052), Vector(1.048, 1.104, -0.770), Vector(1.121, 0.559, -0.822), Vector(-1.121, 0.559, -0.822), Vector(-1.121, 0.816,
+			-0.831), Vector(-1.048, 1.104, -0.770), Vector(0.715, 1.643, -1.244), Vector(-0.715, 1.643, -1.244));
+		Global.VAR_VEH_MESH_VRTCS_ENGINE_HOOD = Array(Vector(0.715, 1.643, -1.244), Vector(0.940, 1.232, -2.368), Vector(0.940, 1.219,
+			-2.510), Vector(0.869, 1.220, -2.576), Vector(1.002, 1.041, -2.586), Vector(0.905, 1.219, -2.543), Vector(0.944, 1.042,
+			-2.632), Vector(0.886, 1.044, -2.678), Vector(-0.715, 1.643, -1.244), Vector(-0.940, 1.232, -2.368), Vector(-0.940, 1.219,
+			-2.510), Vector(-0.869, 1.220, -2.576), Vector(-1.002, 1.041, -2.586), Vector(-0.905, 1.219, -2.543), Vector(-0.886, 1.044,
+			-2.678), Vector(-0.944, 1.042, -2.632));
+		Global.VAR_VEH_MESH_VRTCS_REAR_BUMPER = Array(Vector(1.048, 1.104, -0.770), Vector(1.116, 0.622, -1.111), Vector(1.121, 0.622,
+			-0.831), Vector(1.121, 0.816, -0.831), Vector(1.121, 0.816, -1.311), Vector(1.023, 1.128, -2.146), Vector(0.980, 1.219,
+			-2.205), Vector(0.999, 1.079, -2.561), Vector(1.023, 0.781, -2.650), Vector(1.101, 0.788, -1.847), Vector(1.121, 0.855,
+			-1.578), Vector(-1.048, 1.104, -0.770), Vector(-1.116, 0.622, -1.111), Vector(-1.121, 0.816, -0.831), Vector(-1.121, 0.816,
+			-1.311), Vector(-1.023, 1.128, -2.146), Vector(-0.980, 1.219, -2.205), Vector(-0.999, 1.079, -2.561), Vector(-1.023, 0.781,
+			-2.650), Vector(-1.101, 0.788, -1.847), Vector(-1.121, 0.855, -1.578), Vector(-1.121, 0.622, -0.831), Vector(1.022, 0.644,
+			-2.779), Vector(1.125, 0.645, -1.876), Vector(0.875, 0.646, -2.830), Vector(-1.022, 0.644, -2.779), Vector(-1.125, 0.645,
+			-1.876), Vector(-0.875, 0.646, -2.830));
+		Global.VAR_VEH_MESH_VRTCS_HEADLIGHTS = Array(Vector(0.584, 0.818, 2.749), Vector(0.828, 0.818, 2.724), Vector(0.828, 1.007, 2.724),
+			Vector(0.584, 1.007, 2.749), Vector(-0.584, 0.818, 2.749), Vector(-0.828, 0.818, 2.724), Vector(-0.828, 1.007, 2.724), Vector(
+			-0.584, 1.007, 2.749));
+		Global.VAR_VEH_MESH_VRTCS_L_R_LIGHTS = Array(Vector(0.587, 0.600, 2.866), Vector(0.920, 0.760, 2.705), Vector(1.003, 0.766, 2.459),
+			Vector(0.428, 0.935, -2.730), Vector(0.971, 0.935, -2.697), Vector(0.428, 0.860, -2.748), Vector(0.971, 0.860, -2.714), Vector(
+			1.001, 0.930, -2.626), Vector(1.001, 0.854, -2.643), Vector(0.845, 0.600, 2.851));
+		Global.VAR_VEH_MESH_VRTCS_R_R_LIGHTS = Array(Vector(-0.587, 0.600, 2.866), Vector(-0.920, 0.760, 2.705), Vector(-1.003, 0.766,
+			2.459), Vector(-0.428, 0.935, -2.730), Vector(-0.971, 0.935, -2.697), Vector(-0.428, 0.860, -2.748), Vector(-0.971, 0.860,
+			-2.714), Vector(-1.001, 0.930, -2.626), Vector(-1.001, 0.854, -2.643), Vector(-0.845, 0.600, 2.851));
+		Global.VAR_VEH_MESH_VRTCS_NITROUS = Array(Vector(0.642, 0.295, -1.915), Vector(0.642, 0.295, -2.750));
+		Global.VAR_VEH_MESH_VRTCS_CARBON_PARTS = Array(Vector(1.151, 0.712, 1.449), Vector(1.115, 0.425, 1.257), Vector(1.090, 0.182,
+			-1.052), Vector(0.826, 0.253, 2.685), Vector(1.124, 0.722, 1.986), Vector(1.139, 0.793, 1.714), Vector(1.091, 0.481, 2.169),
+			Vector(1.025, 0.260, 2.202), Vector(0.937, 0.487, 2.760), Vector(1.087, 0.690, 2.104), Vector(0.952, 0.679, 2.813), Vector(
+			1.028, 0.278, 1.031), Vector(1.028, 0.278, -0.811), Vector(1.124, 0.428, -1.085), Vector(1.151, 0.701, -1.292), Vector(1.151,
+			0.777, -1.553), Vector(1.119, 0.678, -1.866), Vector(1.105, 0.569, -1.964), Vector(1.065, 0.147, -2.030), Vector(0.906, 0.315,
+			-2.059), Vector(0.782, 0.338, -2.629), Vector(0.879, 0.512, -2.815), Vector(0.988, 0.506, -2.727), Vector(1.071, 0.484,
+			-2.050), Vector(1.113, 0.698, -1.165), Vector(1.022, 0.290, -0.753), Vector(1.121, 0.559, -0.822), Vector(0.503, 0.774, 2.767),
+			Vector(-1.121, 0.701, 1.337), Vector(1.121, 0.701, 1.337), Vector(1.113, 0.568, -1.073), Vector(0.526, 0.770, 2.772), Vector(
+			0.884, 0.770, 2.736), Vector(0.884, 1.055, 2.736), Vector(0.884, 1.068, 2.800), Vector(0.512, 1.103, 2.815), Vector(0.895,
+			1.076, 2.709), Vector(0.511, 1.113, 2.720), Vector(0.943, 1.176, 1.052), Vector(0.526, 1.054, 2.772), Vector(0.816, 1.232,
+			-2.360), Vector(0.669, 1.598, -1.389), Vector(1.095, 1.000, -0.665), Vector(1.095, 1.000, -0.450), Vector(1.090, 0.719,
+			-1.946), Vector(0.822, 0.147, -2.030), Vector(1.013, 0.719, -2.643), Vector(0.939, 0.719, -2.729), Vector(0.418, 0.719,
+			-2.754), Vector(0.823, 0.395, -2.042), Vector(0.837, 0.336, -2.595), Vector(1.028, 0.285, 0.934), Vector(-0.344, 1.186, 1.164),
+			Vector(1.067, 0.487, 2.211), Vector(1.107, 0.570, 0.981), Vector(1.309, 1.182, 0.586), Vector(0.983, 1.148, 0.714), Vector(
+			0.960, 1.290, 0.605), Vector(1.033, 1.112, 0.598), Vector(0.633, 0.253, 2.770), Vector(0.783, 0.487, 2.854), Vector(-1.151,
+			0.712, 1.449), Vector(-1.090, 0.193, 1.210), Vector(-1.115, 0.425, 1.257), Vector(-1.090, 0.182, -1.052), Vector(-0.826, 0.253,
+			2.685), Vector(-1.124, 0.722, 1.986), Vector(-1.139, 0.793, 1.714), Vector(-1.091, 0.481, 2.169), Vector(-1.025, 0.260, 2.202),
+			Vector(-0.937, 0.487, 2.760), Vector(-1.087, 0.690, 2.104), Vector(-1.028, 0.278, 1.031), Vector(-1.028, 0.278, -0.811),
+			Vector(-1.124, 0.428, -1.085), Vector(-1.151, 0.701, -1.292), Vector(-1.151, 0.777, -1.553), Vector(-1.119, 0.678, -1.866),
+			Vector(-1.105, 0.569, -1.964), Vector(-1.065, 0.147, -2.030), Vector(-0.906, 0.315, -2.059), Vector(-0.782, 0.338, -2.629),
+			Vector(-0.879, 0.512, -2.815), Vector(-0.988, 0.506, -2.727), Vector(-1.071, 0.484, -2.050), Vector(-1.113, 0.698, -1.165),
+			Vector(-1.022, 0.290, -0.753), Vector(-1.121, 0.559, -0.822), Vector(-0.503, 0.774, 2.767), Vector(1.121, 0.570, 1.245),
+			Vector(-1.113, 0.568, -1.073), Vector(-1.121, 0.570, 1.245), Vector(-0.526, 0.770, 2.772), Vector(-0.884, 0.770, 2.736),
+			Vector(-0.884, 1.055, 2.736), Vector(-0.884, 1.068, 2.800), Vector(-0.512, 1.103, 2.815), Vector(-0.895, 1.076, 2.709), Vector(
+			-0.511, 1.113, 2.720), Vector(-0.943, 1.176, 1.052), Vector(-0.526, 1.054, 2.772), Vector(-0.816, 1.232, -2.360), Vector(
+			-0.669, 1.598, -1.389), Vector(-1.095, 1.000, -0.665), Vector(-1.095, 1.000, -0.450), Vector(-1.090, 0.719, -1.946), Vector(
+			-0.822, 0.147, -2.030), Vector(-1.013, 0.719, -2.643), Vector(-0.939, 0.719, -2.729), Vector(-0.418, 0.719, -2.754), Vector(
+			-0.823, 0.395, -2.042), Vector(-0.837, 0.336, -2.595), Vector(-1.028, 0.285, 0.934), Vector(-1.067, 0.487, 2.211), Vector(
+			-1.107, 0.570, 0.981), Vector(-1.309, 1.182, 0.586), Vector(-0.983, 1.148, 0.714), Vector(-0.960, 1.290, 0.605), Vector(-1.033,
+			1.112, 0.598), Vector(-0.633, 0.253, 2.770), Vector(-0.783, 0.487, 2.854), Vector(0.572, 0.606, 2.867), Vector(-0.572, 0.606,
+			2.867), Vector(0.344, 1.186, 1.164), Vector(0.856, 0.679, 2.851), Vector(-0.856, 0.679, 2.851), Vector(1.090, 0.193, 1.210),
+			Vector(0.422, 1.004, -2.715), Vector(0.933, 1.004, -2.675), Vector(1.008, 1.004, -2.601), Vector(-0.422, 1.004, -2.715),
+			Vector(-0.933, 1.004, -2.675), Vector(-1.008, 1.004, -2.601), Vector(0.418, 0.882, -2.682), Vector(0.418, 0.719, -2.717),
+			Vector(0.371, 0.697, -2.717), Vector(-0.418, 0.882, -2.682), Vector(-0.418, 0.719, -2.717), Vector(-0.371, 0.697, -2.717),
+			Vector(-0.952, 0.679, 2.813));
+		Global.VAR_VEH_MESH_VRTCS_DRIFT_POINTS = Array(Vector(1.139, 0.383, 1.723), Vector(1.151, 0.383, -1.538), Vector(-1.139, 0.383,
+			1.723), Vector(-1.151, 0.383, -1.538));
+		Global.VAR_VEH_MESH_EDGES_FRONT_BUMPER = Array(0, 1, 4, 5, 6, 7, 7, 8, 9, 10, 10, 11, 5, 11, 12, 2, 3, 6, 1, 24, 13, 14, 18, 19,
+			19, 20, 21, 22, 23, 15, 16, 18, 14, 25, 26, 27, 17, 26, 22, 27);
+		Global.VAR_VEH_MESH_EDGES_FRONT_HOOD = Array(1, 3, 2, 4, 0, 5, 5, 6, 7, 8, 8, 9, 9, 4, 4, 10, 12, 14, 13, 15, 11, 16, 16, 17, 18,
+			19, 19, 20, 20, 15, 15, 21, 10, 21, 14, 15, 3, 4);
+		Global.VAR_VEH_MESH_EDGES_BODY = Array(8, 3, 1, 3, 2, 4, 4, 5, 4, 6, 0, 9, 7, 3, 2, 7, 16, 12, 10, 11, 11, 13, 13, 5, 13, 14, 18,
+			17, 15, 12, 11, 15, 6, 14, 19, 2, 22, 23, 20, 6, 20, 7, 23, 12, 20, 1, 21, 1, 24, 23, 24, 14, 24, 15, 14, 26, 6, 25);
+		Global.VAR_VEH_MESH_EDGES_ENGINE_HOOD = Array(1, 2, 5, 6, 7, 4, 8, 9, 9, 10, 13, 15, 3, 11, 0, 1, 2, 3, 10, 11, 14, 12, 7, 14, 8,
+			0);
+		Global.VAR_VEH_MESH_EDGES_REAR_BUMPER = Array(3, 4, 0, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 4, 10, 1, 2, 13, 14, 11, 15, 15, 16, 16,
+			17, 17, 18, 18, 19, 19, 20, 14, 20, 12, 21, 22, 23, 24, 22, 25, 26, 27, 25, 24, 27);
+		Global.VAR_VEH_MESH_EDGES_HEADLIGHTS = Array(0, 1, 1, 2, 3, 0, 2, 3, 4, 5, 5, 6, 7, 4, 6, 7);
+		Global.VAR_VEH_MESH_EDGES_L_R_LIGHTS = Array(3, 4, 1, 2, 5, 6, 4, 7, 6, 8, 0, 9);
+		Global.VAR_VEH_MESH_EDGES_R_R_LIGHTS = Array(3, 4, 1, 2, 5, 6, 4, 7, 6, 8, 0, 9);
+		Global.VAR_VEH_MESH_EDGES_NITROUS = Array(0, 1);
+		Global.VAR_VEH_MESH_EDGES_CARBON_PARTS = Array(7, 3, 0, 1, 5, 4, 6, 7, 5, 0, 8, 53, 9, 10, 1, 11, 11, 12, 2, 12, 12, 13, 2, 13, 13,
+			14, 14, 15, 15, 16, 17, 18, 50, 20, 21, 22, 22, 23, 124, 125, 32, 33, 31, 32, 10, 124, 90, 91, 26, 25, 34, 35, 36, 34, 35, 37,
+			36, 37, 39, 31, 33, 39, 57, 58, 40, 41, 42, 43, 44, 46, 46, 47, 47, 48, 18, 45, 45, 49, 55, 56, 54, 51, 38, 123, 4, 6, 19, 50,
+			3, 59, 60, 8, 69, 65, 61, 63, 62, 64, 63, 62, 67, 66, 68, 69, 67, 61, 70, 113, 63, 72, 62, 72, 72, 73, 64, 73, 73, 74, 64, 74,
+			74, 75, 75, 76, 76, 77, 78, 79, 111, 81, 82, 83, 83, 84, 85, 28, 93, 94, 92, 93, 20, 81, 30, 89, 87, 86, 95, 96, 97, 95, 96,
+			98, 97, 98, 100, 92, 94, 100, 117, 118, 101, 102, 103, 104, 105, 107, 107, 108, 108, 109, 79, 106, 106, 110, 115, 116, 114,
+			112, 99, 52, 66, 68, 80, 111, 65, 119, 120, 70, 21, 82, 27, 88, 121, 122, 59, 119, 60, 120, 41, 102, 40, 101, 52, 123, 24, 29,
+			1, 126, 126, 11, 126, 2, 127, 128, 128, 129, 130, 131, 131, 132, 127, 130, 134, 133, 134, 135, 137, 136, 137, 138, 135, 138,
+			71, 139, 125, 139);
 		"PASTE YOUR CAR HERE - Original Gamemode Creator: GraczCourier (now known as RaidVentador_Courier_13)"
-		Global.VAR_PLAYER_RACER.VAR_VEH_COLOR_DEFAULT = Color(Blue);
+		Global.VAR_PLAYER_RACER.VAR_VEH_COLOR_DEFAULT = Color(Gray);
 		Call Subroutine(SUB_VEH_VSL_GET_COLORS);
 	}
 }
@@ -1044,7 +1216,7 @@ rule("Project: Streetwatch - Original Build by GraczCourier (now known as RaidVe
 
 	conditions
 	{
-		"CARBONATED BEVERAGE WITH COLA FLAVOUR.\nContains cement. Contains traces of debris."
+		"CARBONATED BEVERAGE WITH COLA FLAVOUR.\nContains cement. Contains traces of debris. \n CODE: B9P3A"
 		Entity Exists(Event Player) == True;
 		"THE OMEN CAN ONLY WATCH \n Now! The Raven's on that wall... It won't fly away. It's an Omen! It's just flies on... automation."
 		Is Dummy Bot(Event Player) == False;
@@ -1090,6 +1262,7 @@ rule("INITIAL MECHANICS: GET PLAYER AND THEIR VEHICLE'S INFO")
 
 	actions
 	{
+		Wait(0.250, Ignore Condition);
 		Set Respawn Max Time(Event Player, 9999);
 		Disable Hero HUD(Event Player);
 		Disable Game Mode HUD(Event Player);
@@ -1139,18 +1312,18 @@ rule("INITIAL MECHANICS: GLOBAL ARRAY VALUE LIST")
 	{
 		"REFER TO: VARIABLE_STRING_TABLES.TXT / ARRAY TABLE - INTERNAL STORAGE VARIABLE"
 		Global.VAR_GBL_INTRNL_STORED_VALUES = Array(1, Workshop Setting Combo(Custom String("A - START UP SETTINGS"), Custom String(
-			"SELECT CAR BODY"), 0, Array(Custom String("2017's HONDA CIVIC TYPE-R FK8"), Custom String("2002 Nissan Skyline GT-R (R34)"),
-			Custom String("2018's Porsche 911 GT3 RS"), Custom String("CAR_NAME_HERE_04"), Custom String("CAR_NAME_HERE_05"),
-			Custom String("CAR_NAME_HERE_06"), Custom String("CAR_NAME_HERE_07"), Custom String("CAR_NAME_HERE_08")), 0), 1, False, 2, 50,
-			2, Workshop Setting Combo(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("SELECT GAME MODE"), 0, Array(
-			Custom String("FREE DRIVE"), Custom String("RACE"), Custom String("DYNAMITE TRIAL")), 0), Workshop Setting Integer(
-			Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("NUMBER OF LAPS"), 3, 1, 30, 1), Workshop Setting Toggle(
-			Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("REVERSE VARIANT"), False, 2), Workshop Setting Combo(
-			Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("SCORE CONDITION"), 0, Array(Custom String("OFF"),
-			Custom String("ON")), 3), Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String(
-			"SCORE THRESHOLD"), 100000, 1000, 1000000, 4), Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"),
-			Custom String("CHECKPOINT RADIUS"), 5, 1, 10, 5), Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"),
-			Custom String("DYNAMITE TRIAL - START WITH REMAINING TIME"), 10, 10, 120, 6), Workshop Setting Integer(Custom String(
+			"SELECT CAR BODY"), 0, Array(Custom String("2018 Porsche 911 GT3 RS"), Custom String("2017 HONDA CIVIC TYPE-R FK8"),
+			Custom String("2013 Nissan GT-R NISMO"), Custom String("2002 Nissan Skyline GT-R (R34)"), Custom String(
+			"1983 Toyota AE86 Trueno")), 0), 1, False, 2, 50, 2, Workshop Setting Combo(Custom String(
+			"A - START UP SETTINGS (GAME MODES)"), Custom String("SELECT GAME MODE"), 0, Array(Custom String("FREE DRIVE"), Custom String(
+			"RACE"), Custom String("DYNAMITE TRIAL")), 0), Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"),
+			Custom String("NUMBER OF LAPS"), 3, 1, 30, 1), Workshop Setting Toggle(Custom String("A - START UP SETTINGS (GAME MODES)"),
+			Custom String("REVERSE VARIANT"), False, 2), Workshop Setting Combo(Custom String("A - START UP SETTINGS (GAME MODES)"),
+			Custom String("SCORE CONDITION"), 0, Array(Custom String("OFF"), Custom String("ON")), 3), Workshop Setting Integer(
+			Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("SCORE THRESHOLD"), 100000, 1000, 1000000, 4),
+			Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String("CHECKPOINT RADIUS"), 5, 1, 10, 5),
+			Workshop Setting Integer(Custom String("A - START UP SETTINGS (GAME MODES)"), Custom String(
+			"DYNAMITE TRIAL - START WITH REMAINING TIME"), 10, 10, 120, 6), Workshop Setting Integer(Custom String(
 			"A - START UP SETTINGS (GAME MODES)"), Custom String("DYNAMITE TRIAL - TIME EARNED VIA CHECKPOINT"), 5, 0, 20, 7));
 		Global.VAR_MENU_ARRAY_COLOR_CURR_LIST = Array(Null, Null, Null, Null, Null, Null, Null, Null, Null, Null);
 		Global.VAR_MENU_ARRAY_RADIO_COLOR_LIST = Array(Null, Color(Gray), Color(Orange), Color(Rose), Color(Lime Green), Color(Red),
@@ -1204,6 +1377,12 @@ rule("INITIAL MECHANICS: GET SPAWN POSITIONS AND FACING TABLES")
 		Ongoing - Global;
 	}
 
+	conditions
+	{
+		Entity Exists(Global.VAR_PLAYER_RACER) == True;
+		Global.VAR_GLB_VEHICLE_DEPLOY_STATUS != 3;
+	}
+	
 	actions
 	{
 		If(Current Map == Map(Circuit royal));
@@ -1254,8 +1433,8 @@ rule("INITIAL MECHANICS: GET SPAWN POSITIONS AND FACING TABLES")
 			Global.VAR_GLB_VEH_REV_START_FACE = -6;
 		Else;
 			If(Array Contains(Array(Game Mode(Deathmatch), Game Mode(Team Deathmatch), Game Mode(Bounty Hunter)), Current Game Mode) == True);
-				Global.VAR_GLB_VEH_REG_START_POS = Spawn Points(All Teams);
-				Global.VAR_GLB_VEH_REG_START_FACE = Spawn Points(All Teams);
+				Global.VAR_GLB_VEH_REG_START_POS = First Of(Spawn Points(All Teams));
+				Global.VAR_GLB_VEH_REG_START_FACE = First Of(Spawn Points(All Teams));
 			Else;
 				Global.VAR_GLB_VEH_REG_START_POS = First Of(Spawn Points(Team Of(Global.VAR_PLAYER_RACER)));
 				Global.VAR_GLB_VEH_REG_START_FACE = First Of(Spawn Points(Team Of(Global.VAR_PLAYER_RACER)));
@@ -1425,7 +1604,7 @@ rule("MAIN MENU: LOADING VISUAL LOOP")
 	conditions
 	{
 		Global.VAR_GLB_PLAYER_IS_IN_MAIN_MENU == False;
-		Global.VAR_GLB_VEHICLE_DEPLOY_STATUS == Custom String("DEPLOY_CAR");
+		Global.VAR_GLB_VEHICLE_DEPLOY_STATUS == 1;
 	}
 
 	actions
@@ -1835,41 +2014,46 @@ rule("PLAY MENU: SELECTED")
 
 	actions
 	{
+	Destroy All In-World Text;
+	Destroy All HUD Text;
+	Global.VAR_MENU_SETTINGS_CHANGE_CHECK = Custom String("SETTINGS_UNCHANGED");
+	Wait(0.275, Ignore Condition);
+	Global.VAR_GLB_PLAYER_IS_IN_MAIN_MENU = False;
+	Global.VAR_GLB_VEHICLE_DEPLOY_STATUS = 1;
+	If(Global.A_PIECE_OF_ASPHALT_THAT_I_FOUND != True);
+		Create In-World Text(All Players(All Teams), First Of(Global.VAR_CRIT_ARRAY_CORE), Vector(0, 150,
+			Global.VAR_MENU_ARRAY_BTN_Z_VECTOR[3]), 6, Clip Against Surfaces, Visible To Position and String, Color(White),
+			Default Visibility);
+		Create In-World Text(All Players(All Teams), Global.VAR_CRIT_ARRAY_CORE[Random Integer(1, 10)], Vector(0, 150,
+			Global.VAR_MENU_ARRAY_BTN_Z_VECTOR[6]), 3, Clip Against Surfaces, Visible To Position and String, Color(Red),
+			Default Visibility);
+	Else;
+		Create In-World Text(All Players(All Teams), Global.VAR_MENU_WAITING_FOR_CAR_STRING, Vector(0, 150,
+			Global.VAR_MENU_ARRAY_BTN_Z_VECTOR[4]), 2.500, Clip Against Surfaces, Visible To Position and String, Color(White),
+			Default Visibility);
+		Wait(2, Ignore Condition);
+	Global.VAR_TIP_TRIVIAS_HERE = Global.VAR_MENU_ARRAY_STRING_DEPLOY[Random Integer(4, 12)];
+		Global.VAR_GLB_VEHICLE_DEPLOY_STATUS = 2;
+		Global.VAR_MENU_WAITING_FOR_CAR_STRING = Global.VAR_MENU_ARRAY_STRING_DEPLOY[1];
+		Create In-World Text(Global.VAR_PLAYER_RACER, Custom String("{0} \"{1}\" {2}", Global.VAR_MENU_ARRAY_STRING_CONTROL[12],
+			Input Binding String(Button(Crouch)), Global.VAR_MENU_ARRAY_STRING_DEPLOY[3]), Vector(0, 150,
+			Global.VAR_MENU_ARRAY_BTN_Z_VECTOR[6]), 2, Clip Against Surfaces, Visible To Position and String, Color(White),
+			Default Visibility);
+	Create In-World Text(Global.VAR_PLAYER_RACER, Custom String("{0} {1}", Global.VAR_MENU_ARRAY_STRING_DEPLOY[2],
+		Global.VAR_TIP_TRIVIAS_HERE), Vector(0, 150, Global.VAR_MENU_ARRAY_BTN_Z_VECTOR[8]), 2, Clip Against Surfaces,
+		Visible To Position and String, Color(White), Default Visibility);
+		Wait Until(Array Contains(Array(Is Button Held(Global.VAR_PLAYER_RACER, Button(Primary Fire)), Is Button Held(
+			Global.VAR_PLAYER_RACER, Button(Secondary Fire)), Is Button Held(Global.VAR_PLAYER_RACER, Button(Ability 1)), Is Button Held(
+			Global.VAR_PLAYER_RACER, Button(Ability 2)), Is Button Held(Global.VAR_PLAYER_RACER, Button(Reload)), Is Button Held(
+			Global.VAR_PLAYER_RACER, Button(Melee)), Is Button Held(Global.VAR_PLAYER_RACER, Button(Jump)), Is Button Held(
+			Global.VAR_PLAYER_RACER, Button(Interact)), Is Button Held(Global.VAR_PLAYER_RACER, Button(Ultimate))), True)
+			|| Array Contains(Array(X Component Of(Throttle Of(Global.VAR_PLAYER_RACER)), Z Component Of(Throttle Of(
+			Global.VAR_PLAYER_RACER))), Array(1, -1)), 99999);
+		Wait(0.100, Ignore Condition);
+		Stop Camera(All Players(All Teams));
 		Destroy All In-World Text;
-		Destroy All HUD Text;
-		Global.VAR_MENU_SETTINGS_CHANGE_CHECK = Custom String("SETTINGS_UNCHANGED");
-		Wait(0.275, Ignore Condition);
-		Global.VAR_GLB_PLAYER_IS_IN_MAIN_MENU = False;
-		Global.VAR_GLB_VEHICLE_DEPLOY_STATUS = Custom String("DEPLOY_CAR");
-		If(Global.A_PIECE_OF_ASPHALT_THAT_I_FOUND != True);
-			Create In-World Text(All Players(All Teams), First Of(Global.VAR_CRIT_ARRAY_CORE), Vector(0, 150,
-				Global.VAR_MENU_ARRAY_BTN_Z_VECTOR[3]), 6, Clip Against Surfaces, Visible To Position and String, Color(White),
-				Default Visibility);
-			Create In-World Text(All Players(All Teams), Global.VAR_CRIT_ARRAY_CORE[Random Integer(1, 10)], Vector(0, 150,
-				Global.VAR_MENU_ARRAY_BTN_Z_VECTOR[6]), 3, Clip Against Surfaces, Visible To Position and String, Color(Red),
-				Default Visibility);
-		Else;
-			Create In-World Text(All Players(All Teams), Global.VAR_MENU_WAITING_FOR_CAR_STRING, Vector(0, 150,
-				Global.VAR_MENU_ARRAY_BTN_Z_VECTOR[4]), 2.500, Clip Against Surfaces, Visible To Position and String, Color(White),
-				Default Visibility);
-			Wait(2, Ignore Condition);
-			Global.VAR_GLB_VEHICLE_DEPLOY_STATUS = Custom String("READY");
-			Global.VAR_MENU_WAITING_FOR_CAR_STRING = Global.VAR_MENU_ARRAY_STRING_DEPLOY[1];
-			Create In-World Text(All Players(All Teams), Custom String("{0} {1}", Global.VAR_MENU_ARRAY_STRING_DEPLOY[2],
-				Global.VAR_MENU_ARRAY_STRING_DEPLOY[Random Integer(3, 8)]), Vector(0, 150, Global.VAR_MENU_ARRAY_BTN_Z_VECTOR[8]), 2,
-				Clip Against Surfaces, Visible To Position and String, Color(White), Default Visibility);
-			Wait Until(Array Contains(Array(Is Button Held(Global.VAR_PLAYER_RACER, Button(Primary Fire)), Is Button Held(
-				Global.VAR_PLAYER_RACER, Button(Secondary Fire)), Is Button Held(Global.VAR_PLAYER_RACER, Button(Ability 1)), Is Button Held(
-				Global.VAR_PLAYER_RACER, Button(Ability 2)), Is Button Held(Global.VAR_PLAYER_RACER, Button(Reload)), Is Button Held(
-				Global.VAR_PLAYER_RACER, Button(Melee)), Is Button Held(Global.VAR_PLAYER_RACER, Button(Jump)), Is Button Held(
-				Global.VAR_PLAYER_RACER, Button(Crouch)), Is Button Held(Global.VAR_PLAYER_RACER, Button(Interact)), Is Button Held(
-				Global.VAR_PLAYER_RACER, Button(Ultimate))), True) || Array Contains(Array(X Component Of(Throttle Of(
-				Global.VAR_PLAYER_RACER)), Z Component Of(Throttle Of(Global.VAR_PLAYER_RACER))), Array(1, -1)), 99999);
-			Wait(0.100, Ignore Condition);
-			Stop Camera(All Players(All Teams));
-			Destroy All In-World Text;
-			Global.VAR_GLB_VEHICLE_DEPLOY_STATUS = Custom String("DEPLOYED");
-		End;
+		Global.VAR_GLB_VEHICLE_DEPLOY_STATUS = 3;
+	End;
 	}
 }
 
@@ -2955,7 +3139,7 @@ rule("CAR BUILDING MECHANICS: BUILD CAR MESH")
 
 	conditions
 	{
-		Global.VAR_GLB_VEHICLE_DEPLOY_STATUS == Custom String("DEPLOY_CAR");
+		Global.VAR_GLB_VEHICLE_DEPLOY_STATUS == 1;
 	}
 
 	actions
@@ -3258,7 +3442,7 @@ rule("HUD TEXTS: CREATE RACER HUD")
 	conditions
 	{
 		Has Spawned(Event Player) == True;
-		Global.VAR_GLB_VEHICLE_DEPLOY_STATUS == Custom String("DEPLOYED");
+		Global.VAR_GLB_VEHICLE_DEPLOY_STATUS == 3;
 		Event Player.VAR_PLAYER_IS_RACER == True;
 	}
 
@@ -3927,6 +4111,8 @@ rule("VEHICLE MECHANICS SUBROUTINE: ENGINE OFF")
 		Call Subroutine(SUB_VEH_STEERING_OFF);
 		"FOR INDEXES REFER TO: GAME IN PROGRESS \\ VEHICLE \\ ARRAY TABLE - VEHICLE MECHANICS \n [0] - ACCELERATION - DESTINATION (RECEIVER)"
 		Event Player.VAR_ARRAY_CAR_MECHANICS[0] = 0;
+		"FOR INDEXES REFER TO: GAME IN PROGRESS \\ VEHICLE \\ ARRAY TABLE - VEHICLE MECHANICS \n [1] - ACCELERATION - RATE (RECEIVER)"
+		Event Player.VAR_ARRAY_CAR_MECHANICS[1] = 1;
 		Event Player.VAR_VSL_STUNT_DRIFT_TRIGGER = False;
 		Event Player.VAR_VSL_STUNT_AIR_TRIGGER = False;
 		"FOR INDEXES REFER TO: GAME IN PROGRESS \\ VEHICLE \\ ARRAY TABLE - PLAYER FEEDBACKS \n [4] - HEADLIGHTS CURRENT COLOR"
@@ -3986,12 +4172,6 @@ rule("VEHICLE MECHANICS SUBROUTINE: STEERING OFF")
 	{
 		"FOR INDEXES REFER TO: GAME IN PROGRESS \\ VEHICLE \\ ARRAY TABLE - CAR NAVIGATION \n [7] - STEERING ENABLED"
 		Event Player.VAR_ARRAY_CAR_NAVIGATION[7] = False;
-		"FOR INDEXES REFER TO: GAME IN PROGRESS \\ VEHICLE \\ ARRAY TABLE - VEHICLE MECHANICS \n [5] - LEFT STEERING ACCELERATION - DESTINATION (RECEIVER)"
-		Event Player.VAR_ARRAY_CAR_MECHANICS[5] = 0;
-		"FOR INDEXES REFER TO: GAME IN PROGRESS \\ VEHICLE \\ ARRAY TABLE - VEHICLE MECHANICS \n [6] - MAIN STEERING ACCELERATION - DESTINATION (RECEIVER)"
-		Event Player.VAR_ARRAY_CAR_MECHANICS[6] = 0;
-		"FOR INDEXES REFER TO: GAME IN PROGRESS \\ VEHICLE \\ ARRAY TABLE - VEHICLE MECHANICS \n [7] - RIGHT STEERING ACCELERATION - DESTINATION (RECEIVER)"
-		Event Player.VAR_ARRAY_CAR_MECHANICS[7] = 0;
 	}
 }
 
@@ -5363,7 +5543,7 @@ rule("STUNT VISUALS MECHANICS: START-UP CHASING VISUALS (GLOBALS)")
 
 	conditions
 	{
-		Global.VAR_GLB_VEHICLE_DEPLOY_STATUS == Custom String("READY");
+		Global.VAR_GLB_VEHICLE_DEPLOY_STATUS == 2;
 	}
 
 	actions
@@ -5384,7 +5564,7 @@ rule("STUNT VISUALS MECHANICS: START-UP CHASING VISUALS (PLAYERS)")
 	conditions
 	{
 		Has Spawned(Event Player) == True;
-		Global.VAR_GLB_VEHICLE_DEPLOY_STATUS == Custom String("READY");
+		Global.VAR_GLB_VEHICLE_DEPLOY_STATUS == 2;
 	}
 
 	actions
@@ -5681,6 +5861,55 @@ rule("VISUAL CAR MECHANICS: Stop Blinkers When Speeding Up")
 	}
 }
 
+
+rule("VISUAL CAR MECHANICS: SHOW DRIFT SMOKE")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		Slot 0;
+	}
+
+	conditions
+	{
+		Event Player.VAR_VEH_DRIFT_TRIGGER == True;
+		Speed Of In Direction(Event Player.VAR_RACER_VEHICLE, World Vector Of(Forward, Event Player.VAR_RACER_VEHICLE, Rotation)) >= 6;
+		Is In Air(Event Player.VAR_RACER_VEHICLE) == False;
+	}
+
+	actions
+	{
+		Call Subroutine(SUB_VEH_VSL_DRIFT_SMOKE);
+		Wait(0.100, Ignore Condition);
+		Loop If Condition Is True;
+	}
+}
+
+rule("VISUAL CAR MECHANICS SUBROUTINE: SHOW DRIFT SMOKE")
+{
+	event
+	{
+		Subroutine;
+		SUB_VEH_VSL_DRIFT_SMOKE;
+	}
+
+	actions
+	{
+		Play Effect(Event Player, Doomfist Rising Uppercut Leap Effect, Color(White), Update Every Frame(Position Of(
+			Event Player.VAR_RACER_VEHICLE) + World Vector Of(
+			Global.VAR_VEH_MESH_VRTCS_DRIFT_POINTS[Event Player.VAR_VEH_VSL_SMOKE_CURRENT], Event Player.VAR_RACER_VEHICLE, Rotation)
+			* Global.VAR_VEH_MESH_Scale), 10 * Event Player.VAR_VEH_ACCELER_THROTTLE);
+		If(Event Player.VAR_VEH_VSL_SMOKE_CURRENT != 3);
+			Event Player.VAR_VEH_VSL_SMOKE_CURRENT += 1;
+			Loop If Condition Is True;
+		Else;
+			Event Player.VAR_VEH_VSL_SMOKE_CURRENT = 0;
+		End;
+	}
+}
+
+
 disabled rule("SAFEGUARD MECHANICS TAB")
 {
 	event
@@ -5781,11 +6010,11 @@ rule("SAFEGUARD MECHANICS: Keep Notifying Player to Respawn/Restart")
 		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [7] - CURRENT MODE:"
 		If(Global.VAR_GBL_INTRNL_STORED_VALUES[7] != 2);
 			"FOR INDEXES REFER TO: GAME IN PROGRESS \\ GLOBAL \\ ARRAY TABLE - IN-GAME STRINGS \n [6] - PRESS / [8] - TO RESPAWN"
-			Small Message(Event Player, Custom String("  {0} {1} {2}  ", Global.VAR_GLB_ARRAY_STRING_IN_GAME[6], Input Binding String(Button(
+			Small Message(Event Player, Custom String("  {0} {1} {2}", Global.VAR_GLB_ARRAY_STRING_IN_GAME[6], Input Binding String(Button(
 				Reload)), Global.VAR_GLB_ARRAY_STRING_IN_GAME[8]));
 		Else;
 			"FOR INDEXES REFER TO: GAME IN PROGRESS \\ GLOBAL \\ ARRAY TABLE - IN-GAME STRINGS \n [6] - PRESS / [9] - TO RESTART"
-			Small Message(Event Player, Custom String("  {0} {1} {2}  ", Global.VAR_GLB_ARRAY_STRING_IN_GAME[6], Input Binding String(Button(
+			Small Message(Event Player, Custom String("  {0} {1} {2}", Global.VAR_GLB_ARRAY_STRING_IN_GAME[6], Input Binding String(Button(
 				Reload)), Global.VAR_GLB_ARRAY_STRING_IN_GAME[9]));
 		"FOR INDEXES REFER TO: GAME IN PROGRESS \\ VEHICLE \\ ARRAY TABLE - IN-GAME STRINGS"
 		End;
@@ -5915,7 +6144,7 @@ rule("MODE MECHANICS: INITIAL SETUP")
 
 	conditions
 	{
-		Global.VAR_GLB_VEHICLE_DEPLOY_STATUS == Custom String("READY");
+		Global.VAR_GLB_VEHICLE_DEPLOY_STATUS == 2;
 	}
 
 	actions
@@ -5954,7 +6183,7 @@ rule("MODE MECHANICS: MAKE VEHICLE READY")
 
 	conditions
 	{
-		Global.VAR_GLB_VEHICLE_DEPLOY_STATUS == Custom String("DEPLOYED");
+		Global.VAR_GLB_VEHICLE_DEPLOY_STATUS == 3;
 	}
 
 	actions
@@ -6039,7 +6268,7 @@ rule("RACE MODE MECHANICS: PREPARE RACE (GLOBALS)")
 	{
 		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [7] - CURRENT MODE:"
 		Global.VAR_GBL_INTRNL_STORED_VALUES[7] != 0;
-		Global.VAR_GLB_VEHICLE_DEPLOY_STATUS == Custom String("DEPLOYED");
+		Global.VAR_GLB_VEHICLE_DEPLOY_STATUS == 3;
 		Global.VAR_GLB_RACE_STATUS == Custom String("RACE_READY");
 	}
 
@@ -6065,7 +6294,7 @@ rule("RACE MODE MECHANICS: PREPARE RACE (PLAYERS)")
 		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [7] - CURRENT MODE:"
 		Global.VAR_GBL_INTRNL_STORED_VALUES[7] != 0;
 		Event Player.VAR_PLAYER_RACER_INSIDE_VEHICLE == True;
-		Global.VAR_GLB_VEHICLE_DEPLOY_STATUS == Custom String("DEPLOYED");
+		Global.VAR_GLB_VEHICLE_DEPLOY_STATUS == 3;
 		Global.VAR_GLB_RACE_STATUS == Custom String("RACE_READY");
 	}
 
@@ -6166,7 +6395,7 @@ rule("RACE MODE MECHANICS: CREATE CHECKPOINT SPHERE AND ICON FOR RACER")
 	{
 		"FOR INDEXES REFER TO: MENU \\ ARRAY TABLE - INTERNAL STORAGE VARIABLE \n [7] - CURRENT MODE:"
 		Global.VAR_GBL_INTRNL_STORED_VALUES[7] != 0;
-		Global.VAR_GLB_VEHICLE_DEPLOY_STATUS == Custom String("DEPLOY_CAR");
+		Global.VAR_GLB_VEHICLE_DEPLOY_STATUS == 1;
 	}
 
 	actions
@@ -6728,7 +6957,7 @@ rule("VEHICLE MECHANICS: PLAYER DRIVES UP THE RAMP")
 	}
 }
 
-rule("VEHICLE MECHANICS: PLAYER DRIVES OFF THE RAMP")
+rule("VEHICLE MECHANICS: PLAYER JUMPS OFF THE RAMP")
 {
 	event
 	{
@@ -6754,7 +6983,7 @@ rule("VEHICLE MECHANICS: PLAYER DRIVES OFF THE RAMP")
 	}
 }
 
-rule("VEHICLE MECHANICS: CANCEL RAMP JUMP OFF IF LOST TOO MUCH SPEED")
+rule("VEHICLE MECHANICS: CANCEL JUMPING OFF THE RAMP IF LOST TOO MUCH SPEED")
 {
 	event
 	{
@@ -6793,10 +7022,10 @@ rule("VEHICLE MECHANICS: PLAYER JUMPS OFF THE SLOPE")
 		Speed Of In Direction(Event Player.VAR_RACER_VEHICLE, World Vector Of(Forward, Event Player.VAR_RACER_VEHICLE, Rotation)) >= 7.500;
 		Distance Between(Eye Position(Event Player.VAR_RACER_VEHICLE), Ray Cast Hit Position(Eye Position(Event Player.VAR_RACER_VEHICLE),
 			Eye Position(Event Player.VAR_RACER_VEHICLE) + World Vector Of(Vector(0, -1, 1), Event Player.VAR_RACER_VEHICLE, Rotation)
-			* 20, Event Player.VAR_RACER_VEHICLE, Event Player.VAR_RACER_VEHICLE, True)) > 3.500;
+			* 20, Event Player.VAR_RACER_VEHICLE, Event Player.VAR_RACER_VEHICLE, True)) > 3;
 		Distance Between(Eye Position(Event Player.VAR_RACER_VEHICLE), Ray Cast Hit Position(Eye Position(Event Player.VAR_RACER_VEHICLE),
-			Eye Position(Event Player.VAR_RACER_VEHICLE) + World Vector Of(Backward, Event Player.VAR_RACER_VEHICLE, Rotation) * 20,
-			Event Player.VAR_RACER_VEHICLE, Event Player.VAR_RACER_VEHICLE, True)) >= 7.500;
+			Eye Position(Event Player.VAR_RACER_VEHICLE) + World Vector Of(Vector(0, -0.250, -1), Event Player.VAR_RACER_VEHICLE, Rotation) * 20,
+			Event Player.VAR_RACER_VEHICLE, Event Player.VAR_RACER_VEHICLE, True)) >= 7;
 		Is In Air(Event Player.VAR_RACER_VEHICLE) == False;
 	}
 
@@ -6854,7 +7083,7 @@ rule("INPUT NAVIGATION MECHANICS: / ACCELERATION PRESSED")
 		Event Player.VAR_RACER_VEHICLE_IS_ALIVE == True;
 		Event Player.VAR_PLAYER_RACER_INSIDE_VEHICLE == True;
 		"FOR INDEXES REFER TO: GAME IN PROGRESS \\ VEHICLE \\ ARRAY TABLE - CAR NAVIGATION \n [6] - ENGINE STATUS"
-		Event Player.VAR_ARRAY_CAR_NAVIGATION[6] == True;
+		Event Player.VAR_ARRAY_CAR_NAVIGATION[6] == 1;
 		Z Component Of(Throttle Of(Event Player)) > 0;
 		"FOR INDEXES REFER TO: GAME IN PROGRESS \\ VEHICLE \\ ARRAY TABLE - CAR NAVIGATION \n [3] - HANDBRAKE PULLED"
 		Event Player.VAR_ARRAY_CAR_NAVIGATION[3] == False;
@@ -7264,7 +7493,7 @@ rule("INPUT NAVIGATION MECHANICS SUBROUTINE: FUNCTIONS COOLDOWN")
 	}
 }
 
-rule("VISUAL CAR MECHANICS: SHOW DRIFT SMOKE")
+rule("INPUT NAVIGATION MECHANICS: NEXT TIP/TRIVIA")
 {
 	event
 	{
@@ -7275,38 +7504,12 @@ rule("VISUAL CAR MECHANICS: SHOW DRIFT SMOKE")
 
 	conditions
 	{
-		Event Player.VAR_VEH_DRIFT_TRIGGER == True;
-		Speed Of In Direction(Event Player.VAR_RACER_VEHICLE, World Vector Of(Forward, Event Player.VAR_RACER_VEHICLE, Rotation)) >= 6;
-		Is In Air(Event Player.VAR_RACER_VEHICLE) == False;
+		Global.VAR_GLB_VEHICLE_DEPLOY_STATUS == 2;
+		Is Button Held(Event Player, Button(Crouch)) == True;
 	}
 
 	actions
 	{
-		Call Subroutine(SUB_VEH_VSL_DRIFT_SMOKE);
-		Wait(0.100, Ignore Condition);
-		Loop If Condition Is True;
-	}
-}
-
-rule("VISUAL CAR MECHANICS SUBROUTINE: SHOW DRIFT SMOKE")
-{
-	event
-	{
-		Subroutine;
-		SUB_VEH_VSL_DRIFT_SMOKE;
-	}
-
-	actions
-	{
-		Play Effect(Event Player, Doomfist Rising Uppercut Leap Effect, Color(White), Update Every Frame(Position Of(
-			Event Player.VAR_RACER_VEHICLE) + World Vector Of(
-			Global.VAR_VEH_MESH_VRTCS_DRIFT_POINTS[Event Player.VAR_VEH_VSL_SMOKE_CURRENT], Event Player.VAR_RACER_VEHICLE, Rotation)
-			* Global.VAR_VEH_MESH_Scale), 10 * Event Player.VAR_VEH_ACCELER_THROTTLE);
-		If(Event Player.VAR_VEH_VSL_SMOKE_CURRENT != 3);
-			Event Player.VAR_VEH_VSL_SMOKE_CURRENT += 1;
-			Loop If Condition Is True;
-		Else;
-			Event Player.VAR_VEH_VSL_SMOKE_CURRENT = 0;
-		End;
+	Global.VAR_TIP_TRIVIAS_HERE = Global.VAR_MENU_ARRAY_STRING_DEPLOY[Random Integer(4, 12)];
 	}
 }
