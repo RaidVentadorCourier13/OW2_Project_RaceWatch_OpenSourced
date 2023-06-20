@@ -100,6 +100,8 @@ H - Nitrous
 
 I - Carbon
 
+ID - Drift Points
+
 1. Make sure that ALL PARTS of your car's origin (Orange Dot) remains the same.
 
 2. Copy ALL PARTS.
@@ -135,6 +137,7 @@ Lettered down from A to I:
 8. GR_REAR_LIGHT
 9. H_NITROUS
 10. I_CARBON
+11. ID_DRIFT
 
 ![image](https://user-images.githubusercontent.com/52705052/236927418-169230c1-810c-41b1-a913-6df501b63156.png)
 
