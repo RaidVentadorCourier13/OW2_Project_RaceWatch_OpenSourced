@@ -2,9 +2,9 @@
 
 The future of street racing re-starts here.
 
-NOTE: Open-Sourced Build of the Project: Streetwatch workshop script was stripped from car models.
+NOTE: Open-Sourced Build of the Project: RaceWatch workshop script was stripped from car models.
 
-# Guide to Building Your Own Car for the "Project: Streetwatch" Workshop Script
+# Guide to Building Your Own Car for the "Project: RaceWatch" Workshop Script
 
 First things first, download the following apps:
 
@@ -204,7 +204,7 @@ When building your car you can optionally add Drift Points (ID_DRIFT)
 
 # How do I port the cars into the game?
 
-1. Open the "PROJECT_STREETWATCH_OPEN_SOURCED_BUILD.cs" file, placed in C_SCRIPT folder, in Visual Studio Code
+1. Open the "PROJECT_RACEWATCH_OPEN_SOURCED_BUILD.cs" file, placed in C_SCRIPT folder, in Visual Studio Code
 2. Search for the rule named - #1 <CAR_01_NAME_HERE> (Mesh Array Tables)
 
 3. Replace these Actions...
